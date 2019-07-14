@@ -1,0 +1,23 @@
+:host {
+  font-family: sans-serif;
+}
+
+div#chart {
+  margin-left: 1rem;
+}
+
+div#initial-content {
+  margin-left: 1rem;
+  font-family: inherit;
+}
+
+.line {
+  fill: none;
+  stroke: #05681d;
+  stroke-width: 1px;
+}
+
+.axis-x,
+.axis-y {
+  font-family: inherit;
+}

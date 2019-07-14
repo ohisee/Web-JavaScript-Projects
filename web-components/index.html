@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Components</title>
+  <style>
+    div {
+      border: 0.125rem solid #f7ca76;
+      background-color: #dfe1f0;
+      box-shadow: 2px 2px 2px 3px rgba(90, 87, 87, 0.5);
+      border-radius: 3px;
+      font-family: sans-serif;
+    }
+  </style>
+  <script src="./tooltip.js"></script>
+  <script src="./confirmLink.js"></script>
+</head>
+
+<body>
+  <p>
+    <app-tooltip text="Web Components is a set of standards">Web components</app-tooltip> are fine
+  </p>
+  <app-tooltip>Have a good time here</app-tooltip>
+  <app-tooltip></app-tooltip>
+  <div>This div does not get Web Components style</div>
+  <a is="app-confirm-link" href="https://www.sfsu.edu">Go to SFSU</a>
+</body>
+
+</html>

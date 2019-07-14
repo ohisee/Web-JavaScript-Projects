@@ -1,0 +1,40 @@
+/**/
+
+.barChart {
+  width: 22rem;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  /* margin: 2rem; */
+}
+
+.title {
+  font-family: inherit;
+  font-size: 0.875rem;
+  margin: 1rem;
+}
+
+.barNegative {
+  fill: #f48fb1;
+}
+
+.barPositive {
+  fill: #3f51b5;
+}
+
+.axisY path {
+  stroke: #d1cdcd;
+}
+
+.axisX path {
+  stroke: #d1cdcd;
+}
+
+.axisY text {
+  stroke: #858181;
+  stroke-width: 1;
+}
+
+.axisX text{
+  stroke: #858181;
+  stroke-width: 1;
+}

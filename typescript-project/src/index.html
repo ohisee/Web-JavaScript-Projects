@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/custom-elements-es5-adapter.js"></script>
+  <script src="./tooltip.js"></script>
+  <title>Typescript Page</title>
+</head>
+
+<body>
+  <div class="bars">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <aside class="side-drawer">
+    <span id="side-drawer-close">&#10096;&#10096;&#10096;</span>
+    <ul>
+      <li id="confirm-modal">&#9925;</li>
+      <li>&#9961;</li>
+      <li>&#9969;</li>
+      <li>&#9971;</li>
+      <li>&#127873;</li>
+      <li>&#128665;</li>
+    </ul>
+  </aside>
+
+  <div class="backdrop"></div>
+
+  <div class="main-div">
+    <span>T</span>
+    <span>h</span>
+    <span>i</span>
+    <span>s</span>
+    <span>&multimap;</span>
+    <span>a</span>
+  </div>
+
+  <main>
+    <span>Hello</span>
+    <span>eval</span>
+    <span>local</span>
+    <span>listing</span>
+    <span>oooooo</span>
+  </main>
+
+  <app-tooltip text="Hope to see again"></app-tooltip>
+
+  <div id="modal">
+    <div class="ribbon"><span>Finance</span></div>
+    <header id="modal-header">Are you sure to continue?</header>
+    <section id="modal-main">An exchange-traded fund (ETF) is an investment fund traded on stock exchanges, much like
+      stocks.</section>
+    <section id="modal-buttons">
+      <button id="modal-button-confirm">Confirm</button>
+      <button id="modal-button-leave">Leave</button>
+    </section>
+  </div>
+
+</body>
+
+</html>

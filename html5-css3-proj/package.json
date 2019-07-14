@@ -1,0 +1,22 @@
+{
+  "name": "html5-css3-proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/d3": "^4.12.0",
+    "@types/jquery": "^3.2.17",
+    "@types/waypoints": "^4.0.0",
+    "animate.css": "^3.5.2",
+    "waypoints": "^4.0.1"
+  },
+  "dependencies": {
+    "d3": "^4.12.2"
+  }
+}

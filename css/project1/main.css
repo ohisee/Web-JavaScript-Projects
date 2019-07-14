@@ -1,0 +1,49 @@
+body {
+  font-family: sans-serif;
+}
+
+#assignment-instructions {
+  color: #0051ff;
+  font-family: sans-serif;
+}
+
+/* Use h1 id attribute as selector, lower specificity */
+/* [id] {
+  color: #0051ff;
+  font-family: sans-serif;
+} */
+
+/* class selector higher specificity */
+.green-text-code code {
+  color: #008000;
+}
+
+code {
+  font-family: monospace;
+  color: #ff0000;
+}
+
+li {
+  font-family: inherit;
+}
+
+/* li ~ li general CSS combinator gives a black background and white text color to second to last li element not first li */
+/* li ~ li {
+  color: #ffffff;
+  background: #000000;
+} */
+/* OR  li + li adjacent CSS combinator */
+li + li {
+  color: #ffffff;
+  background: #000000;
+}
+
+/* ol > li CSS combinator gives a black background and white text color to all li elements in ol */
+ol > li {
+  color: #ffffff;
+  background: #000000;
+}
+
+[data-somestrangeattribute] {
+  font-size: 20px;
+}

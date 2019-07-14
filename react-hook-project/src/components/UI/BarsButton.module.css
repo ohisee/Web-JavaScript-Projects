@@ -1,0 +1,35 @@
+/* bars */
+
+.bars {
+  margin: 2rem;
+  width: 2.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.bars:hover::after,
+.bars:active::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  width: 160%;
+  height: 200%;
+  border-radius: 50%;
+  background: rgba(218, 210, 208, 0.3);
+}
+
+.bars span {
+  display: block;
+  background: #180f0e;
+  width: inherit;
+  margin: 7px 0;
+  border: 2px solid #979797;
+  border-radius: 20%;
+}
+
+@media (min-width: 32rem) {
+  .bars {
+    display: none;
+  }
+}

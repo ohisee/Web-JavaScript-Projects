@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  --color-primary: #bceffc;
+  font-family: sans-serif;
+}
+
+div#confirm-link {
+  margin-top: 2rem;
+}
+
+.new-line {
+  margin: 2rem 0;
+}

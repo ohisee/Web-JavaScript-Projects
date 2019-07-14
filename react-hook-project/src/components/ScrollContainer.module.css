@@ -1,0 +1,65 @@
+/**/
+
+.cards {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: repeat(1, 16rem);
+  /* justify-content: center; */
+  grid-gap: 0.625rem;
+}
+
+.buttonStyle {
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  border-radius: 1rem;
+  width: 100px;
+  padding: 5px;
+}
+
+.buttonStyle:hover {
+  animation: wiggle 1s ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes wiggle {
+  20% {transform: translate(6px);}
+  40% {transform: translateY(-6px);}
+  60% {transform: translateY(4px);}
+  80% {transform: translateY(-2px);}
+  100% {transform: translateY(0);}
+}
+
+@media (min-width: 32rem) {
+  .cards {
+    grid-template-columns: repeat(2, 16rem);
+  }
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(3, 16rem);
+  }
+}
+
+.collapsibleContent {
+  /* position: absolute; */
+  width: 90%;
+  background-color: rgb(159, 168, 218, 0.8);
+  max-height: 0px;
+  height: 0px;
+  padding: 0rem 2rem;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.collapsibleContentOpen {
+  margin-top: 1rem;
+  padding-top: 2rem;
+  height: 120px;
+  max-height: 360px;
+}

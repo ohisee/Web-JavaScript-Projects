@@ -1,0 +1,36 @@
+/**/
+
+.pieChart {
+  width: 22rem;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+}
+
+.title {
+  font-family: inherit;
+  font-size: 0.875rem;
+  margin: 1rem;
+}
+
+.title .bullet {
+  margin-top: 3px;
+  margin-right: 10px;
+  display: inline-block;
+  background: #f48fb1;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #facece;
+}
+
+.polylines {
+  /* opacity: 0.3; */
+  stroke: #333030;
+  stroke-width: 1;
+  fill: none;
+}
+
+.labelText text {
+  font: inherit;
+  fill: #858181;
+}

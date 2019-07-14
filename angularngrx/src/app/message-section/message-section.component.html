@@ -1,0 +1,12 @@
+<div class="message-section">
+
+  <h3 class="message-thread-heading">{{participantNames$ | async}}</h3>
+
+  <app-message-list [messages]="messages$ | async"></app-message-list>
+
+  <textarea 
+    class="message-composer" 
+    name="message" 
+    (keyup.enter)="onNewMessage(input)" #input></textarea>
+
+</div>

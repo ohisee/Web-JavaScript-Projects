@@ -1,0 +1,67 @@
+.Input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.Label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.InputElement {
+  outline: none;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.InputElement:focus {
+  outline: none;
+  background-color: rgb(204, 204, 204);
+}
+
+.Invalid {
+  border: 1px solid red;
+  background-color: rgb(253, 179, 179);
+}
+
+.InputGroup {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+}
+
+.InputGroup .IconAddon {
+  display: table-cell;
+  background-color: #eee;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 4px;
+  width: 30px;
+}
+
+.InputGroup input {
+  outline: none;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.InputGroup input:focus {
+  outline: none;
+  background-color: rgb(204, 204, 204);
+}
+
+.InputGroup input.Invalid {
+  outline: none;
+  background-color: rgb(253, 179, 179);
+}

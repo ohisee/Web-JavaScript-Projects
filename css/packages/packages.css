@@ -1,0 +1,170 @@
+
+
+@font-face {
+  font-family: "AnonymousPro";
+  src: url("anonymousproregular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AnonymousPro";
+  src: url("anonymousprobold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+main {
+  /* padding-top: 32px; */
+  padding-top: 2rem;
+}
+
+.background {
+  background: url("../images/plans-background.jpg") center/cover;
+  filter: grayscale(40%);
+  position: fixed;
+  /* width: 100%;
+  height: 100%; */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; 
+}
+
+.package {
+  width: 80%;
+  /* margin: 16px 0; */
+  margin: 1rem 0;
+  border: 4px solid #0e4f1f; 
+  border-left: none; 
+  position: relative; 
+  /* If z-index is set in child .package__badge, a z-index must be in .package and its
+     value must be less than main header z-index. 
+   */
+  z-index: 0;
+  overflow: hidden; }
+  .package:first-of-type {
+    margin-top: 2.5rem;
+  }
+  .package:hover,
+  .package:active {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Use !important to overwrite default specificity, @see #free:hover, #free:active */
+    /* border-color: #ff5454 !important; */
+    border-color: #ff5454;
+    /* animation see @keyframe */
+    animation: move-package 1000ms ease-out forwards;
+  }
+  .package a {
+    text-decoration: none;
+    color: inherit;
+    /* Ensure anchor a takes the full surrounding area */
+    display: block;
+    /* padding: 32px; */
+    padding: 2rem;
+  }
+  .package__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* margin: 20px; */
+    /* margin: 1.25rem; */
+    margin: 0;
+    /* font-size: 12px; */
+    font-size: 0.75rem;
+    color: #ffffff;
+    background: #ff5454;
+    /* padding: 8px; */
+    padding: 0.5rem;
+    z-index: 10;
+    transform: rotateZ(45deg) translateX(3.5rem) translateY(-1rem);
+    transform-origin: center;
+    width: 12rem;
+    text-align: center;
+  }
+  .package__subtitle {
+    color: #6d6969;
+  }
+  .package__info {
+    /* padding: 16px; */
+    padding: 1rem;
+    border: 1px solid #0e4f1f;
+    /* font-size: 20px; */
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: #ffffff;
+    font-family: "AnonymousPro", sans-serif;
+    font-weight: 700;
+    /* line-height: 2; */
+    /* font-style: italic; */
+    /* text-decoration: underline wavy red; */
+    text-shadow: 2px 2px 7px #b1adad;
+    /* font: italic small-caps 700 1.2rem/2 "AnonymousPro", sans-serif; */
+    /* font: 700 1.2rem "AnonymousPro", sans-serif; */
+    /* font: menu; */
+  }
+
+/* clear both sides, to keep other elements in their place */
+.clearfix {
+  clear: both;
+}
+
+#plus {
+  background: rgba(213, 255, 220, 0.8);
+}
+
+#free {
+  background: rgba(234, 252, 237, 0.8);
+  float: right;
+  border-right: none;
+  border-left: 4px solid #0e4f1f;
+  text-align: right;
+}
+
+#free:hover,
+#free:active {
+  border-left-color: #ff5454;
+}
+
+#premium {
+  background: rgba(14, 79, 31, 0.95); }
+  #premium .package__title {
+    color: #ffffff;
+  }
+  #premium .package__subtitle {
+    color: #615959;
+  }
+
+
+@media (min-width: 40rem) {
+  main {
+    /* margin: 3rem auto;  */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .package {
+    border-left: 4px solid #0e4f1f; 
+  }
+  #free {
+    border-right: 4px solid #0e4f1f; }
+  #free:hover,
+  #free:active {
+    border-right-color: #ff5454;
+  }
+}
+
+/* .package:hover {
+  animation: move-package 900ms ease-out forwards;
+} */
+
+@keyframes move-package {
+  0% {
+    transform: translateY(0);
+  }
+  33% {
+    transform: translateY(-1.5rem);
+  }
+  100% {
+    transform: translateY(-1rem);
+  }
+}

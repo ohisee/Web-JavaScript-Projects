@@ -1,0 +1,218 @@
+/**/
+
+* {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.main-div {
+  padding: 2rem 2rem;
+}
+
+.main-div span {
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  /* transition: font-size 300ms ease-out 300ms; */
+  transition: transform 300ms ease-out;
+}
+
+.main-div span:hover,
+.main-div span:active {
+  /* font-size: 2rem; */
+  transform: scale(2) translateY(-2px);
+}
+
+.main-div span::after {
+  content: "";
+}
+
+main span {
+  margin: 2rem;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+main span::before {
+  content: "";
+  position: absolute;
+  background-color: #ff6347;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: -3px;
+  transform: scaleX(0);
+  transition: transform 300ms ease-in-out;
+}
+
+main span:hover::before {
+  transform: scaleX(1.5);
+}
+
+main span::after {
+  content: "..";
+}
+
+/* Side drawer */
+aside.side-drawer {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 8rem;
+  height: 100vh;
+  z-index: 10;
+  background: #f5f2f2;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  transition: left 300ms cubic-bezier(1, 0, 0, 1);
+}
+
+aside.side-drawer[data-open] {
+  left: 0;
+}
+
+aside.side-drawer span {
+  display: block;
+  text-align: right;
+  font-size: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+aside.side-drawer ul {
+  list-style: none;
+}
+
+aside.side-drawer ul li {
+  margin: 1rem 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  color: #180f0e;
+}
+
+aside.side-drawer ul li:first-of-type {
+  color: #1942c9;
+  margin-top: 1rem;
+}
+
+/* backdrop */
+div.backdrop {
+  position: fixed;
+  z-index: 8;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(77, 74, 74, 0.8);
+  display: none;
+}
+
+/* bars */
+div.bars {
+  margin: 2rem;
+  width: 2.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+div.bars:hover::after,
+div.bars:active::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  width: 160%;
+  height: 200%;
+  border-radius: 50%;
+  background: rgba(218, 210, 208, 0.3);
+}
+
+div.bars span {
+  display: block;
+  background: #180f0e;
+  width: inherit;
+  margin: 7px 0;
+  border: 2px solid #979797;
+  border-radius: 20%;
+}
+
+/* Modal */
+div#modal {
+  position: fixed;
+  font-family: sans-serif;
+  border: 1px solid #696060;
+  border-radius: 1%;
+  padding: 2rem 0;
+  width: 80%;
+  background: #d9e3e9;
+  box-shadow: 1px 1px 1pc rgba(0, 0, 0, 0.8);
+  top: -100%;
+  left: 10%;
+  z-index: 10;
+  overflow: hidden;
+  transition: top 300ms cubic-bezier(1, 0, 0, 1);
+}
+
+div#modal[data-open] {
+  top: 10vh;
+}
+
+#modal-header {
+  text-align: center;
+  background: rgba(221, 215, 214, 0.6);
+  padding: 1rem 0;
+}
+
+#modal-main {
+  margin: 1rem;
+}
+
+#modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+#modal-buttons button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  background: #011401;
+  color: #f5f2f2;
+  border: none;
+}
+
+#modal-buttons button.active,
+#modal-buttons button:hover,
+#modal-buttons button:active {
+  background: #e9dcec;
+  color: #011401;
+}
+
+div.ribbon {
+  font-family: inherit;
+  background: #e9618e;
+  position: absolute;
+  right: -10%;
+  top: 10%;
+  width: 10rem;
+  height: 1.5rem;
+  text-align: center;
+  transform: rotate(45deg);
+}
+
+@media(min-width: 40rem) {
+  div#modal {
+    width: 22rem;
+    left: 20%;
+  }
+}

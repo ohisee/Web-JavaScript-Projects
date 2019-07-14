@@ -1,0 +1,41 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+nav {
+	margin-bottom: 16px;
+	background: #fa923f;
+	padding: 8px 0;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	margin: 10px;
+}
+
+a.active {
+	color: #521751;
+	font-weight: bold;
+}
+
+/* select any a tag which does not have .active class */
+a:not(.active) {
+	color: #07076e;
+	border-bottom: 2px solid #07076e;
+}
+
+.main-section {
+	height: 800px;
+	border: 1px solid #ccc;
+	padding: 16px;
+}
+
+/* Same style properties of multiple classes, last defined class in file will win */
+.highlighted {
+	border: 10px solid #fa923f;
+}

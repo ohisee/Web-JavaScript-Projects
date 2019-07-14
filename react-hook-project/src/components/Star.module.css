@@ -1,0 +1,29 @@
+/**/
+
+.star {
+  position: relative;
+  color: #f0ffff;
+  font-size: 1.25rem;
+  display: inline-block;
+}
+
+.star.fill {
+  color: #ffb300;
+}
+
+.star.half20::before,
+.star.half80::before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  color: #ffb300;
+}
+
+.star.half20::before {
+  width: 50%;
+}
+
+.star.half80::before {
+  width: 80%;
+}

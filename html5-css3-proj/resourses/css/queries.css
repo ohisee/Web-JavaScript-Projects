@@ -1,0 +1,240 @@
+/* screens that are 768 to 1023px */
+/* big tablets to 1200px width smaller than the 1140px .row class */
+@media only screen and (max-width: 1200px) {
+  .hero-text-box {
+    width: 100%;
+    padding: 0 2%;
+  }
+
+  .row {
+    padding: 0 2%;
+  }
+}
+
+/* screens that are 768px to 1023px */
+/* small tablets to big tablets */
+@media only screen and (max-width: 1023px) {
+  body {
+    font-size: 18px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .long-copy {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .steps-box {
+    margin-top: 10px;
+  }
+
+  .steps-box:last-child {
+    margin-top: 10px;
+    padding-left: 2%;
+  }
+
+  .works-step {
+    margin-bottom: 40px;
+  }
+
+  .works-step:last-of-type {
+    margin-bottom: 60px;
+  }
+
+  .app-screen {
+    width: 50%;
+  }
+
+  .icon-small {
+    width: 17px;
+  }
+
+  .city-feature {
+    font-size: 82%;
+  }
+
+  .plan-box {
+    width: 100%;
+    margin-left: 0%;
+  }
+
+  .plan-price {
+    font-size: 250%;
+  }
+
+  .contact-form {
+    width: 90%;
+  }
+
+  footer {
+    padding: 50px 0;
+  }
+}
+
+
+/* screens that are 481px to 767px */
+/* small phones to small tablets */
+@media only screen and (max-width: 767px) {
+  body {
+    font-size: 16px;
+  }
+
+  section {
+    padding: 30px 0;
+  }
+
+  .row,
+  .hero-text-box {
+    padding: 0 4%;
+  }
+
+  .col {
+    width: 100%;
+    margin: 0 0 4% 0;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-nav-icon {
+    display: inline-block;
+  }
+
+  .main-nav {
+    float: left;
+    margin-top: 35px;
+    margin-left: 25px;
+  }
+
+  .main-nav li {
+    display: block;
+  }
+
+  .main-nav li a:link,
+  .main-nav li a:visited {
+    display: block;
+    border: 0;
+    padding: 10px 0;
+    font-size: 100%;
+  }
+
+  .sticky .main-nav {
+    margin-top: 10px;
+  }
+  
+  .sticky .main-nav li a:link,
+  .sticky .main-nav li a:visited {
+    padding: 10px 0;
+  }
+
+  .sticky .mobile-nav-icon {
+    margin-top: 10px;
+  }
+  .sticky .mobile-nav-icon i {
+    color: #555555;
+  }
+
+  h1 {
+    font-size: 180%;
+  }
+
+  h2 {
+    font-size: 150%;
+  }
+
+  .long-copy {
+    width: 100%;
+    margin-left: 0%;
+  }
+
+  .app-screen {
+    width: 40%;
+  }
+
+  .steps-box:first-child {
+    text-align: center;
+  }
+
+  .works-step {
+    margin-bottom: 20px;
+  }
+
+  .works-step:last-of-type {
+    margin-bottom: 20px;
+  }
+
+  .works-step div {  
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    margin-right: 15px;
+    font-size: 120%;
+  }
+
+  .icon-small {
+    width: 30px;
+  }
+
+  .city-feature {
+    font-size: 120%;
+  }
+
+  .map-contact-section {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .map-in-contact-form {
+    width: 100%;
+    height: 300px;
+    position: relative;
+  }
+  
+  .form-box {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+  }
+
+}
+
+
+/* screens that are 0 to 480px */
+/* small phones */
+@media only screen and (max-width: 480px) {
+  section {
+    padding: 25px 0;
+  }
+  
+  .contact-form {
+    width: 100%;
+  }
+
+  .works-step p {
+    font-size: 90%;
+  }
+
+  .works-step div {  
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    margin-right: 10px;
+    font-size: 120%;
+  }
+
+  .logo {
+    margin-top: 10px;
+    height: 100px;
+    width: 100px;
+  }
+}

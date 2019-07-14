@@ -1,0 +1,24 @@
+/**/
+
+.sideBar {
+  background: #fafafa;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sideBar:hover {
+  overflow-y: auto;
+}
+
+.items {
+  list-style-type: none;
+}
+
+.item {
+  padding-left: 6px;
+  padding-top: 12px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}

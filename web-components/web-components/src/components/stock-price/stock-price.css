@@ -1,0 +1,48 @@
+:host {
+  font-family: sans-serif;
+  border-top: 2px solid var(--color-primary, #6e0a6e);
+  margin: 5rem 2rem;
+  padding: 1rem;
+  width: 20rem;
+  max-width: 100%;
+  display: block;
+}
+
+form input {
+  font: inherit;
+  color: var(--color-primary, #6e0a6e);
+  padding: 0.2rem 0.25rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+form input:focus,
+form button:focus {
+  outline: none;
+}
+
+form button {
+  font: inherit;
+  padding: 0.2rem 0.25rem;
+  border: 1px solid var(--color-primary, #6e0a6e);
+  background: var(--color-primary, #6e0a6e);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+form button:hover,
+form button:active {
+  background: var(--color-border-and-background, #f1aff1);
+  border-color: var(--color-border-and-background, #f1aff1);
+  color: #818181;
+}
+
+form button:disabled {
+  background: #818181;
+  border-color: #818181;
+  cursor: not-allowed;
+}
+
+:host(.error) {
+  border-color: var(--color-host-error, #ffa500);
+}

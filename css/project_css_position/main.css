@@ -1,0 +1,50 @@
+html {
+	background: #b3b3b3;
+	padding: 15px;
+	border: 5px solid white;
+	margin: 15px;
+	height: 2000px;
+	overflow: hidden;
+}
+
+body {
+	background: #fa923f;
+	padding: 20px;
+	border: 5px solid black;
+	margin: 0;
+	overflow: hidden;
+}
+  
+.parent {
+	background: white;
+	padding: 20px;
+	border: 5px solid black;
+	margin: 0;
+	/* overflow: hidden; */
+	position: relative;
+	top: 90px;
+}
+  
+.parent div {
+	background: rgb(105, 105, 109);
+	color: white;
+	padding: 10px;
+	border: 5px solid black;
+	margin: 10px;
+}
+
+.parent .child-1 {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	/* bottom: 0; */
+	left: 0;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+/* .parent .child-2 {
+	position: relative;
+	top: 100px;
+	right: 50px;
+} */

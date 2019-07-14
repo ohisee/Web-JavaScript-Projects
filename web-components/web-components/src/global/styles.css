@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --color-primary: #6e0a6e;
+  --color-border-and-background: #f1aff1;
+  --color-host-error: #ffa500;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.side-nav ul {
+  list-style: none;
+}
+
+.side-nav li {
+  margin: 1rem 1rem;
+}
+
+.side-nav a {
+  text-decoration: none;
+  color: #22211e;
+}
+
+.web-component {
+  margin: 2rem 2rem;
+  padding: 1rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.price {
+  margin: 1rem 2rem;
+  padding: 1rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.finder {
+  margin: 1rem 2rem;
+  padding: 1rem;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.chart {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}

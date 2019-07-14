@@ -1,0 +1,8 @@
+.field-set label, 
+.field-set input {
+  display: block;
+}
+
+.error-message {
+  color: #7c0202;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Web Component Starter</title>
+  <script src="/build/mycomponent.js"></script>
+  <link rel="stylesheet" href="./global/styles.css">
+</head>
+
+<body>
+
+  <button id="side-draw-button">Open Side Menu</button>
+  <p>This is a line of text text text <app-tooltip text="This is a line of tooltip text">Tooltip</app-tooltip>
+  </p>
+  <app-side-drawer drawer-title="Main Menu">
+    <nav class="side-nav">
+      <ul>
+        <li><a href="/">A Link</a></li>
+        <li><a href="/">B Link</a></li>
+        <li><a href="/">C Link</a></li>
+      </ul>
+    </nav>
+  </app-side-drawer>
+  <app-stock-price stock-symbol="AAPL" class="web-component"></app-stock-price>
+  <app-stock-finder class="web-component"></app-stock-finder>
+  <app-stock-chart class="web-component"></app-stock-chart>
+
+  <script>
+    var sideDrawButton = document.querySelector('#side-draw-button');
+    var sideDrawer = document.querySelector('app-side-drawer');
+    setTimeout(() => {
+      // sideDrawer.drawerTitle = "Changed attribute value";
+    }, 3000);
+    sideDrawButton.addEventListener('click', function () {
+      if (!sideDrawer.open) {
+        // sideDrawer.open = true;
+        sideDrawer.openSideDrawer();
+      }
+    });
+
+    var stockFinder = document.querySelector('app-stock-finder');
+    stockFinder.addEventListener('appStockFinderSymbolSelected', function (event) {
+      console.log(event);
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+/**/
+
+.inputArea input,
+.inputArea span   {
+  display: block;
+}
+
+.countriesList {
+  margin: 1rem 1rem;
+}

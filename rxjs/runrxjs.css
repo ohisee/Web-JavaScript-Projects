@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+}
+
+.container button,
+.container input {
+  display: block;
+}
+
+.buttonClass {
+  font-family: sans-serif;
+  padding: 1rem 2rem;
+  border: 1px #52525a solid;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.buttonClass:hover,
+.buttonClass:active {
+  background: #bdf7bd;
+}
+
+.results span {
+  display: block;
+}
+
+input[class^="inputClass"] {
+  margin: 2rem 0;
+}

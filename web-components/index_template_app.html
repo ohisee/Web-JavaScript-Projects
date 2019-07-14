@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Components</title>
+  <script src="./tooltip_template.js"></script>
+  <style>
+    div {
+      border: 1px solid rgb(255, 165, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <template id="tooltip-template">
+    <slot>Some Default Value</slot><span> (?)</span>
+  </template>
+  <p>
+    <app-tooltip text="Web Components is a set of standards">Web components</app-tooltip> are fine
+  </p>
+  <app-tooltip>Have a good time here</app-tooltip>
+  <app-tooltip></app-tooltip>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+/**/
+
+.signInForm {
+  margin: 1rem;
+  width: 320px;
+}
+
+.signInForm input,
+.signInForm label,
+.signInForm button,
+.signInForm span {
+  display: block;
+  margin: 5px 16px;
+}
+
+.signInForm fieldset {
+  border: 1px solid #dbeaec;
+}
+
+.signInForm legend {
+  margin: 0 1rem;
+}
+
+.signInForm input {
+  font-family: sans-serif;
+}
+
+.errorMessage {
+  color: #800d0d;
+  font-size: 10px;
+}

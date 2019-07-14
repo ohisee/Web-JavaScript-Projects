@@ -1,0 +1,99 @@
+/**/
+
+.row::after {
+  content: "";
+  clear: both;
+  /* display: table; */
+}
+
+.col1 {width: 8.33%; float: left; padding: 15px;}
+/* .col2 {display: none;} */
+.col3 {width: 50%; float: left; margin: 1rem;}
+.col4 {width: 33.33%; float: left; padding: 15px;}
+.col5 {width: 41.66%; float: left; padding: 15px;}
+.col6 {width: 50%; float: left; padding: 15px;}
+.col7 {width: 58.33%; float: left; padding: 15px;}
+.col8 {width: 66.66%; float: left; padding: 15px;}
+.col9 {width: 75%; float: left; padding: 15px;}
+.col10 {width: 83.33%; float: left; padding: 15px;}
+.col11 {width: 91.66%; float: left; padding: 15px;}
+.col12 {width: 100%; float: left; padding: 15px;}
+
+.col2 {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 8rem;
+  height: 100%;
+  z-index: 10;
+  background: #f5f2f2;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  transition: left 300ms cubic-bezier(1, 0, 0, 1);
+}
+
+.col2Open {
+  left: 0;
+}
+
+@media (min-width: 32rem) {
+  .col2 {
+    position: static;
+    display: block;
+    width: 16.66%;
+    float: left;
+    left: 0;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 32rem) {
+  .col3 {
+    width: 22rem;
+    float: left;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 19rem auto;
+  grid-gap: 0.625rem;
+}
+
+.countries {
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fafafa;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  /* visibility: hidden; */
+}
+
+.countries:focus,
+.countries:hover {
+  overflow-y: auto;
+  /* visibility: visible; */
+}
+
+.countriesList {
+  list-style: none;
+}
+
+.countriesList li {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 16px;
+}
+
+.countriesList li:focus,
+.countriesList li:hover {
+  background-color: #eeeeee;
+}
+
+.details {
+  height: 100vh;
+  margin: 1rem 1rem;
+}

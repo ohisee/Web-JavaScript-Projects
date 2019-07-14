@@ -1,0 +1,162 @@
+
+@import "_variables.scss";
+@import "typography.scss";
+
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin media-min-width ($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+html {
+  font-size: 94.75%;
+
+  // See $min-width in _variables.scss
+  // @media (min-width: $min-width) {
+  //   font-size: 125%;
+  // }
+  // or use mixin
+  @include media-min-width(40rem) {
+    font-size: 125%;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container {
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  // display: -webkit-flex;
+  // display: flex;
+  @include display-flex();
+  // flex-direction: column;
+  // flex-wrap: nowrap;
+  flex: {
+    direction: column;
+    wrap: nowrap;
+  }
+  align-items: center;
+  padding: $size-default * 3 0;
+  box-sizing: border-box;
+}
+
+.sass-section {
+  border: $border-default;
+  background: lighten(map-get($colors, main), $amount: 72%);
+  padding: $size-default * 2;
+  text-align: center;
+  width: 90%;
+  box-sizing: border-box;
+  
+  // @media (min-width: $min-width) {
+  //   width: $size-default * 30;
+  // }
+  @include media-min-width(40rem) {
+    width: $size-default * 30;
+  }
+}
+
+.sass-introduction {
+  @extend .sass-section;
+  // border: $border-default;
+  // background: lighten(map-get($colors, main), $amount: 72%);
+  // padding: $size-default * 2;
+  // text-align: center;
+  box-shadow: $size-tiny $size-tiny $size-tiny / 2 #ccc;
+  // width: 90%;
+  // box-sizing: border-box;
+
+  p {
+    margin: 0;
+  }
+
+  // @media (min-width: $min-width) {
+  //   width: $size-default * 30;
+  // }
+}
+
+.sass-details {
+  @extend .sass-section;
+  // border: $border-default;
+  // background: lighten(map-get($colors, main), $amount: 72%);
+  // padding: $size-default;
+  // text-align: center;
+  margin: $size-default * 2 0;
+  // width: 90%;
+  // box-sizing: border-box;
+
+  // @media (min-width: $min-width) {
+  //   width: $size-default * 30;
+  // }
+}
+
+.section-header {
+  border-bottom: $size-tiny / 4 solid $main-color; 
+
+  h1 {
+    margin: 0 0 $size-default 0;
+  }
+}
+
+.documentation-links {
+  list-style: none;
+  margin: $size-default 0 0 0;
+  padding: 0;
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  // display: -webkit-flex;
+  // display: flex;
+  @include display-flex();
+  flex-direction: column;
+
+  li {
+    margin: $size-tiny 0;
+    background: white;
+  }
+
+  .documentation-link {
+    text-decoration: none;
+    color: $main-color;
+    display: block;
+    padding: $size-tiny;
+    border: $border-default;
+
+    &:hover, 
+    &:active {
+      color: white;
+      background: map-get($map: $colors, $key: secondary);
+      border-color: map-get($map: $colors, $key: secondary);
+    }
+  }
+  // .documentation-link:hover, 
+  // .documentation-link:active {
+  //   color: white;
+  //   background: map-get($map: $colors, $key: secondary);
+  //   border-color: map-get($map: $colors, $key: secondary);
+  // }
+}
+
+// @media (min-width: $min-width) {
+//   html {
+//     font-size: 125%;
+//   }
+
+//   .container {
+//     padding: 3rem 0;
+//   }
+
+//   .sass-introduction,
+//   .sass-details {
+//     width: $size-default * 30;
+//   }
+// }

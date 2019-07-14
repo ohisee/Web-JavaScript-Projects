@@ -1,0 +1,66 @@
+/**/
+
+.card {
+  border: 0px solid #fdf8f8;
+  box-shadow: 1px 1px 3px 1px #b1b0b1;
+  border-radius: 10px;
+  width: 14rem;
+  height: 18rem;
+  position: relative;
+  margin: 1rem;
+}
+
+.card #main {
+  /* background-color: #5c6bc0; */
+  background-image: url('../assets/3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 70%;
+  border-radius: 10px 10px 0 0;
+}
+
+.card #section {
+  background-color: #8e99f3;
+  height: 30%;
+  border-radius: 0 0 10px 10px;
+}
+
+.ribbonColor {
+  color: #e9618e;
+}
+
+.card #ribbon {
+  background-color: #e9618e;
+  border-radius: 50%;
+  position: absolute;
+  width: 3.75rem;
+  height: 3.75rem;
+  top: 10%;
+  right: -12%;
+  cursor: pointer;
+}
+
+.card .svg {
+  fill: #ffffff;
+}
+
+.card .path {
+  stroke: #e9618e
+}
+
+.triangleDown {
+  position: absolute;
+  left: 36%;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 0px solid #8e99f3;
+  transition: border-top 0.2s ease-in-out;
+}
+
+.triangleDownOpen {
+  border-top: 30px solid #8e99f3;
+}

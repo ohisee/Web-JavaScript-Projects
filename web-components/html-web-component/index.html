@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Components</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./modal.js"></script>
+  <script src="./confirm-link.js"></script>
+  <script src="./tool-tip.js"></script>
+  <script src="./toggle-text.js"></script>
+</head>
+
+<body>
+  <app-modal>
+    <h2 slot="title">Please Confirm</h2>
+    <p slot="main">With your confirmation you agree to pay full amount</p>
+  </app-modal>
+  <p>Please confirm your choice</p>
+  <button>Show Details &amp; Confirm</button>
+  <div id="confirm-link">
+    <a is="app-confirm-link" href="https://www.google.com">Confirm Link</a>
+  </div>
+  <p>
+    <app-tooltip class="important" text="Web Components is a set of standards"><span class="highlighted">Web Components
+        (slotted)</span></app-tooltip> are cool!
+  </p>
+  <div class="new-line"></div>
+  <app-tooltip></app-tooltip>
+  <div class="new-line"></div>
+  <app-tooltip class="important">See highlighted text</app-tooltip>
+  <div class="new-line"></div>
+  <p>
+    <app-tooltip>Text in paragraph</app-tooltip>
+  </p>
+  <div class="new-line"></div>
+  <app-toggle-text text-color="red">Some texts for reading</app-toggle-text>
+  <script>
+    const confirmButton = document.querySelector('button');
+    const modal = document.querySelector('app-modal');
+    modal.addEventListener('confirm', () => {
+      console.log('Confirmed');
+    });
+
+    modal.addEventListener('cancel', () => {
+      console.log('Cancelled');
+    });
+    confirmButton.addEventListener('click', () => {
+      // modal.setAttribute('opened', '');
+      if (!modal.isOpen) {
+        modal.open();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

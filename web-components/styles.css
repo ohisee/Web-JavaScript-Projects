@@ -1,0 +1,7 @@
+div {
+  position: absolute;
+  z-index: 10;
+  background-color: #3a3939;
+  color: white;
+  font-size: 1rem;
+}

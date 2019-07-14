@@ -1,0 +1,18 @@
+<div class="thread-section">
+  <div class="thread-count">
+    <span>
+      <h3>User: {{ userName$ | async }}</h3>
+    </span>
+    <span 
+      class="unread-messages-counter" 
+      [ngClass]="{unread: (unreadMessagesCounter$ | async) > 0}">
+      Unread messages: {{ unreadMessagesCounter$ | async }}
+    </span>
+  </div>
+
+  <app-thread-list 
+    [threads]="threadSummaries$ | async" 
+    [currentSelectedThreadId]="uiState?.currentThreadId" 
+    (threadSelected)="onThreadSelected($event)"></app-thread-list>
+
+</div>

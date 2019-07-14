@@ -1,0 +1,77 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/components/icon.min.css");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.signin-form {
+  padding: 1rem;
+}
+
+.signin-form:focus {
+  outline: 0;
+}
+
+.signin-form__input {
+  margin-top: 0.3125rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.signin-form__input #sign-form__icon {
+  position: absolute;
+  left: 2%;
+  bottom: 30%;
+  color: #cccccc;
+}
+
+.signin-form__input input[id="signin__name"],
+.signin-form__input input[id="signin__password"] {
+  border: 1px solid #e7dede;
+  border-radius: 3px;
+  padding: 0.5rem 2rem;
+  /* width: calc(100% - 32px); */
+  font-family: inherit;
+  width: 100%;
+}
+
+.signin-form__input input[id="signin__name"]:focus,
+.signin-form__input input[id="signin__password"]:focus {
+  border-color: #1b2dd4;
+}
+
+.signin-form__button {
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  background: #025f0a;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #025f0a;
+  border-radius: 8px;
+  cursor: pointer; } 
+  .signin-form__button:hover,
+  .signin-form__button:active {
+    background: #eee6e6;
+    color: #025f0a;
+  }
+  .signin-form__button:focus {
+    outline: none;
+  }
+
+.pos_at_right {
+  float: right;
+}
+
+@media (min-width: 40rem) {
+  .signin-form {
+    margin: auto;
+    width: 30rem;
+  }
+}

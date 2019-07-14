@@ -1,0 +1,70 @@
+/**/
+
+.lineChart {
+  width: 22rem;
+  border-right: 2px solid #dddddd;
+  box-shadow: 2px 2px 5px #dddddd;
+  /* margin: 2rem; */
+}
+
+div#initial-content {
+  margin-left: 1rem;
+  font-family: inherit;
+}
+
+.title {
+  font-family: inherit;
+  font-size: 0.875rem;
+  margin: 1rem;
+}
+
+.line {
+  fill: none;
+  stroke: #002984;
+  stroke-width: 1;
+}
+
+.line:hover {
+  stroke: #f48fb1;
+}
+
+.axisX {
+  font-family: inherit;
+}
+
+.axisX path {
+  stroke: #e0e0e0;
+}
+
+.axisX text,
+.axisX line {
+  fill: none;
+  stroke: #858181;
+  stroke-width: 1;
+}
+
+.axisY {
+  font-family: inherit;
+}
+
+.axisY path {
+  stroke: #ffffff;
+}
+
+.axisY text {
+  stroke: #858181;
+  stroke-width: 1;
+}
+
+.axisY line {
+  fill: none;
+  stroke: #d1cdcd;
+  stroke-width: 1;
+  stroke-dasharray: 2,2;
+}
+
+.dots {
+  stroke: #ffffff;
+  stroke-width: 2;
+  fill: #002984;
+}
