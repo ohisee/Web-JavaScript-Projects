@@ -285,7 +285,7 @@ const fetchDataFailed = (errMsg: string): Actions => {
 };
 
 const apiFetchData = (country: string, indicator: string, page: number = 1) => {
-  const apiUrl = ``;
+  const apiUrl = '';
   return axios.get(apiUrl, {
     params: {
       format: 'json',
