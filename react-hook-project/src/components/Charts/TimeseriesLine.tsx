@@ -11,6 +11,7 @@ import { axisBottom, axisLeft } from "d3-axis";
 import { timeYear } from "d3-time";
 import { randomId } from "../random";
 import Styles from './TimeseriesLine.module.css';
+import Title from "../UI/Title";
 
 type Props = {
   title: string,
@@ -114,7 +115,7 @@ const TimeseriesLine: FC<Props> = (props) => {
     <React.Fragment>
       {timeseriesLine ?
         <div className={Styles.lineChart}>
-          <div className={Styles.title}>{props.title}</div>
+          <Title title={props.title} />
           <svg xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             width={'100%'}

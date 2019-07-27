@@ -51,8 +51,8 @@ const Layout: FC<Props> = (props) => {
       <div className={Styles.details}>
         {props.countryGrowthData[0] && props.countryGrowthData.length > 0 ?
           <TimeseriesLine
-            width={800}
-            height={260}
+            width={360}
+            height={300}
             margin={{ top: 20, right: 50, bottom: 50, left: 50 }}
             title={`${props.countryGrowthData[0].country.value} ${props.countryGrowthData[0].indicator.value}`}
             data={props.countryGrowthData.map(d => ({ key: new Date(+d.date, 11, 31), value: d.value }))}
@@ -62,8 +62,8 @@ const Layout: FC<Props> = (props) => {
           <BackupTimeseriesLine />}
         {props.countryPopGrowthData[0] && props.countryPopGrowthData.length > 0 ?
           <TimeseriesLine
-            width={800}
-            height={260}
+            width={360}
+            height={300}
             margin={{ top: 20, right: 50, bottom: 50, left: 50 }}
             title={`${props.countryPopGrowthData[0].country.value} ${props.countryPopGrowthData[0].indicator.value}`}
             data={props.countryPopGrowthData.map(d => ({ key: new Date(+d.date, 11, 31), value: d.value }))}

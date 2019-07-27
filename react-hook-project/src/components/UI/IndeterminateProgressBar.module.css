@@ -1,0 +1,29 @@
+/**/
+
+.progress {
+  position: relative;
+  width: 10rem;
+  height: 3px;
+  border-radius: 10px;
+  box-shadow: 0px -1px 50px #a998fc inset;
+  overflow: hidden;
+}
+
+.progress .indeterminate {
+  position: absolute;
+  height: inherit;
+  width: 2rem;
+  background-color: #021627;
+  animation: progressBarMove 2s linear infinite;
+  -webkit-animation: progressBarMove 2s linear infinite;
+}
+
+@keyframes progressBarMove {
+  0% { left: -30%; }
+  100% { left: 90%; }
+}
+
+@-webkit-keyframes progressBarMove {
+  0% { left: -30%; }
+  100% { left: 90%; }
+}

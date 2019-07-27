@@ -16,7 +16,7 @@ const BackupTimeseriesLine = () => {
 
   return (
     <TimeseriesLine
-      width={800}
+      width={360}
       height={300}
       margin={{ top: 20, right: 50, bottom: 50, left: 50 }}
       title={'Time Series of Growth'}
