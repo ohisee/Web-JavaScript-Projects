@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  font: inherit;
+  background: #5020ff;
+  padding: 0.5rem 2rem;
+  color: #fff;
+  border: 1px solid #5020ff;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover,
+button:active {
+  box-sizing: 0 2px 4px rgba(0, 0, 0, 0.26);
+  background: #fff;
+  color: #5020ff;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.button-outline {
+  background: #fff;
+  color: #5020ff;
+}
+
+button.button-outline:hover,
+button.button-outline:active {
+  background: #5020ff;
+  color: #fff;
+  box-shadow: none;
+}

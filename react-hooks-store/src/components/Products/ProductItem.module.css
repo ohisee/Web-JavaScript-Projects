@@ -1,0 +1,12 @@
+.product-item h3 {
+  font-size: 1.15rem;
+  margin: 0.25rem 0;
+}
+
+.product-item h3.is-fav {
+  color: #ff2058;
+}
+
+.product-item p {
+  margin: 0.25rem 0;
+}
