@@ -1,0 +1,12 @@
+subscription {
+  comment(postId: "123221") {
+    id
+    author {
+      name
+    }
+    post {
+      id
+      title
+    }
+  }
+}

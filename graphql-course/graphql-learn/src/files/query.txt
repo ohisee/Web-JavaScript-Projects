@@ -1,0 +1,48 @@
+query {
+  hello
+  name
+  location
+  bio
+  post {
+    id
+    title
+    body
+    published
+  }
+  greeting(name: "Jess", position: "Developer")
+  add(a: 0, b: 20)
+  grades
+  adds(numbers: [100, 93, 86])
+  users {
+    id
+    name
+    email
+    age
+    posts {
+      title
+    }
+    comments {
+      text
+    }
+  }
+  posts {
+    id
+    title
+    body
+    published
+    author {
+      name
+    }
+  }
+  comments {
+    id
+    text
+    author {
+      name
+    }
+    post {
+      title
+      body
+    }
+  }
+}

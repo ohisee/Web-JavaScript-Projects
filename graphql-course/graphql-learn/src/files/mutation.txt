@@ -1,0 +1,30 @@
+mutation {
+  createUser(data: { name: "some", email: "email@example.com", age: 100 }) {
+    name
+    email
+  }
+  createPost(
+    data: {
+      title: "today"
+      body: "doing something"
+      published: false
+      author: "123001"
+    }
+  ) {
+    id
+    title
+  }
+  createComment(
+    data: { text: "comment for a post", author: "123001", post: "123223" }
+  ) {
+    id
+    text
+    author {
+      id
+      name
+    }
+    post {
+      title
+    }
+  }
+}
