@@ -7,12 +7,12 @@ import { gql } from "apollo-server";
 //Scalar Type - String, Boolean, Int, Float, ID
 const typeDefs = gql`
   type Query {
-    users(query: String): [User!]!
-    posts(query: String): [Post!]!
-    comments(query: String): [Comment!]!
+    users(query: String, first: Int, skip: Int, after: String): [User!]!
+    posts(query: String, first: Int, skip: Int, after: String): [Post!]!
+    comments(query: String, first: Int, skip: Int, after: String): [Comment!]!
     me: User!
     post(id: ID!): Post!
-    myPosts(query: String): [Post!]!
+    myPosts(query: String, first: Int, skip: Int, after: String): [Post!]!
   }
 
   type Mutation {
@@ -32,6 +32,7 @@ const typeDefs = gql`
     count: Int!
     comment(postId: ID!): CommentSubscriptionPayload!
     post: PostSubscriptionPayload!
+    myPost: PostSubscriptionPayload!
   }
 
   type AuthPayload {
@@ -49,6 +50,7 @@ const typeDefs = gql`
   input UpdateUserInput {
     name: String
     email: String
+    password: String
   }
 
   "Input type to create post"
