@@ -1,0 +1,17 @@
+{
+  "name": "ts-data-structures",
+  "version": "1.0.0",
+  "description": "This is a simple project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {},
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "typescript": "^3.7.5"
+  }
+}
