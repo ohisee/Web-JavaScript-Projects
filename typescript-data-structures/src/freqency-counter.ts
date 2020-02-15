@@ -2,7 +2,7 @@
  * @fileoverview frequency counter
  */
 
-function same(ar1: number[], ar2: number[]): boolean {
+export function same(ar1: number[], ar2: number[]): boolean {
   if (ar1.length !== ar2.length) {
     return false;
   }
@@ -21,14 +21,14 @@ function same(ar1: number[], ar2: number[]): boolean {
   return true;
 }
 
-console.log(same([1, 3, 3], [1, 9, 9]));
-console.log(same([1, 2, 3, 6], [4, 1, 9, 36]));
-console.log(same([1, 2, 3, 6, 3], [4, 1, 9, 36, 9]));
-console.log(same([1, 2, 3], [4, 1]));
-console.log(same([1, 2, 3], [4, 4, 1]));
-console.log();
+// console.log(same([1, 3, 3], [1, 9, 9]));
+// console.log(same([1, 2, 3, 6], [4, 1, 9, 36]));
+// console.log(same([1, 2, 3, 6, 3], [4, 1, 9, 36, 9]));
+// console.log(same([1, 2, 3], [4, 1]));
+// console.log(same([1, 2, 3], [4, 4, 1]));
+// console.log();
 
-function sameAnotherWay(ar1: number[], ar2: number[]): boolean {
+export function sameAnotherWay(ar1: number[], ar2: number[]): boolean {
   if (ar1.length !== ar2.length) {
     return false;
   }
@@ -52,31 +52,55 @@ function sameAnotherWay(ar1: number[], ar2: number[]): boolean {
   return true;
 }
 
-console.log(sameAnotherWay([1, 2, 3, 6], [4, 1, 9, 36]));
-console.log(sameAnotherWay([1, 2, 3, 6, 3], [4, 1, 9, 36, 9]));
-console.log(sameAnotherWay([1, 2, 3], [4, 1]));
-console.log(sameAnotherWay([1, 2, 3], [4, 4, 1]));
-console.log();
+// console.log(sameAnotherWay([1, 2, 3, 6], [4, 1, 9, 36]));
+// console.log(sameAnotherWay([1, 2, 3, 6, 3], [4, 1, 9, 36, 9]));
+// console.log(sameAnotherWay([1, 2, 3], [4, 1]));
+// console.log(sameAnotherWay([1, 2, 3], [4, 4, 1]));
+// console.log();
 
-function anagrams(str1: string, str2: string): boolean {
+export function anagrams(str1: string, str2: string): boolean {
   if (str1.length !== str2.length) {
     return false;
   }
   const str1m: { [key: string]: number } = {};
+  const str2m: { [key: string]: number } = {};
   for (let c of str1) {
-    str1m[c] = 0;
+    str1m[c] = (str1m[c] ?? 0) + 1;
   }
   for (let d of str2) {
-    if (str1m[d] === 0) {
-      str1m[d] = 1;
-    }
+    str2m[d] = (str2m[d] ?? 0) + 1;
   }
   for (let key in str1m) {
-    if (str1m[key] === 0) {
+    if (str1m[key] !== str2m[key]) {
       return false;
     }
   }
   return true;
 }
 
-console.log(anagrams('listen', 'silent'));
+// console.log(anagrams('listen', 'silent'));
+// console.log(anagrams('aaz', 'zza')); // false
+// console.log(anagrams('anagram', 'nagaram')); // true
+// console.log(anagrams('rat', 'car')); // false
+// console.log(anagrams('awesome', 'awesom')); // false
+// console.log(anagrams('amanaplanacanalpanama', 'acanalmanplanpamana')); // false
+// console.log(anagrams('qwerty', 'qeywrt')); // true
+// console.log(anagrams('texttwisttime', 'timetwisttext')); // true
+
+export function anagramsSubtract(str1: string, str2: string): boolean {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  const str1m: { [key: string]: number } = {};
+  for (let c of str1) {
+    str1m[c] = (str1m[c] ?? 0) + 1;
+  }
+  for (let d of str2) {
+    if (!str1m[d]) {
+      return false;
+    } else {
+      str1m[d] -= 1;
+    }
+  }
+  return true;
+}

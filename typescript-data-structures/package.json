@@ -4,14 +4,20 @@
   "description": "This is a simple project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require ts-node/register ./src/tests/*.spec.ts",
+    "testjs": "mocha dist/tests/*.spec.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "repository": {},
   "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/mocha": "^7.0.1",
     "@types/node": "^13.7.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
 }
