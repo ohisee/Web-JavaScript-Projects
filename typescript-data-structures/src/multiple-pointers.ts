@@ -20,6 +20,9 @@ export function sumZero(sortedarr: number[]): [number, number] | undefined {
 // console.log(sumZero([-4, -3, -2, -1, 0, 1, 2, 3, 4, 5]));
 
 export function countUniqueValuesInSortedArrayByAltering(sortedarr: number[]) {
+  if (sortedarr.length === 0) {
+    return 0;
+  }
   let i = 0;
   let j = 1;
   while (j < sortedarr.length) {

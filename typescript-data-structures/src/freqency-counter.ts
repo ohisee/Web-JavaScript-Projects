@@ -104,3 +104,23 @@ export function anagramsSubtract(str1: string, str2: string): boolean {
   }
   return true;
 }
+
+export function sameFrequency(num1: number, num2: number): boolean {
+  let str1 = num1.toString();
+  let str2 = num2.toString();
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  const str1m: { [key: string]: number } = {};
+  for (let c of str1) {
+    str1m[c] = (str1m[c] ?? 0) + 1;
+  }
+  for (let d of str2) {
+    if (str1m[d] === undefined || str1m[d] === 0) {
+      return false;
+    } else {
+      str1m[d] -= 1;
+    }
+  }
+  return true
+}
