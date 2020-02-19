@@ -124,3 +124,25 @@ export function sameFrequency(num1: number, num2: number): boolean {
   }
   return true
 }
+
+
+/**
+ * Are there duplicates
+ * @param args 
+ */
+export function areThereDuplicates(...args: number[] | string[]): boolean {
+  if (args.length === 0) {
+    return false;
+  }
+  const lm: { [key: string]: number } = {};
+  for (let c of args) {
+    lm[c.toString()] = (lm[c.toString()] ?? 0) + 1;
+  }
+  for (let key in lm) {
+    if (lm[key] > 1) {
+      return true;
+    }
+  }
+  return false;
+}
+

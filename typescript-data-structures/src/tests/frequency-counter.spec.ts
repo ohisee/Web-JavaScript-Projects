@@ -3,7 +3,12 @@
  */
 import { expect } from "chai";
 import "mocha";
-import { same, anagrams, anagramsSubtract, sameFrequency } from "../freqency-counter";
+import {
+  same,
+  anagrams,
+  anagramsSubtract,
+  sameFrequency, areThereDuplicates
+} from "../freqency-counter";
 
 describe('Frequency counter test', () => {
 
@@ -111,6 +116,19 @@ describe('Frequency counter test', () => {
     });
     it('Should return false', () => {
       expect(sameFrequency(22, 222)).equals(false);
+    });
+  });
+
+  // are there duplicates
+  describe('Are there duplicates', () => {
+    it('Should return true', () => {
+      expect(areThereDuplicates(1, 2, 2)).equals(true);
+    });
+    it('Should return false', () => {
+      expect(areThereDuplicates(1, 2, 3)).equals(false);
+    });
+    it('Should return false', () => {
+      expect(areThereDuplicates('a', 'b', 'c')).equals(false);
     });
   });
 });
