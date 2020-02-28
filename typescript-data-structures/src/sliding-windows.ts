@@ -70,3 +70,53 @@ export function minSubarrayLen(arr: number[], target: number): number {
   }
   return Math.min(minLen, windowSize);
 }
+
+export function minSubarrayLen2(arr: number[], target: number): number {
+  if (arr.length === 0) {
+    return 0;
+  }
+  let minLen = arr.length;
+  let windowSize = 0;
+  let sum = 0;
+  let windowSizeCounter = 0;
+  let indexCounter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    windowSizeCounter++;
+    if (sum >= target) {
+      let tempSum = sum;
+      while (tempSum >= target) {
+        tempSum -= arr[indexCounter];
+        if (tempSum >= target) {
+          windowSizeCounter--;
+          indexCounter++;
+          sum = tempSum;
+        }
+      }
+      windowSize = windowSizeCounter;
+      minLen = Math.min(windowSizeCounter, minLen);
+    }
+  }
+  return Math.min(windowSize, minLen);
+}
+
+/**
+ * Sliding window using multiple pointers
+ * @param arr 
+ * @param target 
+ */
+export function minSubarrayLenV2(arr: number[], target: number): number {
+  let minLen = arr.length;
+  let sum = 0;
+  let start = 0;
+  for (let next = 0; next < arr.length; next++) {
+    sum += arr[next];
+    while (sum >= target) {
+      // console.log(arr.slice(start, next + 1));
+      minLen = Math.min(minLen, ((next + 1) - start));
+      sum -= arr[start];
+      start++;
+    }
+  }
+  return minLen === arr.length ? 0 : minLen;
+}

@@ -6,7 +6,8 @@ import "mocha";
 import {
   maxSubarraySum,
   maxSubarraySumUsingSlidingWindow,
-  minSubarrayLen
+  minSubarrayLen,
+  minSubarrayLenV2
 } from "../sliding-windows";
 
 describe('Sliding window', () => {
@@ -68,4 +69,33 @@ describe('Sliding window', () => {
     });
   });
 
+  describe('Min sub array length using sliding window and multiple pointers', () => {
+    it('(1) Should return 2', () => {
+      expect(minSubarrayLenV2([2, 3, 1, 2, 4, 3], 7)).equals(2);
+    });
+
+    it('(2) Should return 2', () => {
+      expect(minSubarrayLenV2([2, 1, 6, 5, 4], 9)).equals(2);
+    });
+
+    it('Should return 1', () => {
+      expect(minSubarrayLenV2([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)).equals(1);
+    });
+
+    it('Should return 3', () => {
+      expect(minSubarrayLenV2([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)).equals(3);
+    });
+
+    it('Should return 5', () => {
+      expect(minSubarrayLenV2([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)).equals(5);
+    });
+
+    it('Should return 2', () => {
+      expect(minSubarrayLenV2([4, 3, 3, 8, 1, 2, 3], 11)).equals(2);
+    });
+
+    it('Should return 0', () => {
+      expect(minSubarrayLenV2([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)).equals(0);
+    });
+  });
 });
