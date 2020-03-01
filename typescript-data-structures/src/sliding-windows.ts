@@ -106,7 +106,7 @@ export function minSubarrayLen2(arr: number[], target: number): number {
  * @param target 
  */
 export function minSubarrayLenV2(arr: number[], target: number): number {
-  let minLen = arr.length;
+  let minLen = arr.length + 1;
   let sum = 0;
   let start = 0;
   for (let next = 0; next < arr.length; next++) {
@@ -118,5 +118,34 @@ export function minSubarrayLenV2(arr: number[], target: number): number {
       start++;
     }
   }
-  return minLen === arr.length ? 0 : minLen;
+  return minLen === (arr.length + 1) ? 0 : minLen;
+}
+
+/**
+ * Sliding window using multiple pointers
+ * @param str 
+ */
+export function findLongestSubstring(str: string): number {
+  if (str.length === 0) {
+    return 0;
+  }
+  let strm: { [key: string]: number } = {};
+  let maxLen = 0;
+  let start = 0;
+  for (let next = 0; next < str.length; next++) {
+    let c = str[next];
+    if (strm[c] === undefined) {
+      maxLen = Math.max(maxLen, (next + 1 - start));
+      // console.log(str.slice(start, next + 1));
+    } else {
+      // clear previous substring and move start pointer
+      let nextStartPosition = strm[c] + 1;
+      for (let i = start; i <= strm[c]; i++) {
+        delete strm[str[i]];
+      }
+      start = nextStartPosition;
+    }
+    strm[c] = next;
+  }
+  return maxLen;
 }

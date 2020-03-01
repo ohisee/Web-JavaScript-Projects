@@ -7,7 +7,8 @@ import {
   maxSubarraySum,
   maxSubarraySumUsingSlidingWindow,
   minSubarrayLen,
-  minSubarrayLenV2
+  minSubarrayLenV2,
+  findLongestSubstring
 } from "../sliding-windows";
 
 describe('Sliding window', () => {
@@ -96,6 +97,36 @@ describe('Sliding window', () => {
 
     it('Should return 0', () => {
       expect(minSubarrayLenV2([1, 4, 16, 22, 5, 7, 8, 9, 10], 95)).equals(0);
+    });
+  });
+
+  describe('Longest substring using sliding window', () => {
+    it('Should return 0', () => {
+      expect(findLongestSubstring('')).equals(0);
+    });
+
+    it('Should return 7', () => {
+      expect(findLongestSubstring('rithmschool')).equals(7);
+    });
+
+    it('Should return 6', () => {
+      expect(findLongestSubstring('thisisawesome')).equals(6);
+    });
+
+    it('Should return 7', () => {
+      expect(findLongestSubstring('thecatinthehat')).equals(7);
+    });
+
+    it('Should return 1', () => {
+      expect(findLongestSubstring('bbbbbbbbbbbb')).equals(1);
+    });
+
+    it('Should return 8', () => {
+      expect(findLongestSubstring('longestsubstring')).equals(8);
+    });
+
+    it('Should return 6', () => {
+      expect(findLongestSubstring('thisishowwedoit')).equals(6);
     });
   });
 });
