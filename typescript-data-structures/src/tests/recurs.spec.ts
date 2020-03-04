@@ -12,7 +12,12 @@ import {
   reverse,
   isPalindrome,
   someRecursive,
-  flatten
+  flatten,
+  isPalindromeV2,
+  capitalizeFirst,
+  nestedEvenSum,
+  flatObject,
+  capitalizeWords
 } from "../recurs";
 
 describe('Recursion', () => {
@@ -129,6 +134,30 @@ describe('Recursion', () => {
     it('Should return false', () => {
       expect(isPalindrome('amanaplanacanalpandemonium')).equals(false);
     });
+
+    it('Should return eee', () => {
+      expect(isPalindromeV2('eee')).equals(true);
+    });
+
+    it('Should return false', () => {
+      expect(isPalindromeV2('awesome')).equals(false);
+    });
+
+    it('Should return false', () => {
+      expect(isPalindromeV2('foobar')).equals(false);
+    });
+
+    it('Should return true', () => {
+      expect(isPalindromeV2('tacocat')).equals(true);
+    });
+
+    it('Should return true', () => {
+      expect(isPalindromeV2('amanaplanacanalpanama')).equals(true);
+    });
+
+    it('Should return false', () => {
+      expect(isPalindromeV2('amanaplanacanalpandemonium')).equals(false);
+    });
   });
 
   describe('Some recursive with callback', () => {
@@ -151,7 +180,73 @@ describe('Recursion', () => {
 
   describe('Flatten array using recursion', () => {
     it('Should return [1,2,3,4,5]', () => {
-      expect(flatten([1, [2], 3, [4, 5]])).to.eql([1, 2, 3, 4, 5]);
+      expect(flatten([1, 2, 3, [4, 5]])).to.eql([1, 2, 3, 4, 5]);
+    });
+
+    it('Should return [1,2,3,4,5]', () => {
+      expect(flatten([1, [2, [3, 4], [[5]]]])).to.eql([1, 2, 3, 4, 5]);
+    });
+
+    it('Should return [1,2,3]', () => {
+      expect(flatten([[1], [2], [3]])).to.eql([1, 2, 3]);
+    });
+
+    it('Should return [1,2,3]', () => {
+      expect(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])).to.eql([1, 2, 3]);
+    });
+  });
+
+  describe('Capitalize first using recursion', () => {
+    it('Should return [\'Car\',\'Taco\',\'Banana\']', () => {
+      expect(capitalizeFirst(['car', 'taco', 'banana'])).to.eql(['Car', 'Taco', 'Banana']);
+    });
+  });
+
+  describe('Nested even sum using recursion', () => {
+    it('Should return 10', () => {
+      expect(nestedEvenSum({
+        a: 2,
+        b: {
+          b: 2, bb: { b: 3, bb: { b: 2 } }
+        },
+        c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+        d: 1,
+        e: { e: { e: 2 }, ee: 'car' }
+      })).equals(10);
+    });
+
+    it('Should return 6', () => {
+      expect(nestedEvenSum({
+        outer: 2,
+        obj: {
+          inner: 2,
+          otherObj: {
+            superInner: 2,
+            notANumber: true,
+            alsoNotANumber: "yup"
+          }
+        }
+      })).equals(6);
+    });
+  });
+
+  describe('Flat object using recursion', () => {
+    it('Should return {a: 1, b: 2, c: 3}', () => {
+      expect(flatObject({
+        a: 1,
+        b: { b: 2 },
+        c: {
+          c: {
+            c: 3
+          }
+        }
+      })).to.eqls({ a: 1, b: 2, c: 3 });
+    });
+  });
+
+  describe('Capitalize words using recursion', () => {
+    it('Should return [\'I\', \'AM\', \'LEARNING\', \'RECURSION\']', () => {
+      expect(capitalizeWords(['i', 'am', 'learning', 'recursion'])).to.eql(['I', 'AM', 'LEARNING', 'RECURSION']);
     });
   });
 });
