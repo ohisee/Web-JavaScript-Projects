@@ -137,11 +137,29 @@ export function capitalizeWords(words: string[]): string[] {
 }
 
 export function stringifyNumbers(obj: { [key: string]: any }): {} {
-  let result = {};
+  let result: { [key: string]: any } = {};
   let keys = Object.keys(obj);
   for (let key of keys) {
-    result = Object.assign(result, (typeof obj[key] === 'number')
-      ? { [key]: obj[key].toString() } : stringifyNumbers(obj[key]));
+    if (typeof obj[key] === 'number') {
+      result[key] = obj[key].toString();
+    } else {
+      result[key] =
+        (typeof obj[key] === 'object' && !Array.isArray(obj[key]))
+          ? stringifyNumbers(obj[key]) : obj[key];
+    }
+  }
+  return result;
+}
+
+export function collectStrings(obj: { [key: string]: any }): string[] {
+  let result: string[] = [];
+  let keys = Object.keys(obj);
+  for (let key of keys) {
+    if (typeof obj[key] === 'string') {
+      result = result.concat(obj[key]);
+    } else if (typeof obj[key] === 'object') {
+      result = result.concat(collectStrings(obj[key]));
+    }
   }
   return result;
 }

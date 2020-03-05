@@ -1,5 +1,5 @@
 /**
- * @fileoverview test
+ * @fileoverview recursion
  */
 import { expect } from "chai";
 import "mocha";
@@ -17,7 +17,9 @@ import {
   capitalizeFirst,
   nestedEvenSum,
   flatObject,
-  capitalizeWords
+  capitalizeWords,
+  stringifyNumbers,
+  collectStrings
 } from "../recurs";
 
 describe('Recursion', () => {
@@ -247,6 +249,52 @@ describe('Recursion', () => {
   describe('Capitalize words using recursion', () => {
     it('Should return [\'I\', \'AM\', \'LEARNING\', \'RECURSION\']', () => {
       expect(capitalizeWords(['i', 'am', 'learning', 'recursion'])).to.eql(['I', 'AM', 'LEARNING', 'RECURSION']);
+    });
+  });
+
+  describe('Stringify numbers using recursion', () => {
+    it('Should return {num: "1", test: [], data: {val: "4",info: {isRight: true, random: "66"}}}', () => {
+      expect(stringifyNumbers({
+        num: 1,
+        test: [1, 2, 3],
+        data: {
+          val: 4,
+          info: {
+            isRight: true,
+            random: 66
+          }
+        }
+      })).to.eqls({
+        num: "1",
+        test: [1, 2, 3],
+        data: {
+          val: "4",
+          info: {
+            isRight: true,
+            random: "66"
+          }
+        }
+      });
+    });
+  });
+
+  describe('Collectr strings using recursion', () => {
+    it('Should return ["foo", "bar", "baz"]', () => {
+      expect(collectStrings({
+        stuff: "foo",
+        data: {
+          val: {
+            thing: {
+              info: "bar",
+              moreInfo: {
+                evenMoreInfo: {
+                  weMadeIt: "baz"
+                }
+              }
+            }
+          }
+        }
+      })).to.eqls(["foo", "bar", "baz"]);
     });
   });
 });
