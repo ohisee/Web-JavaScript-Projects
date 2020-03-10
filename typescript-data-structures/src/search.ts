@@ -49,3 +49,24 @@ export function naiveStringSearch(longstr: string, shortstr: string): number {
   }
   return count;
 }
+
+export function buildLongestPrefixSuffixTable(pattern: string): number[] {
+  let lsp: number[] = new Array(pattern.length).fill(0);
+  let next = 1;
+  let current = 0;
+  while (next < pattern.length) {
+    if (pattern[current] === pattern[next]) {
+      current += 1;
+      lsp[next] = current;
+      next += 1;
+    } else {
+      if (current != 0) { // go back
+        current = lsp[current - 1];
+      } else {
+        lsp[next] = 0;
+        next += 1;
+      }
+    }
+  }
+  return lsp;
+}

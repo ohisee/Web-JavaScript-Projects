@@ -6,7 +6,8 @@ import "mocha";
 import {
   linearSearch,
   binarySearch,
-  naiveStringSearch
+  naiveStringSearch,
+  buildLongestPrefixSuffixTable
 } from "../search";
 
 describe('Search', () => {
@@ -88,4 +89,27 @@ describe('Search', () => {
       expect(naiveStringSearch('longstringforsearch', 'abc')).equals(0);
     });
   });
+
+  describe('Longest prefix suffix table', () => {
+    it('Should return [0, 0, 1, 2, 3, 4]', () => {
+      expect(buildLongestPrefixSuffixTable('ababab')).to.eql([0, 0, 1, 2, 3, 4]);
+    });
+
+    it('Should return [0, 0, 1, 0, 1, 2, 3, 2]', () => {
+      expect(buildLongestPrefixSuffixTable('abacabab')).to.eql([0, 0, 1, 0, 1, 2, 3, 2]);
+    });
+
+    it('Should return [0, 1, 2, 0, 1, 2, 3, 3, 3, 4]', () => {
+      expect(buildLongestPrefixSuffixTable('aaabaaaaab')).to.eql([0, 1, 2, 0, 1, 2, 3, 3, 3, 4]);
+    });
+
+    it('Should return [0, 0, 1, 2, 3, 4]', () => {
+      expect(buildLongestPrefixSuffixTable('ababab')).to.eql([0, 0, 1, 2, 3, 4]);
+    });
+
+    it('Should return [[0, 0, 0, 0, 1, 2, 0, 1, 2, 0]', () => {
+      expect(buildLongestPrefixSuffixTable('abcdabeabf')).to.eql([0, 0, 0, 0, 1, 2, 0, 1, 2, 0]);
+    });
+  });
+
 });
