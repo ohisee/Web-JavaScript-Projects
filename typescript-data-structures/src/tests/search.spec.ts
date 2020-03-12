@@ -7,7 +7,8 @@ import {
   linearSearch,
   binarySearch,
   naiveStringSearch,
-  buildLongestPrefixSuffixTable
+  buildLongestPrefixSuffixTable,
+  KmpSearch
 } from "../search";
 
 describe('Search', () => {
@@ -109,6 +110,28 @@ describe('Search', () => {
 
     it('Should return [[0, 0, 0, 0, 1, 2, 0, 1, 2, 0]', () => {
       expect(buildLongestPrefixSuffixTable('abcdabeabf')).to.eql([0, 0, 0, 0, 1, 2, 0, 1, 2, 0]);
+    });
+  });
+
+  describe('KMP string search', () => {
+    it('Should return 2', () => {
+      expect(KmpSearch('wowomgzomg', 'omg')).equals(2);
+    });
+
+    it('Should return 1', () => {
+      expect(KmpSearch('longstringforsearch', 'long')).equals(1);
+    });
+
+    it('Should return 0', () => {
+      expect(KmpSearch('longstringforsearch', 'abc')).equals(0);
+    });
+
+    it('Should return 1', () => {
+      expect(KmpSearch('abcdabeabf', 'abc')).equals(1);
+    });
+
+    it('Should return 1', () => {
+      expect(KmpSearch('aaabaaaaab', 'aaaaa')).equals(1);
     });
   });
 

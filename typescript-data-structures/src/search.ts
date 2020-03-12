@@ -49,7 +49,6 @@ export function naiveStringSearch(longstr: string, shortstr: string): number {
   }
   return count;
 }
-
 export function buildLongestPrefixSuffixTable(pattern: string): number[] {
   let lsp: number[] = new Array(pattern.length).fill(0);
   let next = 1;
@@ -69,4 +68,28 @@ export function buildLongestPrefixSuffixTable(pattern: string): number[] {
     }
   }
   return lsp;
+}
+
+export function KmpSearch(str: string, pattern: string): number {
+  let count = 0;
+  let lsp = buildLongestPrefixSuffixTable(pattern);
+  let i = 0;
+  let j = 0;
+  while (i < str.length) {
+    if (str[i] === pattern[j]) {
+      i++;
+      j++;
+      if (j === pattern.length) {
+        j = lsp[j - 1];
+        count += 1;
+      }
+    } else {
+      if (j > 0) {
+        j = lsp[j - 1];
+      } else if (j === 0) {
+        i++;
+      }
+    }
+  }
+  return count;
 }
