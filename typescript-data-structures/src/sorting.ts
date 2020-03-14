@@ -96,3 +96,13 @@ export function merge(arr1: number[], arr2: number[]): number[] {
   }
   return result;
 }
+
+export function mergeSort(arr: number[]): number[] {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  let mid = Math.floor(arr.length / 2);
+  let leftHalf = mergeSort(arr.slice(0, mid));
+  let rightHalf = mergeSort(arr.slice(mid));
+  return ([] as number[]).concat(merge(leftHalf, rightHalf));
+}
