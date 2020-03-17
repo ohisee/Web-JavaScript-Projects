@@ -106,3 +106,35 @@ export function mergeSort(arr: number[]): number[] {
   let rightHalf = mergeSort(arr.slice(mid));
   return ([] as number[]).concat(merge(leftHalf, rightHalf));
 }
+
+/**
+ * Pick the first element as pivot
+ * @param arr 
+ * @param start 
+ * @param end default is array's length - 1, at first iteration, will include all elements of entire array, 
+ * and the following iteration will include element at last position, i <= end
+ */
+export function pivot(arr: number[], start: number = 0, end: number = arr.length - 1): number {
+  let pivot = arr[start];
+  let swapIndex = start;
+  for (let i = start + 1; i <= end; i++) {
+    if (pivot > arr[i]) {
+      swapIndex++;
+      let t = arr[swapIndex];
+      arr[swapIndex] = arr[i];
+      arr[i] = t;
+    }
+  }
+  arr[start] = arr[swapIndex];
+  arr[swapIndex] = pivot;
+  return swapIndex;
+}
+
+export function quickSort(arr: number[], left: number = 0, right: number = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right);
+    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, right);
+  }
+  return arr;
+}
