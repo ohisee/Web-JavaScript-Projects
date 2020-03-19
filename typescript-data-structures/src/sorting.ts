@@ -138,3 +138,34 @@ export function quickSort(arr: number[], left: number = 0, right: number = arr.l
   }
   return arr;
 }
+
+export function getDigit(num: number, place: number): number {
+  let base = 10;
+  let p = Math.pow(base, place);
+  let i = p * base;
+  let j = Math.abs(num) % i;
+  let result = Math.floor(j / p);
+  return result;
+}
+
+export function digitCount(num: number): number {
+  let counter = 1;
+  let j = Math.floor(Math.abs(num) / 10);
+  while (j > 0) {
+    j = Math.floor(j / 10);
+    counter++;
+  }
+  return counter;
+  // if (num === 0) {
+  //   return 1;
+  // }
+  // return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+export function mostDigits(arr: number[]): number {
+  let maxDigits = 0;
+  for (let i of arr) {
+    maxDigits = Math.max(maxDigits, digitCount(i));
+  }
+  return maxDigits;
+}

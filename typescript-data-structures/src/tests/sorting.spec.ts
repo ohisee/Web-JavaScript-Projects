@@ -11,7 +11,10 @@ import {
   merge,
   mergeSort,
   pivot,
-  quickSort
+  quickSort,
+  getDigit,
+  digitCount,
+  mostDigits
 } from "../sorting";
 
 describe('Sort', () => {
@@ -124,6 +127,60 @@ describe('Sort', () => {
 
     it('Should return [1, 4, 11, 14, 16, 18, 28, 36, 37, 40, 41, 42]', () => {
       expect(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18])).to.eql([1, 4, 11, 14, 16, 18, 28, 36, 37, 40, 41, 42]);
+    });
+  });
+
+  describe('Get digit', () => {
+    it('Should return 5', () => {
+      expect(getDigit(12345, 0)).equals(5);
+    });
+
+    it('Should return 4', () => {
+      expect(getDigit(12345, 1)).equals(4);
+    });
+
+    it('Should return 3', () => {
+      expect(getDigit(12345, 2)).equals(3);
+    });
+
+    it('Should return 2', () => {
+      expect(getDigit(12345, 3)).equals(2);
+    });
+
+    it('Should return 1', () => {
+      expect(getDigit(12345, 4)).equals(1);
+    });
+
+    it('Should return 0', () => {
+      expect(getDigit(12345, 5)).equals(0);
+    });
+  });
+
+  describe('Count digit', () => {
+    it('Should return 1', () => {
+      expect(digitCount(0)).equals(1);
+    });
+
+    it('Should return 1', () => {
+      expect(digitCount(1)).equals(1);
+    });
+
+    it('Should return 2', () => {
+      expect(digitCount(12)).equals(2);
+    });
+
+    it('Should return 3', () => {
+      expect(digitCount(123)).equals(3);
+    });
+  });
+
+  describe('Most digits', () => {
+    it('Should return 5', () => {
+      expect(mostDigits([1, 11, 11111, 111, 111])).equals(5);
+    });
+
+    it('Should return 1', () => {
+      expect(mostDigits([21, 12, 34, 26, 99])).equals(2);
     });
   });
 });
