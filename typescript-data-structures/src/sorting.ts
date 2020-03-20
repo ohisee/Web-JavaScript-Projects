@@ -169,3 +169,26 @@ export function mostDigits(arr: number[]): number {
   }
   return maxDigits;
 }
+
+/**
+ * Base 10 radix sort
+ * @param arr 
+ */
+export function radixSort(arr: number[]): number[] {
+  let maxDigit = mostDigits(arr);
+  let result = arr.slice(0);
+  for (let i = 0; i < maxDigit; i++) {
+    // let buckets: number[][] = [
+    //   [], [], [], [], [],
+    //   [], [], [], [], []
+    // ];
+    let buckets: number[][] = Array.from({ length: 10 }, () => []);
+    for (let num of result) {
+      let digitIndex = getDigit(num, i);
+      buckets[digitIndex].push(num);
+    }
+    // ([] as number[]).concat(...buckets);
+    result = ([] as number[]).concat.apply([], buckets);
+  }
+  return result;
+}

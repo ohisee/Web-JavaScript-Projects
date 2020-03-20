@@ -14,7 +14,8 @@ import {
   quickSort,
   getDigit,
   digitCount,
-  mostDigits
+  mostDigits,
+  radixSort
 } from "../sorting";
 
 describe('Sort', () => {
@@ -181,6 +182,16 @@ describe('Sort', () => {
 
     it('Should return 1', () => {
       expect(mostDigits([21, 12, 34, 26, 99])).equals(2);
+    });
+  });
+
+  describe('Radix sort', () => {
+    it('Should return [1, 21, 26, 99, 123]', () => {
+      expect(radixSort([21, 1, 123, 26, 99])).to.eql([1, 21, 26, 99, 123]);
+    });
+
+    it('Should return [1, 10, 16, 76, 99, 109, 211]', () => {
+      expect(radixSort([211, 1, 10, 99, 16, 109, 76])).to.eql([1, 10, 16, 76, 99, 109, 211]);
     });
   });
 });
