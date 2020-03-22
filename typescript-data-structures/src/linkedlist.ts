@@ -116,6 +116,27 @@ export class SinglyLinkedList<T> {
     }
   }
 
+  insert(index: number, val: T) {
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === 0) {
+      this.unshift(val);
+      return true;
+    } else if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+    let pre = this.get(index - 1);
+    if (pre) {
+      let insertNode = new LinkedListNode<T>(val);
+      insertNode.next = pre.next;
+      pre.next = insertNode;
+      this.length += 1;
+      return true;
+    }
+    return false;
+  }
+
   getLength() {
     return this.length;
   }

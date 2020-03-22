@@ -115,5 +115,17 @@ describe('Linked list test', () => {
       expect(slist.get(2)?.getData()).to.equals("I am fine");
     });
 
+    it('Should do insert one element', () => {
+      slist.push('hello');
+      slist.push('how are you');
+      slist.push('I am fine');
+      slist.insert(0, 'today is');
+      slist.insert(2, 'where are you');
+      expect(slist.get(0)?.getData()).to.equals('today is');
+      expect(slist.get(1)?.getData()).to.equals('hello');
+      expect(slist.get(2)?.getData()).to.equals('where are you');
+      expect(slist.get(3)?.getData()).to.equals('how are you');
+      expect(slist.get(4)?.getData()).to.equals('I am fine');
+    });
   });
 });
