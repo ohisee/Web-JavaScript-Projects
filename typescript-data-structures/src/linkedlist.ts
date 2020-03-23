@@ -156,7 +156,21 @@ export class SinglyLinkedList<T> {
   }
 
   reverse() {
-    
+    if (this.head) {
+      this.tail = this.head;
+      let previousHead = this.tail;
+      let current = this.tail.next;
+      let tmpNext = (current && current.next) ? current.next : null;
+      this.tail.next = null;
+      while (current) {
+        current.next = previousHead;
+        previousHead = current;
+        current = tmpNext;
+        tmpNext = (tmpNext && tmpNext.next) ? tmpNext.next : null;
+      }
+      this.head = previousHead;
+    }
+    return this;
   }
 
   getLength() {

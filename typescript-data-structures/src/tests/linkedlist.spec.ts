@@ -157,5 +157,31 @@ describe('Linked list test', () => {
       expect(slist.get(0)?.getData()).to.equals('hello');
       expect(slist.get(1)?.getData()).to.equals('I am fine');
     });
+
+    it('Should do reverse singly linked list', () => {
+      slist.push('hello');
+      let reversedList = slist.reverse();
+      expect(reversedList).to.eql(new SinglyLinkedList<string>().push('hello'));
+    });
+
+    it('Should do reverse singly linked list', () => {
+      slist.push('1');
+      slist.push('2');
+      let reversedList = slist.reverse();
+      expect(reversedList).to.eql(
+        new SinglyLinkedList<string>().push('2').push('1'));
+    });
+
+    it('Should do reverse singly linked list', () => {
+      slist.push('1');
+      slist.push('2');
+      slist.push('3');
+      slist.push('4');
+      slist.push('5');
+      let reversedList = slist.reverse();
+      // console.log(JSON.stringify(reversedList, null, 2));
+      expect(reversedList).to.eql(
+        new SinglyLinkedList<string>().push('5').push('4').push('3').push('2').push('1'));
+    });
   });
 });
