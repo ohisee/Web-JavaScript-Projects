@@ -120,8 +120,8 @@ export class SinglyLinkedList<T> {
     if (index < 0 || index > this.length) {
       return false;
     } else if (index === 0) {
-      this.unshift(val);
-      return true;
+      return !!this.unshift(val);
+      // return true;
     } else if (index === this.length) {
       this.push(val);
       return true;
@@ -135,6 +135,28 @@ export class SinglyLinkedList<T> {
       return true;
     }
     return false;
+  }
+
+  remove(index: number) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    } else if (index === 0) {
+      return this.shift();
+    } else if (index === (this.length - 1)) {
+      return this.pop();
+    }
+    let pre = this.get(index - 1);
+    if (pre) {
+      let delNode = pre.next;
+      pre.next = delNode!.next;
+      this.length -= 1;
+      return delNode;
+    }
+    return null;
+  }
+
+  reverse() {
+    
   }
 
   getLength() {

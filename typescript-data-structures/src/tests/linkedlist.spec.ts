@@ -127,5 +127,35 @@ describe('Linked list test', () => {
       expect(slist.get(3)?.getData()).to.equals('how are you');
       expect(slist.get(4)?.getData()).to.equals('I am fine');
     });
+
+    it('Should do delete one element', () => {
+      slist.push('hello');
+      slist.push('how are you');
+      slist.push('I am fine');
+      slist.remove(0);
+      expect(slist.getLength()).equals(2);
+      expect(slist.get(0)?.getData()).to.equals('how are you');
+      expect(slist.get(1)?.getData()).to.equals('I am fine');
+    });
+
+    it('Should do delete one element', () => {
+      slist.push('hello');
+      slist.push('how are you');
+      slist.push('I am fine');
+      slist.remove(2);
+      expect(slist.getLength()).equals(2);
+      expect(slist.get(0)?.getData()).to.equals('hello');
+      expect(slist.get(1)?.getData()).to.equals('how are you');
+    });
+
+    it('Should do delete one element', () => {
+      slist.push('hello');
+      slist.push('how are you');
+      slist.push('I am fine');
+      slist.remove(1);
+      expect(slist.getLength()).equals(2);
+      expect(slist.get(0)?.getData()).to.equals('hello');
+      expect(slist.get(1)?.getData()).to.equals('I am fine');
+    });
   });
 });
