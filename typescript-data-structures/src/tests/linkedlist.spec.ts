@@ -3,7 +3,8 @@
  */
 import { expect } from "chai";
 import "mocha";
-import { SinglyLinkedList } from "../linkedlist";
+import { SinglyLinkedList } from "../singlylinkedlist";
+import { DoublyLinkedList } from "../doublylinkedlist";
 
 describe('Linked list test', () => {
 
@@ -182,6 +183,63 @@ describe('Linked list test', () => {
       // console.log(JSON.stringify(reversedList, null, 2));
       expect(reversedList).to.eql(
         new SinglyLinkedList<string>().push('5').push('4').push('3').push('2').push('1'));
+    });
+  });
+
+  describe('Doubly linked list', () => {
+    let dll: DoublyLinkedList<string>;
+
+    beforeEach(() => {
+      dll = new DoublyLinkedList<string>();
+    });
+
+    it('Should do push', () => {
+      let r = dll.push('hello');
+      expect(r.getLength()).equals(1);
+    });
+
+    it('Should do pop', () => {
+      dll.push('hello');
+      let r = dll.pop();
+      expect(r?.getData()).equals('hello');
+      expect(dll).to.eql(new DoublyLinkedList<string>());
+    });
+
+    it('Should do pop', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      let r = dll.pop();
+      expect(r?.next).equals(null);
+      expect(r?.previous).equals(null);
+      expect(r?.getData()).equals('how are you');
+      expect(dll).to.eql(new DoublyLinkedList<string>().push('hello'));
+    });
+
+    it('Should do shift', () => {
+      dll.push('hello');
+      let r = dll.shift();
+      expect(r?.getData()).equals('hello');
+      expect(dll).to.eql(new DoublyLinkedList<string>());
+    });
+
+    it('Should do shift', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      let r = dll.shift();
+      expect(r?.next).equals(null);
+      expect(r?.previous).equals(null);
+      expect(r?.getData()).equals('hello');
+      expect(dll).to.eql(
+        new DoublyLinkedList<string>().push('how are you').push('I am fine'));
+    });
+
+    it('Should do unshift', () => {
+      dll.push('2');
+      dll.unshift('1');
+      expect(dll.getLength()).equals(2);
+      expect(dll).to.eql(
+        new DoublyLinkedList<string>().push('1').push('2'));
     });
   });
 });
