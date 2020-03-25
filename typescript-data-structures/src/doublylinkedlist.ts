@@ -92,6 +92,18 @@ export class DoublyLinkedList<T> {
     return this;
   }
 
+  get() {
+
+  }
+
+  set() {
+
+  }
+
+  insert() {
+
+  }
+
   getLength() {
     return this.length;
   }
