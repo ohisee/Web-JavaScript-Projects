@@ -241,5 +241,31 @@ describe('Linked list test', () => {
       expect(dll).to.eql(
         new DoublyLinkedList<string>().push('1').push('2'));
     });
+
+    it('Should do get', () => {
+      dll.push('0');
+      dll.push('1');
+      dll.push('2');
+      dll.push('3');
+      dll.push('4');
+      dll.push('5');
+      dll.push('6');
+      dll.push('7');
+      dll.push('8');
+      dll.push('9');
+      dll.push('10');
+      dll.push('11');
+      dll.push('12');
+      dll.push('13');
+      dll.push('14');
+      dll.push('15');
+      dll.push('16');
+      expect(dll.get(3)?.getData()).equals('3');
+      expect(dll.get(8)?.getData()).equals('8');
+      expect(dll.get(14)?.getData()).equals('14');
+      expect(dll.get(9)?.getData()).equals('9');
+      expect(dll.get(16)?.getData()).equals('16');
+    });
+
   });
 });

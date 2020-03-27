@@ -92,8 +92,28 @@ export class DoublyLinkedList<T> {
     return this;
   }
 
-  get() {
-
+  get(index: number) {
+    if (!this.head || index < 0 || index >= this.length) {
+      return null;
+    }
+    let half = Math.floor(this.length / 2);
+    if (index <= half) {
+      let counter = 0;
+      let current = this.head;
+      while (counter < index && current.next) {
+        current = current.next;
+        counter += 1;
+      }
+      return current;
+    } else {
+      let counter = this.length - 1;
+      let current = this.tail;
+      while(counter > index && current?.previous) {
+        current = current.previous;
+        counter -= 1;
+      }
+      return current;
+    }
   }
 
   set() {
