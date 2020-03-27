@@ -110,7 +110,7 @@ describe('Linked list test', () => {
       slist.push('hello');
       slist.push('how are you');
       slist.push('I am fine');
-      slist.set(1, 'where are you')
+      expect(slist.set(1, 'where are you')).equals(true);
       expect(slist.get(0)?.getData()).to.equals("hello");
       expect(slist.get(1)?.getData()).to.equals("where are you");
       expect(slist.get(2)?.getData()).to.equals("I am fine");
@@ -242,7 +242,7 @@ describe('Linked list test', () => {
         new DoublyLinkedList<string>().push('1').push('2'));
     });
 
-    it('Should do get', () => {
+    it('Should do get one element', () => {
       dll.push('0');
       dll.push('1');
       dll.push('2');
@@ -267,5 +267,27 @@ describe('Linked list test', () => {
       expect(dll.get(16)?.getData()).equals('16');
     });
 
+    it('Should do set one element', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      expect(dll.set(1, 'where are you')).equals(true);
+      expect(dll.get(0)?.getData()).to.equals("hello");
+      expect(dll.get(1)?.getData()).to.equals("where are you");
+      expect(dll.get(2)?.getData()).to.equals("I am fine");
+    });
+
+    it('Should do insert elements', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      expect(dll.insert(0, 'today is')).equals(true);
+      expect(dll.insert(2, 'where are you')).equals(true);
+      expect(dll.get(0)?.getData()).to.equals('today is');
+      expect(dll.get(1)?.getData()).to.equals('hello');
+      expect(dll.get(2)?.getData()).to.equals('where are you');
+      expect(dll.get(3)?.getData()).to.equals('how are you');
+      expect(dll.get(4)?.getData()).to.equals('I am fine');
+    });
   });
 });

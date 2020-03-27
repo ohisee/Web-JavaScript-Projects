@@ -108,11 +108,11 @@ export class SinglyLinkedList<T> {
 
   set(index: number, val: T) {
     let foundNode = this.get(index);
-    if (foundNode) {
+    if (foundNode != null) {
       foundNode.val = val;
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 

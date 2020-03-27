@@ -108,7 +108,7 @@ export class DoublyLinkedList<T> {
     } else {
       let counter = this.length - 1;
       let current = this.tail;
-      while(counter > index && current?.previous) {
+      while (counter > index && current?.previous) {
         current = current.previous;
         counter -= 1;
       }
@@ -116,12 +116,36 @@ export class DoublyLinkedList<T> {
     }
   }
 
-  set() {
-
+  set(index: number, val: T) {
+    let foundNode = this.get(index);
+    if (foundNode != null) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
   }
 
-  insert() {
-
+  insert(index: number, val: T) {
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === 0) {
+      this.unshift(val);
+      return true;
+    } else if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+    let pre = this.get(index - 1);
+    if (pre) {
+      let newNode = new LinkedListNode<T>(val);
+      newNode.next = pre.next;
+      newNode.previous = pre;
+      pre.next!.previous = newNode;
+      pre.next = newNode;
+      this.length += 1;
+      return true;
+    }
+    return false;
   }
 
   getLength() {
