@@ -118,7 +118,7 @@ export class DoublyLinkedList<T> {
 
   set(index: number, val: T) {
     let foundNode = this.get(index);
-    if (foundNode != null) {
+    if (foundNode !== null) {
       foundNode.val = val;
       return true;
     }
@@ -128,24 +128,71 @@ export class DoublyLinkedList<T> {
   insert(index: number, val: T) {
     if (index < 0 || index > this.length) {
       return false;
-    } else if (index === 0) {
+    }
+    if (index === 0) {
       this.unshift(val);
       return true;
-    } else if (index === this.length) {
+    }
+    if (index === this.length) {
       this.push(val);
       return true;
     }
-    let pre = this.get(index - 1);
-    if (pre) {
+    let beforeNode = this.get(index - 1);
+    if (beforeNode) {
+      let afterNode = beforeNode.next;
       let newNode = new LinkedListNode<T>(val);
-      newNode.next = pre.next;
-      newNode.previous = pre;
-      pre.next!.previous = newNode;
-      pre.next = newNode;
+      beforeNode.next = newNode;
+      newNode.next = afterNode;
+      newNode.previous = beforeNode;
+      afterNode!.previous = newNode;
       this.length += 1;
       return true;
     }
     return false;
+  }
+
+  remove(index: number) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    if (index === 0) {
+      return this.shift();
+    }
+    if (index === (this.length - 1)) {
+      return this.pop();
+    }
+    let foundNode = this.get(index);
+    if (foundNode) {
+      let beforeNode = foundNode.previous;
+      let afterNode = foundNode.next;
+      beforeNode!.next = afterNode;
+      afterNode!.previous = beforeNode;
+      foundNode.next = null;
+      foundNode.previous = null;
+      this.length -= 1;
+      return foundNode;
+    }
+    return null;
+  }
+
+  reverse() {
+    if (this.head) {
+      let previousHead = this.head;
+      let current = this.head.next;
+      let tNext = current ? current.next : null;
+      previousHead.previous = current;
+      previousHead.next = null;
+      while (current) {
+        current.next = previousHead;
+        current.previous = tNext;
+        previousHead = current;
+        current = tNext;
+        tNext = tNext ? tNext.next : null;
+      }
+      this.tail = this.head;
+      this.head = previousHead;
+    }
+    return this;
   }
 
   getLength() {

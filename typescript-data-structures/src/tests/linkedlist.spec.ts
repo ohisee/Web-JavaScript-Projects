@@ -283,11 +283,58 @@ describe('Linked list test', () => {
       dll.push('I am fine');
       expect(dll.insert(0, 'today is')).equals(true);
       expect(dll.insert(2, 'where are you')).equals(true);
+      expect(dll.insert(5, 'LAST!')).equals(true);
       expect(dll.get(0)?.getData()).to.equals('today is');
       expect(dll.get(1)?.getData()).to.equals('hello');
       expect(dll.get(2)?.getData()).to.equals('where are you');
       expect(dll.get(3)?.getData()).to.equals('how are you');
       expect(dll.get(4)?.getData()).to.equals('I am fine');
+      expect(dll.get(5)?.getData()).to.equals('LAST!');
+    });
+
+    it('Should do remove element', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      expect(dll.remove(0)?.getData()).equals('hello');
+      expect(dll.get(0)?.getData()).to.equals('how are you');
+      expect(dll.get(1)?.getData()).to.equals('I am fine');
+    });
+
+    it('Should do remove element', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      expect(dll.remove(1)?.getData()).equals('how are you');
+      expect(dll.get(0)?.getData()).to.equals('hello');
+      expect(dll.get(1)?.getData()).to.equals('I am fine');
+    });
+
+    it('Should do remove element', () => {
+      dll.push('hello');
+      dll.push('how are you');
+      dll.push('I am fine');
+      expect(dll.remove(2)?.getData()).equals('I am fine');
+      expect(dll.get(0)?.getData()).to.equals('hello');
+      expect(dll.get(1)?.getData()).to.equals('how are you');
+    });
+
+    it('Should do reverse', () => {
+      dll.push('5').push('10').push('15').push('20');
+      dll.reverse();
+      expect(dll.getLength()).equals(4);
+      expect(dll.get(0)?.getData()).equals('20');
+      expect(dll.get(1)?.getData()).equals('15');
+      expect(dll.get(2)?.getData()).equals('10');
+      expect(dll.get(3)?.getData()).equals('5');
+    });
+
+    it('Should do reverse', () => {
+      dll.push('5').push('10');
+      dll.reverse();
+      expect(dll.getLength()).equals(2);
+      expect(dll.get(0)?.getData()).equals('10');
+      expect(dll.get(1)?.getData()).equals('5');
     });
   });
 });
