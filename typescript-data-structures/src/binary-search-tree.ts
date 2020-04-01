@@ -15,6 +15,8 @@ class BinarySearchTreeNode<T> {
   }
 }
 
+export type BinarySearchTreeNodeType<T> = BinarySearchTreeNode<T>;
+
 export class BinarySearchTree<T> {
 
   private root: BinarySearchTreeNode<T> | null;
@@ -55,8 +57,40 @@ export class BinarySearchTree<T> {
     return this;
   }
 
-  find(val: T) {
+  find(val: T): boolean | BinarySearchTreeNode<T> {
+    if (this.root === null) {
+      return false;
+    } else {
+      let current: BinarySearchTreeNode<T> | null = this.root;
+      while (current !== null) {
+        if (val > current.value) {
+          current = current.right;
+        } else if (val < current.value) {
+          current = current.left;
+        } else { // equal
+          return current;
+        }
+      }
+      return false;
+    }
+  }
 
+  contains(val: T): boolean {
+    if (this.root === null) {
+      return false;
+    } else {
+      let current: BinarySearchTreeNode<T> | null = this.root;
+      while (current !== null) {
+        if (val > current.value) {
+          current = current.right;
+        } else if (val < current.value) {
+          current = current.left;
+        } else { // equal
+          return true;
+        }
+      }
+      return false;
+    }
   }
 
   getRoot() {

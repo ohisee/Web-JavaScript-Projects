@@ -3,7 +3,7 @@
  */
 import { expect } from "chai";
 import "mocha";
-import { BinarySearchTree } from "../binary-search-tree";
+import { BinarySearchTree, BinarySearchTreeNodeType } from "../binary-search-tree";
 
 describe('Trees', () => {
 
@@ -38,6 +38,24 @@ describe('Trees', () => {
       expect(binarySearchTree.getRoot()?.right?.right?.left?.value).equals(15);
       expect(binarySearchTree.getRoot()?.left?.left?.value).equals(7);
       expect(binarySearchTree.getRoot()?.left?.left?.right?.value).equals(8);
+    });
+
+    it('Should do find one node', () => {
+      binarySearchTree.insert(10);
+      expect((binarySearchTree.find(10) as BinarySearchTreeNodeType<number>).value).equals(10);
+      expect(binarySearchTree.find(11)).equals(false);
+      expect(binarySearchTree.find(9)).equals(false);
+    });
+
+    it('Should do find one node', () => {
+      binarySearchTree.insert(10).insert(12).insert(9).insert(20).insert(15).insert(7).insert(8).insert(10);
+      expect((binarySearchTree.find(10) as BinarySearchTreeNodeType<number>).value).equals(10);
+      expect((binarySearchTree.find(12) as BinarySearchTreeNodeType<number>).value).equals(12);
+      expect((binarySearchTree.find(9) as BinarySearchTreeNodeType<number>).value).equals(9);
+      expect((binarySearchTree.find(8) as BinarySearchTreeNodeType<number>).value).equals(8);
+      expect((binarySearchTree.find(15) as BinarySearchTreeNodeType<number>).value).equals(15);
+      expect(binarySearchTree.find(11)).equals(false);
+      expect(binarySearchTree.find(100)).equals(false);
     });
   });
 });
