@@ -59,4 +59,8 @@ export class Queue<T> {
     this.size -= 1;
     return current.value;
   }
+
+  isEmpty() {
+    return this.size === 0;
+  }
 }

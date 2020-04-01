@@ -2,6 +2,8 @@
  * @fileoverview binary search tree
  */
 
+import { Queue } from "./queue-linkedlist";
+
 class BinarySearchTreeNode<T> {
 
   value: T;
@@ -91,6 +93,76 @@ export class BinarySearchTree<T> {
       }
       return false;
     }
+  }
+
+  /**
+   * Breadth first search traversal using a queue to 
+   * track visited data
+   */
+  breadthFirstSearch(): T[] {
+    const queue: BinarySearchTreeNode<T>[] = [];
+    const visitedData: T[] = [];
+    let bstNode: BinarySearchTreeNode<T> | null | undefined = this.root;
+    if (bstNode !== null) {
+      queue.push(bstNode);
+    }
+    while (queue.length > 0) {
+      bstNode = queue.shift();
+      if (bstNode) {
+        visitedData.push(bstNode.value);
+        if (bstNode.left) {
+          queue.push(bstNode.left);
+        }
+        if (bstNode.right) {
+          queue.push(bstNode.right);
+        }
+      }
+    }
+    return visitedData;
+  }
+
+  breadthFirstSearchV2(): T[] {
+    const queue: Queue<BinarySearchTreeNode<T>> = new Queue();
+    const visitedData: T[] = [];
+    if (this.root !== null) {
+      queue.enqueue(this.root);
+    }
+    while (!queue.isEmpty()) {
+      let bstNode = queue.dequeue();
+      if (bstNode) {
+        visitedData.push(bstNode.value);
+        if (bstNode.left) {
+          queue.enqueue(bstNode.left);
+        }
+        if (bstNode.right) {
+          queue.enqueue(bstNode.right);
+        }
+      }
+    }
+    return visitedData;
+  }
+
+  depthFirstSearchPreOrder(): T[] {
+    const visited: T[] = [];
+    let current = this.root;
+    /**
+     * Helper function for depth first search pre order traverse
+     */
+    function preOrderTraverse(visited: T[], treeNode: BinarySearchTreeNode<T>) {
+      visited.push(treeNode.value);
+      if (treeNode.left !== null) {
+        preOrderTraverse(visited, treeNode.left);
+      }
+      if (treeNode.right !== null) {
+        preOrderTraverse(visited, treeNode.right);
+      }
+      return;
+    }
+
+    if (current !== null) {
+      preOrderTraverse(visited, current);
+    }
+    return visited;
   }
 
   getRoot() {

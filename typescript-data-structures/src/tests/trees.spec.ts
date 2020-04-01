@@ -57,5 +57,16 @@ describe('Trees', () => {
       expect(binarySearchTree.find(11)).equals(false);
       expect(binarySearchTree.find(100)).equals(false);
     });
+
+    it('Should do breadth first search traversal', () => {
+      binarySearchTree.insert(10).insert(12).insert(9).insert(20).insert(15).insert(7).insert(8);
+      expect(binarySearchTree.breadthFirstSearch()).to.eqls([10, 9, 12, 7, 20, 8, 15]);
+      expect(binarySearchTree.breadthFirstSearchV2()).to.eqls([10, 9, 12, 7, 20, 8, 15]);
+    });
+
+    it('Should do depth first search pre order traverse', () => {
+      binarySearchTree.insert(10).insert(6).insert(15).insert(3).insert(8).insert(20);
+      expect(binarySearchTree.depthFirstSearchPreOrder()).to.eqls([10, 6, 3, 8, 15, 20]);
+    });
   });
 });
