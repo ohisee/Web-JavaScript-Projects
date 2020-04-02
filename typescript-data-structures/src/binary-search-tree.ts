@@ -121,6 +121,9 @@ export class BinarySearchTree<T> {
     return visitedData;
   }
 
+  /**
+   * Breadth first search traversal
+   */
   breadthFirstSearchV2(): T[] {
     const queue: Queue<BinarySearchTreeNode<T>> = new Queue();
     const visitedData: T[] = [];
@@ -142,6 +145,9 @@ export class BinarySearchTree<T> {
     return visitedData;
   }
 
+  /**
+   * Depth first search pre order traversal
+   */
   depthFirstSearchPreOrder(): T[] {
     const visited: T[] = [];
     let current = this.root;
@@ -161,6 +167,56 @@ export class BinarySearchTree<T> {
 
     if (current !== null) {
       preOrderTraverse(visited, current);
+    }
+    return visited;
+  }
+
+  /**
+   * Depth first search post order traversal
+   */
+  depthFirstSearchPostOrder(): T[] {
+    const visited: T[] = [];
+    /**
+     * Helper function for depth first search post order traverse
+     */
+    function postOrderTraverse(visited: T[], treeNode: BinarySearchTreeNode<T>) {
+      if (treeNode.left !== null) {
+        postOrderTraverse(visited, treeNode.left);
+      }
+      if (treeNode.right !== null) {
+        postOrderTraverse(visited, treeNode.right);
+      }
+      visited.push(treeNode.value);
+      return;
+    }
+
+    if (this.root !== null) {
+      postOrderTraverse(visited, this.root);
+    }
+    return visited;
+  }
+
+  /**
+   * Depth first search in order traversal
+   */
+  depthFirstSearchInOrder(): T[] {
+    const visited: T[] = [];
+    /**
+     * Helper function for depth first search in order traverse
+     */
+    function inOrderTraverse(visited: T[], treeNode: BinarySearchTreeNode<T>) {
+      if (treeNode.left !== null) {
+        inOrderTraverse(visited, treeNode.left);
+      }
+      visited.push(treeNode.value);
+      if (treeNode.right !== null) {
+        inOrderTraverse(visited, treeNode.right);
+      }
+      return;
+    }
+
+    if (this.root !== null) {
+      inOrderTraverse(visited, this.root);
     }
     return visited;
   }

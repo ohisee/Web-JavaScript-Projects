@@ -68,5 +68,15 @@ describe('Trees', () => {
       binarySearchTree.insert(10).insert(6).insert(15).insert(3).insert(8).insert(20);
       expect(binarySearchTree.depthFirstSearchPreOrder()).to.eqls([10, 6, 3, 8, 15, 20]);
     });
+
+    it('Should do depth first search post order traverse', () => {
+      binarySearchTree.insert(10).insert(6).insert(15).insert(3).insert(8).insert(20);
+      expect(binarySearchTree.depthFirstSearchPostOrder()).to.eqls([3, 8, 6, 20, 15, 10]);
+    });
+
+    it('Should do depth first search in order traverse', () => {
+      binarySearchTree.insert(10).insert(6).insert(15).insert(3).insert(8).insert(20);
+      expect(binarySearchTree.depthFirstSearchInOrder()).to.eqls([3, 6, 8, 10, 15, 20]);
+    });
   });
 });
