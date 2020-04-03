@@ -4,8 +4,9 @@
 import { expect } from "chai";
 import "mocha";
 import { BinarySearchTree, BinarySearchTreeNodeType } from "../binary-search-tree";
+import { MaxBinaryHeap } from "../max-binary-heap";
 
-describe('Trees', () => {
+describe('Trees and Heaps', () => {
 
   describe('Binary search tree', () => {
 
@@ -77,6 +78,111 @@ describe('Trees', () => {
     it('Should do depth first search in order traverse', () => {
       binarySearchTree.insert(10).insert(6).insert(15).insert(3).insert(8).insert(20);
       expect(binarySearchTree.depthFirstSearchInOrder()).to.eqls([3, 6, 8, 10, 15, 20]);
+    });
+  });
+
+
+  describe('Max binary heap', () => {
+
+    let maxBinaryHeap: MaxBinaryHeap;
+
+    beforeEach(() => {
+      maxBinaryHeap = new MaxBinaryHeap();
+    });
+
+    it('Should do insert', () => {
+      maxBinaryHeap
+        .insert(100)
+        .insert(19)
+        .insert(36)
+        .insert(17)
+        .insert(3)
+        .insert(25)
+        .insert(1)
+        .insert(2)
+        .insert(7).insert(20);
+      expect(maxBinaryHeap.getValues()).to.eqls([100, 20, 36, 17, 19, 25, 1, 2, 7, 3]);
+    });
+
+    it('Should do insert', () => {
+      maxBinaryHeap
+        .insert(41)
+        .insert(39)
+        .insert(33)
+        .insert(18)
+        .insert(27)
+        .insert(12)
+        .insert(55);
+      expect(maxBinaryHeap.getValues()).to.eqls([55, 39, 41, 18, 27, 12, 33]);
+    });
+
+    it('Should do insert', () => {
+      maxBinaryHeap
+        .insert(41)
+        .insert(39)
+        .insert(33)
+        .insert(18)
+        .insert(27)
+        .insert(12)
+        .insert(5)
+        .insert(1);
+      expect(maxBinaryHeap.getValues()).to.eqls([41, 39, 33, 18, 27, 12, 5, 1]);
+    });
+
+    it('Should do extract max', () => {
+      maxBinaryHeap
+        .insert(41)
+        .insert(39)
+        .insert(33)
+        .insert(18)
+        .insert(27)
+        .insert(12);
+      expect(maxBinaryHeap.extractMax()).equals(41);
+      expect(maxBinaryHeap.getValues()).to.eqls([39, 27, 33, 18, 12]);
+    });
+
+    it('Should do extract max', () => {
+      maxBinaryHeap
+        .insert(41)
+        .insert(39)
+        .insert(33)
+        .insert(18)
+        .insert(27)
+        .insert(12);
+      expect(maxBinaryHeap.extractMaxV1()).equals(41);
+      expect(maxBinaryHeap.getValues()).to.eqls([39, 27, 33, 18, 12]);
+    });
+
+
+    it('Should do extract max', () => {
+      maxBinaryHeap
+        .insert(100)
+        .insert(19)
+        .insert(36)
+        .insert(17)
+        .insert(3)
+        .insert(25)
+        .insert(1)
+        .insert(2)
+        .insert(7).insert(20);
+      expect(maxBinaryHeap.extractMax()).equals(100);
+      expect(maxBinaryHeap.getValues()).to.eqls([36, 20, 25, 17, 19, 3, 1, 2, 7]);
+    });
+
+    it('Should do extract max', () => {
+      maxBinaryHeap.insert(100);
+      expect(maxBinaryHeap.extractMax()).equals(100);
+      expect(maxBinaryHeap.getValues()).to.eqls([]);
+
+      maxBinaryHeap.insert(100);
+      expect(maxBinaryHeap.extractMaxV1()).equals(100);
+      expect(maxBinaryHeap.getValues()).to.eqls([]);
+    });
+
+    it('Should do extract max', () => {
+      maxBinaryHeap.insert(100);
+      expect(maxBinaryHeap.extractMaxV1()).equals(100);
+      expect(maxBinaryHeap.getValues()).to.eqls([]);
     });
   });
 });
