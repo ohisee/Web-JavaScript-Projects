@@ -196,7 +196,22 @@ describe('Trees and Heaps', () => {
     });
 
     it('Should do enqueue', () => {
+      priorityQueue.enqueue('low', 3);
+      priorityQueue.enqueue('medium', 2);
+      priorityQueue.enqueue('high', 1);
+      expect(priorityQueue.getQueuePriority()).to.eqls([1, 3, 2]);
+    });
 
+    it('Should do dequeue', () => {
+      priorityQueue.enqueue('low', 3);
+      priorityQueue.enqueue('medium', 2);
+      priorityQueue.enqueue('high', 1);
+      priorityQueue.dequeue();
+      expect(priorityQueue.getQueuePriority()).to.eqls([2, 3]);
+      priorityQueue.dequeue();
+      expect(priorityQueue.getQueuePriority()).to.eqls([3]);
+      priorityQueue.dequeue();
+      expect(priorityQueue.getQueuePriority()).to.eqls([]);
     });
   });
 });

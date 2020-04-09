@@ -80,4 +80,8 @@ export class PriorityQueue<T> {
     }
     return highestPrioriy;
   }
+
+  getQueuePriority() {
+    return this.values.map(q => q.priority);
+  }
 }
