@@ -5,6 +5,7 @@ import { expect } from "chai";
 import "mocha";
 import { BinarySearchTree, BinarySearchTreeNodeType } from "../binary-search-tree";
 import { MaxBinaryHeap } from "../max-binary-heap";
+import { PriorityQueue } from "../priority-queue";
 
 describe('Trees and Heaps', () => {
 
@@ -183,6 +184,19 @@ describe('Trees and Heaps', () => {
       maxBinaryHeap.insert(100);
       expect(maxBinaryHeap.extractMaxV1()).equals(100);
       expect(maxBinaryHeap.getValues()).to.eqls([]);
+    });
+  });
+
+  describe('Priority queue using min binary heap', () => {
+
+    let priorityQueue: PriorityQueue<string>;
+
+    beforeEach(() => {
+      priorityQueue = new PriorityQueue<string>();
+    });
+
+    it('Should do enqueue', () => {
+
     });
   });
 });
