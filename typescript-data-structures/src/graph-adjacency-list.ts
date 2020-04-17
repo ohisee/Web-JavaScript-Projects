@@ -45,6 +45,28 @@ export class Graph {
     }
   }
 
+  depthFirstTraverseRecursive(vertex: string) {
+    let result: string[] = [];
+    let visited: { [key: string]: boolean } = {};
+    function depthFirstTraverse(vertex: string, graph: { [key: string]: any[] }) {
+      if (!vertex) {
+        return;
+      }
+      visited[vertex] = true;
+      result.push(vertex);
+      for (let v of graph[vertex]) {
+        if (!visited[v]) {
+          depthFirstTraverse(v, graph);
+        }
+      }
+    }
+
+    if (this.adjacencyList[vertex]) {
+      depthFirstTraverse(vertex, this.adjacencyList);
+    }
+    return result;
+  }
+
   getAdjacencyList() {
     return Object.assign({}, this.adjacencyList);
   }
