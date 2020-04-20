@@ -89,6 +89,15 @@ describe("Undirected graph using adjaceny list", () => {
       graph.addEdge("D", "E");
       graph.addEdge("D", "F");
       graph.addEdge("E", "F");
+      /*
+            A
+          /   \
+          B   C
+          |   |
+          D - E
+          \   /
+            F
+       */
     });
 
     it('Should do add vertex and add edge', () => {
@@ -101,7 +110,9 @@ describe("Undirected graph using adjaceny list", () => {
     });
 
     it('Should do depth first traversal recursive', () => {
-      graph.depthFirstTraverseRecursive("A");
+      expect(graph.depthFirstTraverseRecursive("A")).to.eql(
+        ["A", "B", "D", "E", "C", "F"]
+      );
     });
   });
 });

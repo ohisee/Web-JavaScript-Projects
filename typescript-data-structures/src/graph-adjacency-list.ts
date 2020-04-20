@@ -45,24 +45,25 @@ export class Graph {
     }
   }
 
-  depthFirstTraverseRecursive(vertex: string) {
-    let result: string[] = [];
-    let visited: { [key: string]: boolean } = {};
-    function depthFirstTraverse(vertex: string, graph: { [key: string]: any[] }) {
-      if (!vertex) {
+  depthFirstTraverseRecursive(startVertex: string) {
+    const result: string[] = [];
+    const visited: { [key: string]: boolean } = {};
+    const graph: { [key: string]: any[] } = this.adjacencyList;
+    function depthFirstTraverse(startVertex: string) {
+      if (!startVertex) {
         return;
       }
-      visited[vertex] = true;
-      result.push(vertex);
-      for (let v of graph[vertex]) {
+      visited[startVertex] = true;
+      result.push(startVertex);
+      for (let v of graph[startVertex]) {
         if (!visited[v]) {
-          depthFirstTraverse(v, graph);
+          depthFirstTraverse(v);
         }
       }
     }
 
-    if (this.adjacencyList[vertex]) {
-      depthFirstTraverse(vertex, this.adjacencyList);
+    if (this.adjacencyList[startVertex]) {
+      depthFirstTraverse(startVertex);
     }
     return result;
   }
