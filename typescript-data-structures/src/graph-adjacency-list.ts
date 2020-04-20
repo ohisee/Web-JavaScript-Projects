@@ -69,17 +69,36 @@ export class Graph {
   }
 
   depthFirstTraverseIterative(startVertex: string) {
-    const stack: any[] = [];
+    const stack: any[] = [startVertex];
     const result: string[] = [];
     const visited: { [key: string]: boolean } = {};
     if (this.adjacencyList[startVertex]) {
-      stack.push(startVertex);
       while (stack.length > 0) {
         let vertex = stack.pop();
         if (vertex && !visited[vertex]) {
           visited[vertex] = true;
           result.push(vertex);
           stack.push(...this.adjacencyList[vertex]);
+        }
+      }
+    }
+    return result;
+  }
+
+  breadthFirstTraverse(startVertex: string) {
+    const queue: any[] = [startVertex];
+    const result: string[] = [];
+    const visited: { [key: string]: boolean } = {};
+    if (this.adjacencyList[startVertex]) {
+      visited[startVertex] = true;
+      while (queue.length > 0) {
+        let vertex = queue.shift();
+        result.push(vertex);
+        for (let neighbor of this.adjacencyList[vertex]) {
+          if (!visited[neighbor]) {
+            visited[neighbor] = true;
+            queue.push(neighbor);
+          }
         }
       }
     }

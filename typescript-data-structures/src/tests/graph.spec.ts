@@ -120,5 +120,11 @@ describe("Undirected graph using adjaceny list", () => {
         ["A", "C", "E", "F", "D", "B"]
       );
     });
+
+    it('Should do breadth first traversal iterative', () => {
+      expect(graph.breadthFirstTraverse("A")).to.eql(
+        ["A", "B", "C", "D", "E", "F"]
+      );
+    });
   });
 });
