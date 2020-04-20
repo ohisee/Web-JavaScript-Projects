@@ -68,6 +68,24 @@ export class Graph {
     return result;
   }
 
+  depthFirstTraverseIterative(startVertex: string) {
+    const stack: any[] = [];
+    const result: string[] = [];
+    const visited: { [key: string]: boolean } = {};
+    if (this.adjacencyList[startVertex]) {
+      stack.push(startVertex);
+      while (stack.length > 0) {
+        let vertex = stack.pop();
+        if (vertex && !visited[vertex]) {
+          visited[vertex] = true;
+          result.push(vertex);
+          stack.push(...this.adjacencyList[vertex]);
+        }
+      }
+    }
+    return result;
+  }
+
   getAdjacencyList() {
     return Object.assign({}, this.adjacencyList);
   }

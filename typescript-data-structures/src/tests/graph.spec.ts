@@ -114,5 +114,11 @@ describe("Undirected graph using adjaceny list", () => {
         ["A", "B", "D", "E", "C", "F"]
       );
     });
+
+    it('Should do depth first traversal iterative', () => {
+      expect(graph.depthFirstTraverseIterative("A")).to.eql(
+        ["A", "C", "E", "F", "D", "B"]
+      );
+    });
   });
 });
