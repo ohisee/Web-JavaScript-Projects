@@ -4,6 +4,7 @@
 import { expect } from "chai";
 import "mocha";
 import { Graph } from "../graph-adjacency-list";
+import { WeightedGraph } from "../weighted-graph";
 
 describe("Undirected graph using adjaceny list", () => {
 
@@ -124,6 +125,32 @@ describe("Undirected graph using adjaceny list", () => {
     it('Should do breadth first traversal iterative', () => {
       expect(graph.breadthFirstTraverse("A")).to.eql(
         ["A", "B", "C", "D", "E", "F"]
+      );
+    });
+  });
+
+  describe("Weighted graph", () => {
+    let weightedGraph: WeightedGraph;
+
+    it('Should do add vertex and add edge', () => {
+      weightedGraph = new WeightedGraph();
+      weightedGraph.addVertex("A");
+      weightedGraph.addVertex("B");
+      weightedGraph.addVertex("C");
+      weightedGraph.addEdge("A", "B", 100);
+      weightedGraph.addEdge("A", "C", 120);
+      weightedGraph.addEdge("B", "C", 110);
+      expect(weightedGraph.getAdjacencyList()).to.have.property("A");
+      expect(weightedGraph.getAdjacencyList()).to.have.property("B");
+      expect(weightedGraph.getAdjacencyList()).to.have.property("C");
+      expect(weightedGraph.getAdjacencyList()["A"]).to.eql(
+        [{ node: "B", weight: 100 }, { node: "C", weight: 120 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["B"]).to.eql(
+        [{ node: "A", weight: 100 }, { node: "C", weight: 110 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["C"]).to.eql(
+        [{ node: "A", weight: 120 }, { node: "B", weight: 110 }]
       );
     });
   });
