@@ -2,6 +2,8 @@
  * @fileoverview weighted graph
  */
 
+import { PriorityQueue } from "./naive-priority-queue";
+
 type WeightedGraphNode = { node: string, weight: number };
 
 export class WeightedGraph {
@@ -27,8 +29,13 @@ export class WeightedGraph {
     }
   }
 
-  findShortestPath() {
-    
+  findShortestPath(startingVertex: string, endingVertex: string) {
+    let distances: { [key: string]: number } = {};
+    const queue = new PriorityQueue();
+    for (let v in this.adjacencyList) {
+      distances[v] = startingVertex === v ? 0 : Infinity;
+      queue.enqueue(v, startingVertex === v ? 0 : Infinity);
+    }
   }
 
   getAdjacencyList() {
