@@ -25,4 +25,8 @@ export class PriorityQueue {
   sort() {
     this.values.sort((a, b) => a.priority - b.priority);
   }
+
+  isEmpty() {
+    return this.values.length === 0;
+  }
 }

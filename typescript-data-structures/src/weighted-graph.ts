@@ -31,10 +31,21 @@ export class WeightedGraph {
 
   findShortestPath(startingVertex: string, endingVertex: string) {
     let distances: { [key: string]: number } = {};
+    let previous: { [key: string]: string | null } = {};
     const queue = new PriorityQueue();
     for (let v in this.adjacencyList) {
       distances[v] = startingVertex === v ? 0 : Infinity;
       queue.enqueue(v, startingVertex === v ? 0 : Infinity);
+      previous[v] = null;      
+    }
+    while(!queue.isEmpty()) {
+      let vertex = queue.dequeue();
+      if (vertex && vertex.value !== endingVertex) {
+        let vs = this.adjacencyList[vertex.value];
+        for (let v of vs) {
+          
+        }
+      }
     }
   }
 
