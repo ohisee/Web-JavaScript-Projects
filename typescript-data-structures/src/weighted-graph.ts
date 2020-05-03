@@ -30,20 +30,35 @@ export class WeightedGraph {
   }
 
   findShortestPath(startingVertex: string, endingVertex: string) {
-    let distances: { [key: string]: number } = {};
-    let previous: { [key: string]: string | null } = {};
+    const distances: { [key: string]: number } = {};
+    const previous: { [key: string]: { prev: string, distance: number } | null } = {};
+    const visited: { [key: string]: boolean } = {};
     const queue = new PriorityQueue();
     for (let v in this.adjacencyList) {
       distances[v] = startingVertex === v ? 0 : Infinity;
       queue.enqueue(v, startingVertex === v ? 0 : Infinity);
-      previous[v] = null;      
+      previous[v] = null;
     }
-    while(!queue.isEmpty()) {
-      let vertex = queue.dequeue();
+    while (!queue.isEmpty()) {
+      let vertex = queue.dequeue()!;
+      visited[vertex.value] = true;
       if (vertex && vertex.value !== endingVertex) {
         let vs = this.adjacencyList[vertex.value];
         for (let v of vs) {
-          
+          if (!visited[v.node]) {
+            let newDistance = v.weight;
+            let oldDistance = distances[v.node];
+            let start = previous[v.node];
+            while (start !== null) {
+              newDistance += start.distance;
+              start = previous[start.prev];
+            }
+            if (newDistance < oldDistance) {
+              distances[v.node] = newDistance;
+              previous[v.node] = { prev: vertex.value, distance: newDistance };
+              queue.enqueue(v.node, newDistance);
+            }
+          }
         }
       }
     }
