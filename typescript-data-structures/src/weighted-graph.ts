@@ -62,6 +62,7 @@ export class WeightedGraph {
         }
       }
     }
+    return previous; // work backward to get the shortest path
   }
 
   getAdjacencyList() {

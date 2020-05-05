@@ -154,4 +154,44 @@ describe("Undirected graph using adjaceny list", () => {
       );
     });
   });
+
+  describe('Find the shortest distance in a weighted graph', () => {
+    let weightedGraph: WeightedGraph;
+
+    it('Should find the shortest distance', () => {
+      weightedGraph = new WeightedGraph();
+      weightedGraph.addVertex("A");
+      weightedGraph.addVertex("B");
+      weightedGraph.addVertex("C");
+      weightedGraph.addVertex("D");
+      weightedGraph.addVertex("E");
+      weightedGraph.addVertex("F");
+      weightedGraph.addEdge("A", "B", 4);
+      weightedGraph.addEdge("A", "C", 2);
+      weightedGraph.addEdge("B", "E", 3);
+      weightedGraph.addEdge("C", "D", 2);
+      weightedGraph.addEdge("C", "F", 4);
+      weightedGraph.addEdge("D", "E", 3);
+      weightedGraph.addEdge("D", "F", 1);
+      weightedGraph.addEdge("F", "E", 1);
+      expect(weightedGraph.getAdjacencyList()["A"]).to.eql(
+        [{ node: "B", weight: 4 }, { node: "C", weight: 2 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["B"]).to.eql(
+        [{ node: "A", weight: 4 }, { node: "E", weight: 3 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["C"]).to.eql(
+        [{ node: "A", weight: 2 }, { node: "D", weight: 2 }, { node: "F", weight: 4 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["D"]).to.eql(
+        [{ node: "C", weight: 2 }, { node: "E", weight: 3 }, { node: "F", weight: 1 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["E"]).to.eql(
+        [{ node: "B", weight: 3 }, { node: "D", weight: 3 }, { node: "F", weight: 1 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["F"]).to.eql(
+        [{ node: "C", weight: 4 }, { node: "D", weight: 1 }, { node: "E", weight: 1 }]
+      );
+    });
+  });
 });
