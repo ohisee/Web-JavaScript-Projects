@@ -192,6 +192,10 @@ describe("Undirected graph using adjaceny list", () => {
       expect(weightedGraph.getAdjacencyList()["F"]).to.eql(
         [{ node: "C", weight: 4 }, { node: "D", weight: 1 }, { node: "E", weight: 1 }]
       );
+      let path = weightedGraph.findShortestPath("A", "E");
+      expect(path["A"]).to.eql(null);
+      expect(path["B"]).to.eql({ prev: "A", distance: 4 });
+      expect(path["C"]).to.eql({ prev: "A", distance: 2 });
     });
   });
 });
