@@ -196,6 +196,9 @@ describe("Undirected graph using adjaceny list", () => {
       expect(path["A"]).to.eql(null);
       expect(path["B"]).to.eql({ prev: "A", distance: 4 });
       expect(path["C"]).to.eql({ prev: "A", distance: 2 });
+      expect(path["D"]).to.eql({ prev: "C", distance: 2 });
+      expect(path["E"]).to.eql({ prev: "F", distance: 1 });
+      expect(path["F"]).to.eql({ prev: "D", distance: 1 });
     });
   });
 });

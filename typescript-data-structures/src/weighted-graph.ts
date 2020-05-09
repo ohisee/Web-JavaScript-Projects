@@ -48,14 +48,18 @@ export class WeightedGraph {
           if (!visited[v.node]) {
             let newDistance = v.weight;
             let oldDistance = distances[v.node];
-            let start = previous[v.node];
-            while (start !== null) {
-              newDistance += start.distance;
-              start = previous[start.prev];
+            let prevStart = previous[vertex.value];
+            let path = [v.node, vertex.value];
+            console.log(`checking ${v.node} of ${vertex.value}, new distance ${newDistance}, old distance ${oldDistance}, previous start`, prevStart);
+            while (prevStart !== null) {
+              path.push(prevStart.prev);
+              newDistance += prevStart.distance;
+              prevStart = previous[prevStart.prev];
             }
+            console.log(`new distance ${path.reverse().join(' -> ')} of ${v.node} is ${newDistance}`);
             if (newDistance < oldDistance) {
               distances[v.node] = newDistance;
-              previous[v.node] = { prev: vertex.value, distance: newDistance };
+              previous[v.node] = { prev: vertex.value, distance: v.weight };
               queue.enqueue(v.node, newDistance);
             }
           }
