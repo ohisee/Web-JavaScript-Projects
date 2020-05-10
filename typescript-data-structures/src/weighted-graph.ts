@@ -69,6 +69,41 @@ export class WeightedGraph {
     return previous; // work backward to get the shortest path
   }
 
+  findPath(start: string, finish: string) {
+    const distances: { [key: string]: number } = {};
+    const previous: { [key: string]: string | null } = {};
+    const queue = new PriorityQueue();
+    const path: string[] = [];
+    let minWeightNode;
+    // build up initial state
+    for (let vertex in this.adjacencyList) {
+      if (vertex === start) {
+        distances[vertex] = 0;
+        queue.enqueue(vertex, 0);
+      } else {
+        distances[vertex] = Infinity;
+        queue.enqueue(vertex, Infinity);
+      }
+      previous[vertex] = null;
+    }
+
+    // loop through node with smallest weight
+    while (!queue.isEmpty()) {
+      minWeightNode = queue.dequeue();
+      let minWeightNodeValue = minWeightNode ? minWeightNode.value : null;
+      if (minWeightNodeValue === finish) {
+        // build up the path
+        while (previous[minWeightNodeValue]) {
+          path.push(minWeightNodeValue);
+          minWeightNode = previous[minWeightNodeValue]!;
+        }
+        break;
+      }
+    }
+
+    return path;
+  }
+
   getAdjacencyList() {
     return Object.assign({}, this.adjacencyList);
   }
