@@ -200,5 +200,53 @@ describe("Undirected graph using adjaceny list", () => {
       expect(path["E"]).to.eql({ prev: "F", distance: 1 });
       expect(path["F"]).to.eql({ prev: "D", distance: 1 });
     });
+
+    it('Should find the shortest distance version 2', () => {
+      weightedGraph = new WeightedGraph();
+      weightedGraph.addVertex("A");
+      weightedGraph.addVertex("B");
+      weightedGraph.addVertex("C");
+      weightedGraph.addVertex("D");
+      weightedGraph.addVertex("E");
+      weightedGraph.addVertex("F");
+      weightedGraph.addEdge("A", "B", 4);
+      weightedGraph.addEdge("A", "C", 2);
+      weightedGraph.addEdge("B", "E", 3);
+      weightedGraph.addEdge("C", "D", 2);
+      weightedGraph.addEdge("C", "F", 4);
+      weightedGraph.addEdge("D", "E", 3);
+      weightedGraph.addEdge("D", "F", 1);
+      weightedGraph.addEdge("F", "E", 1);
+      expect(weightedGraph.getAdjacencyList()["A"]).to.eql(
+        [{ node: "B", weight: 4 }, { node: "C", weight: 2 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["B"]).to.eql(
+        [{ node: "A", weight: 4 }, { node: "E", weight: 3 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["C"]).to.eql(
+        [{ node: "A", weight: 2 }, { node: "D", weight: 2 }, { node: "F", weight: 4 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["D"]).to.eql(
+        [{ node: "C", weight: 2 }, { node: "E", weight: 3 }, { node: "F", weight: 1 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["E"]).to.eql(
+        [{ node: "B", weight: 3 }, { node: "D", weight: 3 }, { node: "F", weight: 1 }]
+      );
+      expect(weightedGraph.getAdjacencyList()["F"]).to.eql(
+        [{ node: "C", weight: 4 }, { node: "D", weight: 1 }, { node: "E", weight: 1 }]
+      );
+      expect(weightedGraph.findPath("A", "E")).to.eql(["A", "C", "D", "F", "E"]);
+      expect(weightedGraph.findPath("A", "D")).to.eql(["A", "C", "D"]);
+      expect(weightedGraph.findPath("A", "F")).to.eql(["A", "C", "D", "F"]);
+      expect(weightedGraph.findPath("B", "F")).to.eql(["B", "E", "F"]);
+      expect(weightedGraph.findPath("C", "F")).to.eql(["C", "D", "F"]);
+
+      expect(weightedGraph.findMinWeightPath("A", "E")).to.eql(["A", "C", "D", "F", "E"]);
+      expect(weightedGraph.findMinWeightPath("C", "C")).to.eql(["C"]);
+      expect(weightedGraph.findMinWeightPath("A", "D")).to.eql(["A", "C", "D"]);
+      expect(weightedGraph.findMinWeightPath("A", "F")).to.eql(["A", "C", "D", "F"]);
+      expect(weightedGraph.findMinWeightPath("B", "F")).to.eql(["B", "E", "F"]);
+      expect(weightedGraph.findMinWeightPath("C", "F")).to.eql(["C", "D", "F"]);
+    });
   });
 });

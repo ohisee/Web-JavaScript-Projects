@@ -2,7 +2,8 @@
  * @fileoverview weighted graph
  */
 
-import { PriorityQueue } from "./naive-priority-queue";
+import { SimplePriorityQueue } from "./naive-priority-queue";
+import { PriorityQueue } from "./priority-queue";
 
 type WeightedGraphNode = { node: string, weight: number };
 
@@ -33,34 +34,35 @@ export class WeightedGraph {
     const distances: { [key: string]: number } = {};
     const previous: { [key: string]: { prev: string, distance: number } | null } = {};
     const visited: { [key: string]: boolean } = {};
-    const queue = new PriorityQueue();
+    const queue = new SimplePriorityQueue();
     for (let v in this.adjacencyList) {
       distances[v] = startingVertex === v ? 0 : Infinity;
       queue.enqueue(v, startingVertex === v ? 0 : Infinity);
       previous[v] = null;
     }
     while (!queue.isEmpty()) {
-      let vertex = queue.dequeue()!;
-      visited[vertex.value] = true;
-      if (vertex && vertex.value !== endingVertex) {
-        let vs = this.adjacencyList[vertex.value];
-        for (let v of vs) {
-          if (!visited[v.node]) {
-            let newDistance = v.weight;
-            let oldDistance = distances[v.node];
-            let prevStart = previous[vertex.value];
-            let path = [v.node, vertex.value];
-            console.log(`checking ${v.node} of ${vertex.value}, new distance ${newDistance}, old distance ${oldDistance}, previous start`, prevStart);
+      let minWeightVertex = queue.dequeue()!;
+      visited[minWeightVertex.value] = true;
+      if (minWeightVertex && minWeightVertex.value !== endingVertex) {
+        let neighborNodes = this.adjacencyList[minWeightVertex.value];
+        for (let neighborNode of neighborNodes) {
+          if (!visited[neighborNode.node]) {
+            let newDistance = neighborNode.weight;
+            let oldDistance = distances[neighborNode.node];
+            let prevStart = previous[minWeightVertex.value];
+            let path = [neighborNode.node, minWeightVertex.value];
+            //console.log(`checking ${v.node} of ${vertex.value}, new distance ${newDistance}, old distance ${oldDistance}, previous start`, prevStart);
+            // add previous distances to the current neighbor node
             while (prevStart !== null) {
               path.push(prevStart.prev);
               newDistance += prevStart.distance;
               prevStart = previous[prevStart.prev];
             }
-            console.log(`new distance ${path.reverse().join(' -> ')} of ${v.node} is ${newDistance}`);
+            //console.log(`new distance ${path.reverse().join(' -> ')} of ${v.node} is ${newDistance}`);
             if (newDistance < oldDistance) {
-              distances[v.node] = newDistance;
-              previous[v.node] = { prev: vertex.value, distance: v.weight };
-              queue.enqueue(v.node, newDistance);
+              distances[neighborNode.node] = newDistance;
+              previous[neighborNode.node] = { prev: minWeightVertex.value, distance: neighborNode.weight };
+              queue.enqueue(neighborNode.node, newDistance);
             }
           }
         }
@@ -72,9 +74,9 @@ export class WeightedGraph {
   findPath(start: string, finish: string) {
     const distances: { [key: string]: number } = {};
     const previous: { [key: string]: string | null } = {};
-    const queue = new PriorityQueue();
+    const queue: PriorityQueue<string> = new PriorityQueue();
     const path: string[] = [];
-    let minWeightNode;
+
     // build up initial state
     for (let vertex in this.adjacencyList) {
       if (vertex === start) {
@@ -89,19 +91,73 @@ export class WeightedGraph {
 
     // loop through node with smallest weight
     while (!queue.isEmpty()) {
-      minWeightNode = queue.dequeue();
-      let minWeightNodeValue = minWeightNode ? minWeightNode.value : null;
+      let minWeightNode = queue.dequeue();
+      let minWeightNodeValue = minWeightNode ? minWeightNode.val : null;
       if (minWeightNodeValue === finish) {
         // build up the path
         while (previous[minWeightNodeValue]) {
           path.push(minWeightNodeValue);
-          minWeightNode = previous[minWeightNodeValue]!;
+          minWeightNodeValue = previous[minWeightNodeValue]!;
+        }
+        path.push(minWeightNodeValue);
+        break;
+      }
+      if (minWeightNodeValue && distances[minWeightNodeValue] !== Infinity) {
+        for (let neighborNode of this.adjacencyList[minWeightNodeValue]) {
+          // calculate distance to neighbor node
+          let newDistance = distances[minWeightNodeValue] + neighborNode.weight;
+          if (newDistance < distances[neighborNode.node]) {
+            distances[neighborNode.node] = newDistance;
+            previous[neighborNode.node] = minWeightNodeValue;
+            queue.enqueue(neighborNode.node, newDistance);
+          }
+        }
+      }
+    }
+    return path.reverse();
+  }
+
+  findMinWeightPath(start: string, finish: string) {
+    const distances: { [key: string]: number } = {};
+    const previous: { [key: string]: string | null } = {};
+    const queue = new PriorityQueue<string>();
+    const path: string[] = [];
+
+    // build initial distances, previsous, and priority queue
+    for (let v in this.adjacencyList) {
+      distances[v] = start === v ? 0 : Infinity;
+      queue.enqueue(v, start === v ? 0 : Infinity);
+      previous[v] = null;
+    }
+
+    // loop through nodes
+    while (!queue.isEmpty()) {
+      let minWeightNode = queue.dequeue();
+      if (minWeightNode.val !== finish) {
+        for (let neighborNode of this.adjacencyList[minWeightNode.val]) {
+          let newDistance = neighborNode.weight;
+          let distanceFromMinWeightNodeToCurrentNeighborNode = distances[minWeightNode.val];
+          if (distanceFromMinWeightNodeToCurrentNeighborNode !== Infinity) {
+            newDistance = newDistance + distanceFromMinWeightNodeToCurrentNeighborNode;
+          }
+          if (newDistance < distances[neighborNode.node]) {
+            distances[neighborNode.node] = newDistance;
+            previous[neighborNode.node] = minWeightNode.val;
+            queue.enqueue(neighborNode.node, newDistance);
+          }
+        }
+      } else {
+        path.push(minWeightNode.val);
+        let prevNode = previous[minWeightNode.val];
+        while (prevNode) {
+          path.push(prevNode);
+          prevNode = previous[prevNode];
         }
         break;
       }
     }
 
-    return path;
+    return path.reverse();
   }
 
   getAdjacencyList() {

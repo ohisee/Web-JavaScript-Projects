@@ -81,6 +81,10 @@ export class PriorityQueue<T> {
     return highestPrioriy;
   }
 
+  isEmpty() {
+    return this.values.length === 0;
+  }
+
   getQueuePriority() {
     return this.values.map(q => q.priority);
   }

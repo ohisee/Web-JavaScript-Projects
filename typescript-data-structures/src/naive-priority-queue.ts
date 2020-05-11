@@ -2,7 +2,7 @@
  * @fileoverview a simple priority queue, sort every time when doing enqueue
  */
 
-export class PriorityQueue {
+export class SimplePriorityQueue {
 
   private values: { value: any, priority: number }[];
 
