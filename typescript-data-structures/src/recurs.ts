@@ -163,3 +163,15 @@ export function collectStrings(obj: { [key: string]: any }): string[] {
   }
   return result;
 }
+
+export function fibMemoization(num: number, memo: { [key: number]: number } = {}) {
+  if (memo[num] !== undefined) {
+    return memo[num];
+  }
+  if (num <= 2) {
+    return 1;
+  }
+  let result: number = fibMemoization(num - 1, memo) + fibMemoization(num - 2, memo); 
+  memo[num] = result;
+  return result;
+}

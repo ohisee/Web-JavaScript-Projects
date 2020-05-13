@@ -19,7 +19,8 @@ import {
   flatObject,
   capitalizeWords,
   stringifyNumbers,
-  collectStrings
+  collectStrings,
+  fibMemoization
 } from "../recurs";
 
 describe('Recursion', () => {
@@ -295,6 +296,24 @@ describe('Recursion', () => {
           }
         }
       })).to.eqls(["foo", "bar", "baz"]);
+    });
+  });
+
+  describe('Fibonacci using recursion and memoization', () => {
+    it('Should return 3', () => {
+      expect(fibMemoization(4)).equals(3);
+    });
+
+    it('Should return 55', () => {
+      expect(fibMemoization(10)).equals(55);
+    });
+
+    it('Should return 317811', () => {
+      expect(fibMemoization(28)).equals(317811);
+    });
+
+    it('Should return 9227465', () => {
+      expect(fibMemoization(35)).equals(9227465);
     });
   });
 });
