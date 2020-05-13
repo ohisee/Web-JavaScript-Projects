@@ -20,7 +20,8 @@ import {
   capitalizeWords,
   stringifyNumbers,
   collectStrings,
-  fibMemoization
+  fibMemoization,
+  fibTabulation
 } from "../recurs";
 
 describe('Recursion', () => {
@@ -314,6 +315,24 @@ describe('Recursion', () => {
 
     it('Should return 9227465', () => {
       expect(fibMemoization(35)).equals(9227465);
+    });
+  });
+
+  describe('Fibonacci using tabulation', () => {
+    it('Should return 3', () => {
+      expect(fibTabulation(4)).equals(3);
+    });
+
+    it('Should return 55', () => {
+      expect(fibTabulation(10)).equals(55);
+    });
+
+    it('Should return 317811', () => {
+      expect(fibTabulation(28)).equals(317811);
+    });
+
+    it('Should return 9227465', () => {
+      expect(fibTabulation(35)).equals(9227465);
     });
   });
 });

@@ -164,14 +164,35 @@ export function collectStrings(obj: { [key: string]: any }): string[] {
   return result;
 }
 
-export function fibMemoization(num: number, memo: { [key: number]: number } = {}) {
+/**
+ * The recursion will encounter maximum call stack size exceeded 
+ * issue when number input is a large number 
+ */
+export function fibMemoization(
+  num: number,
+  memo: { [key: number]: number } = { 0: 0, 1: 1, 2: 1 }) {
+
   if (memo[num] !== undefined) {
     return memo[num];
   }
+  // if (num <= 2) {
+  //   return 1;
+  // }
+  let result: number = fibMemoization(num - 1, memo) + fibMemoization(num - 2, memo);
+  memo[num] = result;
+  return result;
+}
+
+/**
+ * Less space complexity
+ */
+export function fibTabulation(num: number) {
   if (num <= 2) {
     return 1;
   }
-  let result: number = fibMemoization(num - 1, memo) + fibMemoization(num - 2, memo); 
-  memo[num] = result;
-  return result;
+  const fibNums: { [key: number]: number } = { 0: 0, 1: 1, 2: 1 };
+  for (let i = 3; i <= num; i++) {
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+  }
+  return fibNums[num];
 }

@@ -29,6 +29,9 @@ export class SinglyLinkedList<T> {
     this.tail = null;
   }
 
+  /**
+   * Add a node to the tail of the singly linked list
+   */
   push(val: T) {
     let newNode = new LinkedListNode<T>(val);
     if (this.head === null) {
@@ -42,6 +45,9 @@ export class SinglyLinkedList<T> {
     return this;
   }
 
+  /**
+   * Remove a node at the tail of the singly linked list
+   */
   pop() {
     let current: LinkedListNode<T> | null = this.head;
     if (!current) {
@@ -108,7 +114,7 @@ export class SinglyLinkedList<T> {
 
   set(index: number, val: T) {
     let foundNode = this.get(index);
-    if (foundNode != null) {
+    if (foundNode !== null) {
       foundNode.val = val;
       return true;
     } else {
@@ -175,5 +181,13 @@ export class SinglyLinkedList<T> {
 
   getLength() {
     return this.length;
+  }
+
+  getHead() {
+    return this.head;
+  }
+
+  getTail() {
+    return this.tail;
   }
 }

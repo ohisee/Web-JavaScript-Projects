@@ -184,6 +184,22 @@ describe('Linked list test', () => {
       expect(reversedList).to.eql(
         new SinglyLinkedList<string>().push('5').push('4').push('3').push('2').push('1'));
     });
+
+    it("should pass testing", () => {
+      let slist: SinglyLinkedList<number> = new SinglyLinkedList();
+      slist.push(5).push(10).push(15).push(20);
+      expect(slist.insert(2, 12)).to.eql(true);
+      expect(slist.insert(100, 12)).to.eql(false);
+      expect(slist.getLength()).to.eql(5);
+      expect(slist.getHead()?.val).to.eql(5);
+      expect(slist.getHead()?.next?.val).to.eql(10);
+      expect(slist.getHead()?.next?.next?.val).to.eql(12);
+      expect(slist.getHead()?.next?.next?.next?.val).to.eql(15);
+      expect(slist.getHead()?.next?.next?.next?.next?.val).to.eql(20);
+      expect(slist.insert(5, 25)).to.eql(true);
+      expect(slist.getHead()?.next?.next?.next?.next?.next?.val).to.eql(25);
+      expect(slist.getTail()?.val).to.eql(25);
+    });
   });
 
   describe('Doubly linked list', () => {
