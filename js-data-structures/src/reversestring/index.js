@@ -17,7 +17,16 @@ function reverseIteration(str) {
   return result;
 }
 
+function reverseIterationArray(str) {
+  let result = [];
+  for (let i = str.length - 1; i >= 0; i--) {
+    result.push(str[i]);
+  }
+  return result.join('');
+}
+
 module.exports = {
   reverse,
-  reverseIteration
+  reverseIteration,
+  reverseIterationArray
 };

@@ -1,7 +1,8 @@
 /**
  * @fileoverview unit test
+ * >.\node_modules\.bin\jest reverse.test.js
  */
-const { reverse, reverseIteration } = require('./index.js');
+const { reverse, reverseIteration, reverseIterationArray } = require('./index.js');
 
 describe('Reverse string function', () => {
   test('Should reverse a string', () => {
@@ -34,5 +35,21 @@ describe('Reverse string function', () => {
 
   test('Should reverse a string', () => {
     expect(reverseIteration('hello')).toEqual('olleh');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationArray('abc')).toEqual('cba');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationArray('Greeting!')).toEqual('!gniteerG');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationArray('apple')).toEqual('elppa');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationArray('hello')).toEqual('olleh');
   });
 });
