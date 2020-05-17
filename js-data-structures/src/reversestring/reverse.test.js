@@ -5,8 +5,10 @@
 const { reverse,
   reverseUsingSubstring,
   reverseIteration,
+  reverseIterationString,
   reverseIterationArray,
-  reverseUsingArray } = require('./index.js');
+  reverseUsingArray,
+  reverseUsingArrayReduce } = require('./index.js');
 
 describe('Reverse string function', () => {
   test('Should reverse a string', () => {
@@ -87,5 +89,37 @@ describe('Reverse string function', () => {
 
   test('Should reverse a string', () => {
     expect(reverseUsingSubstring('hello')).toEqual('olleh');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationString('abc')).toEqual('cba');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationString('Greeting!')).toEqual('!gniteerG');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationString('apple')).toEqual('elppa');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseIterationString('hello')).toEqual('olleh');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseUsingArrayReduce('hello')).toEqual('olleh');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseUsingArrayReduce('abc')).toEqual('cba');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseUsingArrayReduce('Greeting!')).toEqual('!gniteerG');
+  });
+
+  test('Should reverse a string', () => {
+    expect(reverseUsingArrayReduce('apple')).toEqual('elppa');
   });
 });

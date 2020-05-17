@@ -33,16 +33,29 @@ function reverseIterationArray(str) {
 }
 
 function reverseUsingArray(str) {
-  if (str && str.length === 1) {
-    return str;
-  }
   return str.split('').reverse().join('');
+}
+
+function reverseIterationString(str) {
+  let result = "";
+  for (let character of str) {
+    result = character + result;
+  }
+  return result;
+}
+
+function reverseUsingArrayReduce(str) {
+  return str.split('').reduce((previous, current) => {
+    return current + previous
+  }, ''); // second argument is the initial value, an empty string
 }
 
 module.exports = {
   reverse,
   reverseUsingSubstring,
   reverseIteration,
+  reverseIterationString,
   reverseIterationArray,
-  reverseUsingArray
+  reverseUsingArray,
+  reverseUsingArrayReduce
 };
