@@ -8,7 +8,7 @@ const { reverse,
   reverseIterationString,
   reverseIterationArray,
   reverseUsingArray,
-  reverseUsingArrayReduce } = require('./index.js');
+  reverseUsingArrayReduce } = require('./index');
 
 describe('Reverse string function', () => {
   test('Should reverse a string', () => {
