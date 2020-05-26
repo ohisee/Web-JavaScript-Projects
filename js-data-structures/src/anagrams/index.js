@@ -33,6 +33,15 @@ function anagrams(str1 = "", str2 = "") {
   return result;
 }
 
+/**
+ * Using array sort is O(N log N) time complexity
+ */
+function anagramsUsingArraySort(str1 = "", str2 = "") {
+  const tstr1 = str1.replace(/[\W]/g, "").toLowerCase();
+  const tstr2 = str2.replace(/[\W]/g, "").toLowerCase();
+  return tstr1.split('').sort().join('') === tstr2.split('').sort().join('');
+}
+
 module.exports = {
   anagrams
 };
