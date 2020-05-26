@@ -11,12 +11,13 @@
 function chunkArray(arr = [], size) {
   let result = [];
   let beginIndex = 0;
-  let endIndex = Math.min(size, arr.length)
-  result.push(arr.slice(beginIndex, endIndex));
-  while (endIndex < arr.length) {
+  // let endIndex = Math.min(size, arr.length)
+  // result.push(arr.slice(beginIndex, endIndex));
+  while (beginIndex < arr.length) {
+    // beginIndex += size;
+    // endIndex = Math.min(endIndex + size, arr.length)
+    result.push(arr.slice(beginIndex, beginIndex + size));
     beginIndex += size;
-    endIndex = Math.min(endIndex + size, arr.length)
-    result.push(arr.slice(beginIndex, endIndex));
   }
   return result;
 }
