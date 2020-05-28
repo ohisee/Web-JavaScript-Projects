@@ -1,7 +1,7 @@
 /**
  * @fileoverview unit test steps
  */
-const { steps, steps2 } = require('./index');
+const { steps, steps2, steps3 } = require('./index');
 
 describe('Print steps', () => {
   beforeEach(() => {
@@ -52,6 +52,27 @@ describe('Print steps', () => {
 
   test('Should log steps', () => {
     steps2(3);
+    expect(console.log.mock.calls[0][0]).toEqual('#  ');
+    expect(console.log.mock.calls[1][0]).toEqual('## ');
+    expect(console.log.mock.calls[2][0]).toEqual('###');
+    expect(console.log.mock.calls.length).toEqual(3);
+  });
+
+  test('Should log steps', () => {
+    steps3(1);
+    expect(console.log.mock.calls[0][0]).toEqual('#');
+    expect(console.log.mock.calls.length).toEqual(1);
+  });
+
+  test('Should log steps', () => {
+    steps3(2);
+    expect(console.log.mock.calls[0][0]).toEqual('# ');
+    expect(console.log.mock.calls[1][0]).toEqual('##');
+    expect(console.log.mock.calls.length).toEqual(2);
+  });
+
+  test('Should log steps', () => {
+    steps3(3);
     expect(console.log.mock.calls[0][0]).toEqual('#  ');
     expect(console.log.mock.calls[1][0]).toEqual('## ');
     expect(console.log.mock.calls[2][0]).toEqual('###');

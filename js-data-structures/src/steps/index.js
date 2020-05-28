@@ -29,7 +29,28 @@ function steps2(num = 1) {
   }
 }
 
+/**
+ * Recursive print steps
+ */
+function steps3(num, row = 0, line = "") {
+  if (num === row) {
+    return;
+  }
+  if (line.length === num) {
+    console.log(line);
+    return steps3(num, row + 1, "");
+  } else {
+    if (line.length <= row) {
+      line += "#";
+    } else {
+      line += " ";
+    }
+    return steps3(num, row, line);
+  }
+}
+
 module.exports = {
   steps,
-  steps2
+  steps2,
+  steps3,
 };
