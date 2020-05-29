@@ -5,11 +5,11 @@
  */
 
 function triangle(num) {
+  let columns = num + (num - 1);
+  let mid = Math.floor(columns / 2);
   for (let i = 0; i < num; i++) {
     let line = "";
-    let columns = num + (num - 1);
     for (let j = 0; j < columns; j++) {
-      let mid = Math.floor(columns / 2);
       if (j >= (mid - i) && j <= (mid + i)) {
         line += "#";
       } else {
