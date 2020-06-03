@@ -13,3 +13,55 @@
  *     [11, 16, 15, 6],
  *     [10,  9,  8, 7]]
  */
+
+function matrix(num) {
+  let result = [];
+  let counter = 1;
+  let startRow = 0;
+  let startCol = 0;
+  let lastRow = num - 1;
+  let lastCol = num - 1;
+  for (let j = 0; j < num; j++) {
+    result.push([]);
+  }
+
+  while (startRow <= lastRow && startCol <= lastCol) {
+    for (let i = startCol; i <= lastCol; i++) {
+      result[startRow][i] = counter;
+      counter++;
+    }
+
+    startRow += 1; // Move to next row
+    // keep going to next row til last row
+    for (let i = startRow; i <= lastRow; i++) {
+      result[i][lastCol] = counter;
+      counter++;
+    }
+
+    // Move backward to the beginning of start column, 
+    // excluding last column
+    for (let i = lastCol - 1; i >= startCol; i--) {
+      result[lastRow][i] = counter;
+      counter++;
+    }
+
+    // Move upward to the beginning of start row, 
+    // excluding last row
+    for (let i = lastRow - 1; i >= startRow; i--) {
+      result[i][startCol] = counter;
+      counter++;
+    }
+
+    // Increment (move) start column to next column
+    startCol += 1;
+    // Decrement last column and last row
+    lastCol -= 1;
+    lastRow -= 1;
+  }
+
+  return result;
+}
+
+module.exports = {
+  matrix
+};
