@@ -38,25 +38,24 @@ function matrix(num) {
       counter++;
     }
 
+    lastCol -= 1; // Decrement last column
     // Move backward to the beginning of start column, 
     // excluding last column
-    for (let i = lastCol - 1; i >= startCol; i--) {
+    for (let i = lastCol; i >= startCol; i--) {
       result[lastRow][i] = counter;
       counter++;
     }
 
+    lastRow -= 1;  // Decrement last row
     // Move upward to the beginning of start row, 
     // excluding last row
-    for (let i = lastRow - 1; i >= startRow; i--) {
+    for (let i = lastRow; i >= startRow; i--) {
       result[i][startCol] = counter;
       counter++;
     }
 
     // Increment (move) start column to next column
     startCol += 1;
-    // Decrement last column and last row
-    lastCol -= 1;
-    lastRow -= 1;
   }
 
   return result;
