@@ -9,7 +9,7 @@ describe("Fibonaccis series", () => {
     expect(fib).toBeDefined();
   });
 
-  test('Should return fib series using memoization, slow, check run time', () => {
+  test('Should return fib series using memoization, check run time', () => {
     expect(fibMemoization(38)).toEqual(39088169);
   });
 

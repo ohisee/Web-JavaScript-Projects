@@ -41,7 +41,7 @@ function fibUsingMap(num) {
 }
 
 /**
- * Memoization, not very fast
+ * Memoization, need to call the returned function inside fn
  */
 function memoize(fn) {
   const cache = {};
@@ -54,6 +54,22 @@ function memoize(fn) {
     return result;
   };
 }
+
+/**
+ * To make memoization work, need to call 'fibMemoization' inside 
+ * this fibRecur function
+ */
+function fibRecur(num) {
+  if (num === 0) {
+    return 0;
+  }
+  if (num === 1) {
+    return 1;
+  }
+  return fibMemoization(num - 2) + fibMemoization(num - 1);
+}
+
+const fibMemoization = memoize(fibRecur);
 
 /**
  * Fast memoization
@@ -69,8 +85,6 @@ function fibUsingMemoization(num, cache = { 0: 0, 1: 1 }) {
   cache[num] = result;
   return result;
 }
-
-const fibMemoization = memoize(fibRecursion);
 
 module.exports = {
   fib,
