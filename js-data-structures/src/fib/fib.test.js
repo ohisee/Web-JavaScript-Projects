@@ -2,11 +2,19 @@
  * @fileoverview fib unit test
  */
 
-const { fib, fibRecursion, fibUsingMap } = require('./index');
+const { fib, fibRecursion, fibUsingMap, fibMemoization, fibUsingMemoization } = require('./index');
 
 describe("Fibonaccis series", () => {
   test('Function is defined', () => {
     expect(fib).toBeDefined();
+  });
+
+  test('Should return fib series using memoization, slow, check run time', () => {
+    expect(fibMemoization(38)).toEqual(39088169);
+  });
+
+  test('Should return fib series using memoization, check run time', () => {
+    expect(fibUsingMemoization(38)).toEqual(39088169);
   });
 
   test('Should return fib series', () => {

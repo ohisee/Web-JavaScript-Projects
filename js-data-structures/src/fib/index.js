@@ -16,6 +16,9 @@ function fib(num) {
   return result[result.length - 1];
 }
 
+/**
+ * O(2^n) exponential time
+ */
 function fibRecursion(num) {
   if (num === 0) {
     return 0;
@@ -37,8 +40,42 @@ function fibUsingMap(num) {
   return memo[num];
 }
 
+/**
+ * Memoization, not very fast
+ */
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
+}
+
+/**
+ * Fast memoization
+ */
+function fibUsingMemoization(num, cache = { 0: 0, 1: 1 }) {
+  if (num < 2) {
+    return num;
+  }
+  if (cache[num]) {
+    return cache[num];
+  }
+  const result = fibUsingMemoization(num - 1, cache) + fibUsingMemoization(num - 2, cache);
+  cache[num] = result;
+  return result;
+}
+
+const fibMemoization = memoize(fibRecursion);
+
 module.exports = {
   fib,
   fibRecursion,
-  fibUsingMap
+  fibUsingMap,
+  fibMemoization,
+  fibUsingMemoization
 };
