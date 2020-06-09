@@ -14,4 +14,11 @@ describe('Queue, first in first out', () => {
     expect(() => { queue.add(1); }).not.toThrow();
     expect(queue.remove()).toEqual(1);
   });
+
+  test('Should add and remove', () => {
+    const queue = new Queue();
+    expect(() => { queue.add(1); }).not.toThrow();
+    expect(queue.remove()).toEqual(1);
+    expect(queue.remove()).toEqual(undefined);
+  });
 });
