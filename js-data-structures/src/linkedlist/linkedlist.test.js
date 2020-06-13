@@ -70,3 +70,14 @@ describe("Linked list should return first", () => {
     expect(linkedList.getFirst().data).toEqual(21);
   });
 });
+
+describe("Linked list should get last", () => {
+  test("Linked list should get last", () => {
+    const linkedList = new LinkedList();
+    expect(linkedList.getLast()).toBeNull();
+    linkedList.insertFirst(20);
+    expect(linkedList.getLast()).toEqual({ data: 20, next: null });
+    linkedList.insertFirst(21);
+    expect(linkedList.getLast()).toEqual({ data: 20, next: null });
+  });
+});
