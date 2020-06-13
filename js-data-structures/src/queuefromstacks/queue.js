@@ -29,7 +29,11 @@ class Queue {
     while (this.stack.peek()) {
       this.holder.push(this.stack.pop());
     }
-    return this.holder.peek();
+    let item = this.holder.peek();
+    while (this.holder.peek()) {
+      this.stack.push(this.holder.pop());
+    }
+    return item;
   }
 }
 
