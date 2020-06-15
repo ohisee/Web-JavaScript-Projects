@@ -81,3 +81,35 @@ describe("Linked list should get last", () => {
     expect(linkedList.getLast()).toEqual({ data: 20, next: null });
   });
 });
+
+describe("Linked list should do clear", () => {
+  test("Linked list should do clear", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst(20);
+    linkedList.insertFirst(21);
+    linkedList.insertFirst(22);
+    expect(linkedList.size()).toEqual(3);
+    linkedList.clear();
+    expect(linkedList.getFirst()).toBeNull();
+    expect(linkedList.getLast()).toBeNull();
+    expect(linkedList.size()).toEqual(0);
+  });
+});
+
+describe("Linked list should remove first", () => {
+  test("Linked list should remove first", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst(20);
+    linkedList.insertFirst(21);
+    linkedList.insertFirst(22);
+    expect(linkedList.size()).toEqual(3);
+    const node = linkedList.removeFirst();
+    expect(linkedList.size()).toEqual(2);
+    expect(node).toEqual({ data: 22, next: null });
+    linkedList.removeFirst();
+    linkedList.removeFirst();
+    expect(linkedList.size()).toEqual(0);
+    expect(linkedList.getFirst()).toBeNull();
+    expect(linkedList.getLast()).toBeNull();
+  });
+});

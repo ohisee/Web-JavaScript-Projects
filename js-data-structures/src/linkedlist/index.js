@@ -27,10 +27,10 @@ class LinkedList {
 
   size() {
     let counter = 0;
-    let t = this.head;
-    while (t) {
+    let current = this.head;
+    while (current) {
       counter += 1;
-      t = t.next;
+      current = current.next;
     }
     return counter;
   }
@@ -40,11 +40,31 @@ class LinkedList {
   }
 
   getLast() {
-    let t = this.head;
-    while (t && t.next) {
-      t = t.next;
+    let current = this.head;
+    while (current && current.next) {
+      current = current.next;
     }
-    return t;
+    return current;
+  }
+
+  clear() {
+    let current = this.head;
+    while (current) {
+      this.head = null;
+      this.head = current.next;
+      current = this.head;
+    }
+    this.length = 0;
+  }
+
+  removeFirst() {
+    let current = this.head;
+    if (current) {
+      this.head = current.next;
+      current.next = null;
+    }
+    this.length -= 1;
+    return current;
   }
 }
 
