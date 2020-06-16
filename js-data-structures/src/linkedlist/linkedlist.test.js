@@ -113,3 +113,54 @@ describe("Linked list should remove first", () => {
     expect(linkedList.getLast()).toBeNull();
   });
 });
+
+describe("Linked list should remove last", () => {
+  test("Linked list should remove last of empty list", () => {
+    const linkedList = new LinkedList();
+    expect(() => {
+      linkedList.removeLast();
+    }).not.toThrow();
+  });
+
+  test("Linked list should remove last", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst("walker");
+    const el = linkedList.removeLast();
+    expect(linkedList.size()).toEqual(0);
+    expect(linkedList.getFirst()).toEqual(null);
+    expect(linkedList.getLast()).toEqual(null);
+    expect(el).toEqual({ data: "walker", next: null });
+  });
+
+  test("Linked list should remove last", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst("walker");
+    linkedList.insertFirst("talker");
+    const el = linkedList.removeLast();
+    expect(linkedList.size()).toEqual(1);
+    expect(linkedList.getFirst().data).toEqual("talker");
+    expect(el).toEqual({ data: "walker", next: null });
+  });
+
+  test("Linked list should remove last", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst("c");
+    linkedList.insertFirst("b");
+    linkedList.insertFirst("a");
+    const el = linkedList.removeLast();
+    expect(linkedList.size()).toEqual(2);
+    expect(linkedList.getLast().data).toEqual("b");
+    expect(el).toEqual({ data: "c", next: null });
+  });
+});
+
+describe("Linked list should insert last", () => {
+  test("Linked list should insert last", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertFirst("walker");
+    expect(linkedList.size()).toEqual(1);
+    linkedList.insertLast("talker");
+    expect(linkedList.size()).toEqual(2);
+    expect(linkedList.getLast().data).toEqual("talker");
+  });
+});
