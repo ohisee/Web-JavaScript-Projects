@@ -164,3 +164,108 @@ describe("Linked list should insert last", () => {
     expect(linkedList.getLast().data).toEqual("talker");
   });
 });
+
+describe("Linked list should get at an index", () => {
+  test("Linked list should get at an index", () => {
+    const linkedList = new LinkedList();
+    expect(linkedList.getAt(0)).toEqual(null);
+    expect(linkedList.getAt(1)).toEqual(null);
+    linkedList.insertLast(1);
+    linkedList.insertLast(2);
+    linkedList.insertLast(3);
+    linkedList.insertLast(4);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    expect(linkedList.getAt(0).data).toEqual(1);
+    expect(linkedList.getAt(1).data).toEqual(2);
+    expect(linkedList.getAt(2).data).toEqual(3);
+    expect(linkedList.getAt(3).data).toEqual(4);
+    expect(linkedList.getAt(4).data).toEqual(5);
+    expect(linkedList.getAt(5).data).toEqual(6);
+    expect(linkedList.getAt(19)).toEqual(null);
+  });
+});
+
+describe("Linked list should remove at an index", () => {
+  test("Linked list should remove at an index of empty list", () => {
+    const linkedList = new LinkedList();
+    expect(() => {
+      linkedList.removeAt(0);
+      linkedList.removeAt(1);
+      linkedList.removeAt(2);
+    }).not.toThrow();
+  });
+
+  test("Linked list should remove at out of bound index", () => {
+    const linkedList = new LinkedList();
+    expect(() => {
+      linkedList.insertFirst("talker");
+      linkedList.removeAt(1);
+    }).not.toThrow();
+  });
+
+  test("Linked list should remove at an index", () => {
+    const linkedList = new LinkedList();
+    expect(linkedList.getAt(0)).toEqual(null);
+  });
+
+  test("Linked list should remove at an index", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(1);
+    expect(linkedList.getAt(0).data).toEqual(1);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0)).toEqual(null);
+  });
+
+  test("Linked list should remove at an index", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(1);
+    linkedList.insertLast(2);
+    linkedList.insertLast(3);
+    linkedList.insertLast(4);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    linkedList.insertLast(7);
+    expect(linkedList.getAt(0).data).toEqual(1);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(2);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(3);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(4);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(5);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(6);
+    linkedList.removeAt(0);
+    expect(linkedList.getAt(0).data).toEqual(7);
+  });
+
+  test("Linked list should remove at an index", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(1);
+    linkedList.insertLast(2);
+    linkedList.insertLast(3);
+    linkedList.insertLast(4);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    linkedList.insertLast(7);
+    expect(linkedList.getAt(1).data).toEqual(2);
+    linkedList.removeAt(1);
+    expect(linkedList.getAt(1).data).toEqual(3);
+  });
+
+  test("Linked list should remove at an index", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(1);
+    linkedList.insertLast(2);
+    linkedList.insertLast(3);
+    linkedList.insertLast(4);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    linkedList.insertLast(7);
+    expect(linkedList.getAt(3).data).toEqual(4);
+    linkedList.removeAt(3);
+    expect(linkedList.getAt(30)).toEqual(null);
+  });
+});

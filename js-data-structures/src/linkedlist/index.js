@@ -87,11 +87,39 @@ class LinkedList {
 
   insertLast(data) {
     let lastNode = this.getLast();
-    if (!lastNode) {
-      this.head = new Node(data, this.head);
-    } else {
+    if (lastNode) {
       lastNode.next = new Node(data);
+    } else {
+      this.head = new Node(data);
     }
+  }
+
+  getAt(index) {
+    let counter = 0;
+    let node = this.head;
+    while (counter !== index && node) {
+      counter += 1;
+      node = node.next;
+    }
+    return counter === index ? node : null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      return null;
+    }
+    if (index === 0) {
+      return this.removeFirst();
+    }
+    let previous = this.getAt(index - 1);
+    if (previous) {
+      let deleteNode = previous.next;
+      if (deleteNode) {
+        previous.next = deleteNode.next;
+        return deleteNode;
+      }
+    }
+    return null;
   }
 }
 
