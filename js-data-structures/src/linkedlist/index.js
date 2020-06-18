@@ -121,6 +121,21 @@ class LinkedList {
     }
     return null;
   }
+
+  insertAt(data, index) {
+    if (index === 0) { // empty list and insert at index 0 (beginning of list)
+      this.head = new Node(data, this.head);
+    } else {
+      let previous = this.getAt(index - 1);
+      if (previous) {
+        let node = new Node(data);
+        node.next = previous.next;
+        previous.next = node;
+      } else {
+        this.insertLast(data);
+      }
+    }
+  }
 }
 
 module.exports = {

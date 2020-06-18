@@ -269,3 +269,66 @@ describe("Linked list should remove at an index", () => {
     expect(linkedList.getAt(30)).toEqual(null);
   });
 });
+
+describe("Linked list should insert at an index", () => {
+  test("Linked list should insert in one empty list", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertAt("walker", 0);
+    expect(linkedList.getFirst().data).toEqual("walker");
+  });
+
+  test("Linked list should insert at an index", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertAt("start", 0);
+    expect(linkedList.getAt(0).data).toEqual("start");
+    linkedList.insertAt("walker", 0);
+    expect(linkedList.getAt(0).data).toEqual("walker");
+    expect(linkedList.getAt(1).data).toEqual("start");
+  });
+
+  test("Linked list should insert at an index at start", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast("a");
+    linkedList.insertLast("b");
+    linkedList.insertLast("c");
+    linkedList.insertAt("start", 0);
+    expect(linkedList.getAt(0).data).toEqual("start");
+    expect(linkedList.getAt(1).data).toEqual("a");
+    expect(linkedList.getAt(2).data).toEqual("b");
+    expect(linkedList.getAt(3).data).toEqual("c");
+  });
+
+  test("Linked list should insert at an index at middle", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast("a");
+    linkedList.insertLast("b");
+    linkedList.insertLast("c");
+    linkedList.insertLast("d");
+    linkedList.insertAt("mid", 2);
+    expect(linkedList.getAt(0).data).toEqual("a");
+    expect(linkedList.getAt(1).data).toEqual("b");
+    expect(linkedList.getAt(2).data).toEqual("mid");
+    expect(linkedList.getAt(3).data).toEqual("c");
+    expect(linkedList.getAt(4).data).toEqual("d");
+  });
+
+  test("Linked list should insert at an index at last", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast("a");
+    linkedList.insertLast("b");
+    linkedList.insertAt("talker", 2);
+    expect(linkedList.getAt(0).data).toEqual("a");
+    expect(linkedList.getAt(1).data).toEqual("b");
+    expect(linkedList.getAt(2).data).toEqual("talker");
+  });
+
+  test("Linked list should insert at an index out of bounds", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast("a");
+    linkedList.insertLast("b");
+    linkedList.insertAt("talker", 20);
+    expect(linkedList.getAt(0).data).toEqual("a");
+    expect(linkedList.getAt(1).data).toEqual("b");
+    expect(linkedList.getAt(2).data).toEqual("talker");
+  });
+});
