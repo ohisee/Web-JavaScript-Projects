@@ -123,17 +123,42 @@ class LinkedList {
   }
 
   insertAt(data, index) {
-    if (index === 0) { // empty list and insert at index 0 (beginning of list)
+    if (!this.head) {
+      this.head = new Node(data);
+    } else if (index === 0) { // empty list and insert at index 0 (beginning of list)
       this.head = new Node(data, this.head);
     } else {
-      let previous = this.getAt(index - 1);
-      if (previous) {
-        let node = new Node(data);
-        node.next = previous.next;
-        previous.next = node;
-      } else {
-        this.insertLast(data);
-      }
+      let previous = this.getAt(index - 1) || this.getLast();
+      let node = new Node(data);
+      node.next = previous.next;
+      previous.next = node;
+      // let previous = this.getAt(index - 1);
+      // if (previous) {
+      //   let node = new Node(data);
+      //   node.next = previous.next;
+      //   previous.next = node;
+      // } else {
+      //   this.insertLast(data);
+      // }
+    }
+  }
+
+  forEach(iterator = function (node, index) { }) {
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      iterator(current, index);
+      current = current.next;
+      index += 1;
+    }
+  }
+
+  // for ... of
+  *[Symbol.iterator]() {
+    let current = this.head;
+    while (current) {
+      yield current;
+      current = current.next;
     }
   }
 }

@@ -332,3 +332,61 @@ describe("Linked list should insert at an index", () => {
     expect(linkedList.getAt(2).data).toEqual("talker");
   });
 });
+
+describe("Linked list should do foreach", () => {
+  test("Linked list should do foreach transform", () => {
+    const linkedList = new LinkedList();
+    linkedList.forEach(node => {
+      node.data += 10;
+    });
+    expect(linkedList.getAt(0)).toEqual(null);
+  });
+
+  test("Linked list should do foreach transform", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(10);
+    linkedList.insertLast(21);
+    linkedList.insertLast(1);
+    linkedList.insertLast(87);
+    linkedList.insertLast(69);
+    linkedList.insertLast(99);
+    linkedList.forEach(node => {
+      node.data += 10;
+    });
+    expect(linkedList.getAt(0).data).toEqual(20);
+    expect(linkedList.getAt(1).data).toEqual(31);
+    expect(linkedList.getAt(2).data).toEqual(11);
+    expect(linkedList.getAt(3).data).toEqual(97);
+    expect(linkedList.getAt(4).data).toEqual(79);
+    expect(linkedList.getAt(5).data).toEqual(109);
+  });
+});
+
+describe("Linked list should do for...of loops", () => {
+  test("Linked list should do for...of loops", () => {
+    const linkedList = new LinkedList();
+    linkedList.insertLast(1);
+    linkedList.insertLast(2);
+    linkedList.insertLast(3);
+    linkedList.insertLast(4);
+    linkedList.insertLast(5);
+    linkedList.insertLast(6);
+    for (let node of linkedList) {
+      node.data *= 2;
+    }
+    expect(linkedList.getAt(0).data).toEqual(2);
+    expect(linkedList.getAt(1).data).toEqual(4);
+    expect(linkedList.getAt(2).data).toEqual(6);
+    expect(linkedList.getAt(3).data).toEqual(8);
+    expect(linkedList.getAt(4).data).toEqual(10);
+    expect(linkedList.getAt(5).data).toEqual(12);
+  });
+
+  test("Linked list should do for...of loops in empty list", () => {
+    const linkedList = new LinkedList();
+    expect(() => {
+      for (let node of linkedList) {
+      }
+    }).not.toThrow();
+  });
+});
