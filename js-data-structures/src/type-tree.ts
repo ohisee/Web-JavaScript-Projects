@@ -39,14 +39,28 @@ class Tree<T> {
   }
 
   traverseBreadthFirst(fn: (node: TreeNode<T>) => void) {
-    const queue: TreeNode<T>[] = [];
     if (this.root) {
-      queue.push(this.root);
+      const queue: TreeNode<T>[] = [this.root];
       while (queue.length > 0) {
         let node = queue.shift();
         if (node) {
           if (node.children.length > 0) {
             queue.push(...node.children);
+          }
+          fn(node);
+        }
+      }
+    }
+  }
+
+  traverseDepthFirst(fn: (node: TreeNode<T>) => void) {
+    if (this.root) {
+      const queue: TreeNode<T>[] = [this.root];
+      while (queue.length > 0) {
+        let node = queue.shift();
+        if (node) {
+          if (node.children.length > 0) {
+            queue.unshift(...node.children);
           }
           fn(node);
         }
@@ -67,6 +81,11 @@ tree.root!.children[1].add("root-node-child-node-2-1");
 console.log(JSON.stringify(tree, null, 2));
 const walker: string[] = [];
 tree.traverseBreadthFirst(node => {
+  walker.push(node.data as string);
+});
+console.log(walker);
+walker.length = 0;
+tree.traverseDepthFirst(node => {
   walker.push(node.data as string);
 });
 console.log(walker);

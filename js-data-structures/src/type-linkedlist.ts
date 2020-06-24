@@ -21,8 +21,34 @@ class LinkedList<T> {
     this.head = null;
   }
 
+  getLast() {
+    let current = this.head;
+    while (current && current.next) {
+      current = current.next;
+    }
+    return current;
+  }
+
   insertAtFirst(data: T) {
     this.head = new LinkedListNode<T>(data, this.head);
+  }
+
+  insertAtlast(data: T) {
+    let lastNode = this.getLast();
+    if (lastNode) {
+      lastNode.next = new LinkedListNode(data);
+    } else {
+      this.head = new LinkedListNode(data);
+    }
+  }
+
+  removeFirst() {
+    let current = this.head;
+    if (this.head) {
+      this.head = this.head?.next;
+      current!.next = null;
+    }
+    return current;
   }
 
   forEach(iteratorFunction: (node: LinkedListNode<T>, index?: number) => void) {
