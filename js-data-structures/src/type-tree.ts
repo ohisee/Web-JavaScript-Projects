@@ -28,4 +28,45 @@ class Tree<T> {
   constructor() {
     this.root = null;
   }
+
+  insertAtRoot(data: T): TreeNode<T> {
+    if (!this.root) {
+      this.root = new TreeNode(data);
+    } else {
+      this.root.add(data);
+    }
+    return this.root;
+  }
+
+  traverseBreadthFirst(fn: (node: TreeNode<T>) => void) {
+    const queue: TreeNode<T>[] = [];
+    if (this.root) {
+      queue.push(this.root);
+      while (queue.length > 0) {
+        let node = queue.shift();
+        if (node) {
+          if (node.children.length > 0) {
+            queue.push(...node.children);
+          }
+          fn(node);
+        }
+      }
+    }
+  }
 }
+
+console.log("---start---");
+const tree = new Tree();
+tree.insertAtRoot("root-node");
+tree.insertAtRoot("root-node-child-node-1");
+tree.insertAtRoot("root-node-child-node-2");
+tree.insertAtRoot("root-node-child-node-3");
+tree.root!.children[0].add("root-node-child-node-1-1");
+tree.root!.children[0].add("root-node-child-node-1-2");
+tree.root!.children[1].add("root-node-child-node-2-1");
+console.log(JSON.stringify(tree, null, 2));
+const walker: string[] = [];
+tree.traverseBreadthFirst(node => {
+  walker.push(node.data as string);
+});
+console.log(walker);
