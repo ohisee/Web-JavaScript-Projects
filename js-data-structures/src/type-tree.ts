@@ -84,7 +84,7 @@ tree.traverseBreadthFirst(node => {
   walker.push(node.data as string);
 });
 console.log(walker);
-walker.length = 0;
+walker.length = 0; // clear the array
 tree.traverseDepthFirst(node => {
   walker.push(node.data as string);
 });
