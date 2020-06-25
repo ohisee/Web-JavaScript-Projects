@@ -39,6 +39,8 @@ class Tree {
 
   /**
    * accept a function
+   * traverse each node and append its tree nodes (children) to queue, 
+   * insert at the end of queue
    */
   traverseBreadthFirst(fn = function (node) { }) {
     if (this.root) {
@@ -56,7 +58,8 @@ class Tree {
   }
 
   /**
-   * accept a function
+   * accept a function 
+   * traverse each node and inserts its tree nodes (children) in the front
    */
   traverseDepthFirst(fn = function (node) { }) {
     if (this.root) {
