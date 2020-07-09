@@ -8,41 +8,23 @@
   const spanEl3 = document.querySelector("#el3");
   const mainDiv = document.querySelector(".main");
   const timeoutValue = 1800;
+  const className = "hideDiv";
 
-  if (spanEl1) {
-    spanEl1.addEventListener("click", function () {
-      spanEl1.parentElement.classList.add("hideDiv");
-      if (mainDiv) {
-        console.log(spanEl1);
-        setTimeout(function () {
-          mainDiv.removeChild(spanEl1.parentElement);
-        }, timeoutValue);
-      }
-    });
-  }
+  const handleClick = function (mainDiv, spanDiv, timer, className) {
+    if (spanDiv) {
+      spanDiv.addEventListener("click", function () {
+        spanDiv.parentElement.classList.add(className);
+        if (mainDiv) {
+          setTimeout(function () {
+            mainDiv.removeChild(spanDiv.parentElement);
+          }, timer);
+        }
+      });
+    }
+  };
 
-  if (spanEl2) {
-    spanEl2.addEventListener("click", function () {
-      spanEl2.parentElement.classList.add("hideDiv");
-      if (mainDiv) {
-        console.log(spanEl2);
-        setTimeout(function () {
-          mainDiv.removeChild(spanEl2.parentElement);
-        }, timeoutValue);
-      }
-    });
-  }
-
-  if (spanEl3) {
-    spanEl3.addEventListener("click", function () {
-      spanEl3.parentElement.classList.add("hideDiv");
-      if (mainDiv) {
-        console.log(spanEl3);
-        setTimeout(function () {
-          mainDiv.removeChild(spanEl3.parentElement);
-        }, timeoutValue);
-      }
-    });
-  }
+  handleClick(mainDiv, spanEl1, timeoutValue, className);
+  handleClick(mainDiv, spanEl2, timeoutValue, className);
+  handleClick(mainDiv, spanEl3, timeoutValue, className);
 
 })();
