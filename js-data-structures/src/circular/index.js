@@ -4,7 +4,11 @@
  */
 const { LinkedList } = require("./linkedlist");
 
-function circular(linkedlist = new LinkedList()) {
+/**
+ * Use two pointers, slower and faster to check if list is circular 
+ * @param {LinkedList} linkedlist 
+ */
+function circular(linkedlist) {
   let slower = linkedlist.getFirst();
   let faster = linkedlist.getFirst();
   while (faster && faster.next && faster.next.next) {

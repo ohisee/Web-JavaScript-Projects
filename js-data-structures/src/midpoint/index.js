@@ -11,8 +11,9 @@ const { LinkedList } = require('./linkedlist');
  * move slower by 1, move faster by 2, and check if faster 
  * has next and next.next node available, if not then slower is 
  * at the mid point
+ * @param {LinkedList} linkedList
  */
-function midpoint(linkedList = new LinkedList()) {
+function midpoint(linkedList) {
   let slower = linkedList.getFirst();
   let faster = linkedList.getFirst();
   while (faster && faster.next && faster.next.next) {

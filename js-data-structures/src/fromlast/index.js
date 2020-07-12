@@ -7,8 +7,10 @@ const { LinkedList } = require("./linkedlist");
 
 /**
  * assume that n is always less than the size of linked list
+ * @param {LinkedList} linkedList 
+ * @param {number} n 
  */
-function fromLast(linkedList = new LinkedList(), n) {
+function fromLast(linkedList, n) {
   let slower = linkedList.getFirst();
   let faster = linkedList.getFirst();
   let counter = 0;
