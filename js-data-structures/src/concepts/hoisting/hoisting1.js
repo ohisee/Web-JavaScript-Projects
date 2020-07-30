@@ -9,7 +9,7 @@ console.log(say2, "---  say2 is function expression and is referring to undefine
 // console.log(say2()); error, cannot hoist function expression
 // console.log(walker2); error, cannot hoist let
 // console.log(walker3); error, cannot hoist const
-console.log(say());
+console.log(say(), "--- should print 'hello walker'");
 
 var walker = "walking";
 let walker2 = "walkering";
