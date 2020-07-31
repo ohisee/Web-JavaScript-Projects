@@ -17,6 +17,9 @@ const wizard = {
   },
   add(num1, num2) {
     return this.health = (num1 + num2);
+  },
+  sayName(greeting) {
+    return `${greeting} ${this.name}`;
   }
 };
 
@@ -45,7 +48,10 @@ archer.health = 30;
 // call() and apply() immediately run a function
 // bind returns new function with certain context and parameters to be called later
 console.log("before bind", archer);
-const healArcher = wizard.heal.bind(archer, 100);
+// const healArcher = wizard.heal.bind(archer, 100);
+const healArcher = wizard.heal.bind(archer);
 healArcher();
 console.log("after bind", archer);
 
+const sayNameArcher = wizard.sayName.bind(archer, "hello");
+console.log(sayNameArcher(), "--- should print 'hello Robin Hood'");
