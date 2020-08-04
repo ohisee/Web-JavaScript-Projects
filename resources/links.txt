@@ -2,3 +2,9 @@
 ----------------------------- https://developers.soundcloud.com/blog/garbage-collection-in-redux-applications
 
 ----------------------------- https://www.freecodecamp.org/news/how-to-create-a-coronavirus-covid-19-dashboard-map-app-in-react-with-gatsby-and-leaflet/ 
+
+------------------------- https://zerotomastery.io/blog/?tag=WDM
+
+------------------------- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
+
+------------------------- https://github.com/tc39/proposal-class-fields
