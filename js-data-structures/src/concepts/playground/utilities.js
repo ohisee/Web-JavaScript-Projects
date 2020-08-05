@@ -12,7 +12,7 @@ const colors = {
 }
 
 /**
- * Add color to text, for example, \x1b[92m___\x1b[39m
+ * add color to text, for example, \x1b[92m___\x1b[39m
  * @param {[number, number]} color 
  * @param {string[]} strs 
  */
