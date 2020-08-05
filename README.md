@@ -1,1 +1,1 @@
-# Web-JavaScript-Projects
+# Exploring HTML, CSS, and JavaScript
