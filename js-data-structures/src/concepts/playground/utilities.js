@@ -52,11 +52,19 @@ function toPrimaryLightLog(...strs) {
   return toLogString(colors.cyanBright, strs);
 }
 
+/**
+ * @param {number} len 
+ */
+function toDashLine(len) {
+  return toLogString(colors.yellowBright, ["-".repeat(len)]);
+}
+
 module.exports = {
   toInfoLog,
   toWarningLog,
   toDangerLog,
   toPrimaryLog,
   toSecondaryLog,
-  toPrimaryLightLog
+  toPrimaryLightLog,
+  toDashLine,
 };
