@@ -1,7 +1,7 @@
 /**
  * @fileoverview binary search tree unit test
  */
-const { BinarySearchTreeNode } = require('./binarysearchtree');
+const { BinarySearchTreeNode } = require('./binarysearchtreenode');
 
 describe("Binary search tree node", () => {
   test("Binary search tree constructor", () => {

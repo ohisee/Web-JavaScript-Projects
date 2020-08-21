@@ -8,7 +8,11 @@
  * chunkArray([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
  */
 
-function chunkArray(arr = [], size) {
+/**
+ * @param {number[]} arr 
+ * @param {number} size 
+ */
+function chunkArray(arr, size) {
   let result = [];
   let beginIndex = 0;
   // let endIndex = Math.min(size, arr.length)
@@ -22,7 +26,11 @@ function chunkArray(arr = [], size) {
   return result;
 }
 
-function chunkArrayLoop(arr = [], size) {
+/**
+ * @param {number[]} arr 
+ * @param {number} size 
+ */
+function chunkArrayLoop(arr, size) {
   let chunks = [];
   for (let el of arr) {
     let chunk = chunks[chunks.length === 0 ? 0 : chunks.length - 1];

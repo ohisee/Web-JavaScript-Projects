@@ -5,7 +5,10 @@
  * capitalize('look, it is working!') --> 'Look, It Is Working!'
  */
 
-function capitalize(str = "") {
+/**
+ * @param {string} str 
+ */
+function capitalize(str) {
   // edge case first char is not a space but a punctuation mark
   let result = str.trim()[0].toUpperCase();
   let isSpaceBefore = false;
@@ -25,7 +28,10 @@ function capitalize(str = "") {
   return result;
 }
 
-function capitalizeUsingSplit(str = "") {
+/**
+ * @param {string} str 
+ */
+function capitalizeUsingSplit(str) {
   let words = str.split(/(\s+)/g).filter(w => w); // filter out ''
   let result = [];
   for (let word of words) {

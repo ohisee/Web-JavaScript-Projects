@@ -4,6 +4,9 @@
  * For numbers which are multiples of both three and five print "fizzbuzz"
  */
 
+/**
+ * @param {number} num 
+ */
 function fizzbuzz(num) {
   for (let i = 1; i <= num; i++) {
     if (i % (3 * 5) === 0) { // multiple of 3 and 5 (15) must be checked first
