@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>React Project</title>
+</head>
+
+<body>
+	<div id="root">element not rendered</div>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script>
+		// var App = () => {
+		// 	return React.createElement(
+		// 		"div", 
+		// 		{}, 
+		// 		React.createElement("h2", {}, "React element is rendered now"));
+		// };
+		function Person(props) {
+			return React.createElement("div", {}, [
+				React.createElement("h2", {}, props.name),
+				React.createElement("p", {}, props.greeting)
+			]);
+		}
+
+		// function App() {
+		// 	return React.createElement(
+		// 		"div",
+		// 		{},
+		// 		[
+		// 			React.createElement("h2", {}, "React element is rendered now"),
+		// 			React.createElement(Person, { name: "Walker", greeting: "how are you?" }),
+		// 			React.createElement(Person, { name: "Talker", greeting: "fine, thank you" }),
+		// 			React.createElement(Person, { name: "Runner", greeting: "this is a good day" }),
+		// 		]);
+		// }
+
+		class App extends React.Component {
+			render() {
+				return React.createElement(
+					"div",
+					{},
+					[
+						React.createElement("h2", {}, "React element is rendered now"),
+						React.createElement(Person, { name: "Walker", greeting: "how are you?" }),
+						React.createElement(Person, { name: "Talker", greeting: "fine, thank you" }),
+						React.createElement(Person, { name: "Runner", greeting: "this is a good day" }),
+					]);
+			}
+		}
+
+		ReactDOM.render(
+			React.createElement(App),
+			document.getElementById("root")
+		);
+	</script>
+</body>
+
+</html>
