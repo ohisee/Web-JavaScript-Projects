@@ -105,6 +105,50 @@ html {
   transform: scale(1.1);
 }
 
+.form-section {
+  width: 312px; /* width is 280px plus 32px (2rem) left margin */
+}
+
+.form-input-container {
+  margin: 0 0 2rem 2rem;
+  position: relative;
+}
+
+.form-input-container input[type="text"],
+.form-input-container input[type="password"] {
+  width: 100%;
+  display: block;
+  padding: 16px 2px 0 0;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #292525;
+}
+
+.form-input-container input[type="text"]:hover,
+.form-input-container input[type="password"]:hover  {
+  outline: none;
+}
+
+.form-input-container .label-el-1,
+.form-input-container .label-el-2 {
+  color: #353030;
+  position: absolute;
+  top: 10px;
+  transition: all 200ms ease;
+}
+
+.form-input-container input[type="text"]:focus ~ .label-el-1,
+.form-input-container input[type="password"]:focus ~ .label-el-2 {
+  top: -3px;
+  color: #9e9595;
+}
+
+.form-input-container .label-el-1.upper,
+.form-input-container .label-el-2.upper {
+  top: -3px;
+  color: #9e9595;
+}
+
 @keyframes walk-in {
   0% {
     left: -100%;

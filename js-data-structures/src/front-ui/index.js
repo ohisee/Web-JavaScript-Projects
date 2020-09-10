@@ -7,8 +7,13 @@
   const spanEl2 = document.querySelector("#el2");
   const spanEl3 = document.querySelector("#el3");
   const mainDiv = document.querySelector(".main");
+  const inputEl1 = document.querySelector(".input-el-1");
+  const labelEl1 = document.querySelector(".label-el-1");
+  const inputEl2 = document.querySelector(".input-el-2");
+  const labelEl2 = document.querySelector(".label-el-2");
   const timeoutValue = 1800;
   const className = "hideDiv";
+  const classNameUpper = "upper";
 
   const handleClick = function (mainDiv, spanDiv, timer, className) {
     if (spanDiv) {
@@ -23,8 +28,24 @@
     }
   };
 
+  const handleInputChange = function (inputEl, labelEl, className) {
+    inputEl.addEventListener("change", function (event) {
+      let t = event.target.value;
+      if (t.length > 0) {
+        // labelEl1.style.top = "-3px";
+        labelEl.classList.add(className);
+      } else {
+        // labelEl1.removeAttribute("style");
+        labelEl.classList.remove(className);
+      }
+    });
+  };
+
   handleClick(mainDiv, spanEl1, timeoutValue, className);
   handleClick(mainDiv, spanEl2, timeoutValue, className);
   handleClick(mainDiv, spanEl3, timeoutValue, className);
+
+  handleInputChange(inputEl1, labelEl1, classNameUpper);
+  handleInputChange(inputEl2, labelEl2, classNameUpper);
 
 })();
