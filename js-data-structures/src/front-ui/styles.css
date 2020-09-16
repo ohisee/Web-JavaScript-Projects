@@ -59,6 +59,55 @@ html {
   opacity: 0;
  }
 
+.navigation-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navigation-header .bars {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 10px;
+  border: 1px solid #e6dddd;
+  border-radius: 10%;
+  box-shadow: 2px 2px #e6dddd;
+  cursor: pointer;
+}
+
+.navigation-header .bars span {
+  margin: 1px 0;
+  width: 30px;
+  height: 3px;
+  background-color: #887f7f;
+}
+
+.navigation-header .links {
+  margin: 16px;
+}
+
+.navigation-header .links a {
+  cursor: pointer;
+}
+
+.navigation-header .dropdown {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #c2b6b6;
+  background-color: #f8f6f6;
+  /* overflow: scroll; */
+  position: absolute;
+  top: 60px;
+  left: 16px;
+  z-index: 10;
+}
+
+.navigation-header .dropdown.hidden {
+  display: none;
+}
+
 .main.showDiv {
   left: 200px;
   transform: translateY(-100px);
