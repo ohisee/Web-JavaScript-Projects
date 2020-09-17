@@ -11,7 +11,7 @@
   const labelEl1 = document.querySelector(".label-el-1");
   const inputEl2 = document.querySelector(".input-el-2");
   const labelEl2 = document.querySelector(".label-el-2");
-  const barsButton = document.querySelector(".bars");
+  const headerContainer = document.querySelector(".button-dropdown-container");
   const dropdownDiv = document.querySelector(".dropdown");
   const timeoutValue = 1800;
   const className = "hideDiv";
@@ -50,8 +50,16 @@
   handleInputChange(inputEl1, labelEl1, classNameUpper);
   handleInputChange(inputEl2, labelEl2, classNameUpper);
 
-  barsButton.addEventListener("click", function () {
-    dropdownDiv.classList.toggle("hidden");
+  headerContainer.addEventListener("mouseover", function () {
+    dropdownDiv.classList.remove("hidden");
+  });
+
+  headerContainer.addEventListener("mouseenter", function () {
+    dropdownDiv.classList.remove("hidden");
+  });
+
+  headerContainer.addEventListener("mouseleave", function () {
+    dropdownDiv.classList.add("hidden");
   });
 
 })();

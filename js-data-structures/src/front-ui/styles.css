@@ -66,7 +66,7 @@ html {
   position: relative;
 }
 
-.navigation-header .bars {
+.navigation-header .button-dropdown-container .bars {
   display: flex;
   flex-direction: column;
   margin: 16px;
@@ -77,7 +77,7 @@ html {
   cursor: pointer;
 }
 
-.navigation-header .bars span {
+.navigation-header .button-dropdown-container .bars span {
   margin: 1px 0;
   width: 30px;
   height: 3px;
@@ -94,7 +94,7 @@ html {
 
 .navigation-header .dropdown {
   width: 300px;
-  height: 200px;
+  height: 300px;
   border: 1px solid #c2b6b6;
   background-color: #f8f6f6;
   /* overflow: scroll; */
@@ -106,6 +106,44 @@ html {
 
 .navigation-header .dropdown.hidden {
   display: none;
+}
+
+.navigation-header .dropdown .dropdown-content {
+  width: 100%;
+  height: 200px;
+  background-image: url("./bg.png");
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 32px;
+}
+
+.navigation-header .dropdown .dropdown-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+  margin-top: auto;
+}
+
+.navigation-header .dropdown .dropdown-buttons .show-button {
+  font-family: inherit;
+  font-weight: bold;
+  width: 90px;
+  height: 30px;
+  line-height: 10px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #5555f7;
+  border-radius: 3px;
+  cursor: pointer;
+  /* border: none; */
+  outline: none;
+  color: #f8f6f6;
+  background-color: #6161f8;
+}
+
+.navigation-header .dropdown .dropdown-buttons .show-button:hover,
+.navigation-header .dropdown .dropdown-buttons .show-button:active {
+  border: none;
+  background-color: #7878fc;
 }
 
 .main.showDiv {
