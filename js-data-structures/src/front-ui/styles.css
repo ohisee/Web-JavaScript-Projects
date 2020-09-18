@@ -94,7 +94,7 @@ html {
 
 .navigation-header .dropdown {
   width: 300px;
-  height: 300px;
+  height: 320px;
   border: 1px solid #c2b6b6;
   background-color: #f8f6f6;
   /* overflow: scroll; */
@@ -114,7 +114,21 @@ html {
   background-image: url("./bg.png");
   background-position: center;
   background-size: cover;
-  margin-bottom: 32px;
+  margin-bottom: 64px;
+}
+
+.navigation-header .dropdown .dropdown-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #80e1f5;
+  border: 3px solid #ffffff;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  border-radius: 50%;
+  position: absolute;
+  left: 32px;
+  top: 160px;
 }
 
 .navigation-header .dropdown .dropdown-buttons {
