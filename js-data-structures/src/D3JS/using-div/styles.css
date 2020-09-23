@@ -1,0 +1,38 @@
+.container {
+  width: 320px;
+  height: 320px;
+  background-color: #ffefdb;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.bar {
+  display: inline-block;
+  background-color: #5f0068;
+}
+
+.second-container {
+  margin-top: 2rem;
+  width: 320px;
+  height: 320px;
+  background-color: #ffefdb;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bars {
+  display: inline-block;
+}
+
+.bars .upper {
+  background-color: rgba(255, 255, 255, 0);
+  width: 16px;
+  height: 120px;
+}
+
+.bars .lower {
+  background-color: #082a99;
+  width: 16px;
+  height: 100px;
+}
