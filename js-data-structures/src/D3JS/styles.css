@@ -35,9 +35,28 @@ html {
 }
 
 .bar {
-  fill: #4f009e;
+  fill: #0012b8;
+  opacity: 0.65;
 }
 
 .label {
   fill: #4f009e;
+}
+
+.pathline {
+  fill: none;
+  stroke: #231f27;
+  stroke-width: 2px;
+}
+
+.patharea {
+  fill: #99e2ff;
+  opacity: 0.75;
+  stroke: none;
+}
+
+.longpathline {
+  fill: none;
+  stroke: #07bd07;
+  stroke-width: 2px;
 }
