@@ -8,3 +8,9 @@
 ------------------------- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
 
 ------------------------- https://github.com/tc39/proposal-class-fields
+
+------------------------- https://glot.io/
+------------------------- https://repl.it/
+
+------------------------- https://medium.com/javascript-in-plain-english
+------------------------- https://medium.com/javascript-in-plain-english/algorithms-101-find-pairs-in-javascript-72a1f5e9e68f
