@@ -11,7 +11,7 @@ describe("MyArray", () => {
 
   test("MyArray should create an instance", () => {
     expect(() => {
-      new MyArray()
+      new MyArray();
     }).not.toThrow();
   });
 
@@ -33,6 +33,9 @@ describe("MyArray", () => {
     expect(result).toEqual("one");
     expect(myArray.length).toEqual(2);
     expect(myArray.data).toEqual({ 0: "walker", 1: "talker" });
+    myArray.pop();
+    myArray.pop();
+    expect(myArray.length).toEqual(0);
   });
 
   test("MyArray should be able to do delete", () => {
@@ -53,5 +56,15 @@ describe("MyArray", () => {
     expect(myArray.data).toEqual({
       0: "how", 1: "one", 2: "two",
     });
+  });
+
+  test("MyArray for loop", () => {
+    const myArray = new MyArray();
+    const els = ["hi", "how", "one", "two", "three"];
+    els.forEach(d => myArray.push(d));
+    for (let item of myArray) {
+      expect(item).toEqual(els.shift());
+    }
+    expect(els.length).toEqual(0);
   });
 });

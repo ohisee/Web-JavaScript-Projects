@@ -51,6 +51,16 @@ class MyArray {
     delete this.data[this.length - 1];
     this.length -= 1;
   }
+
+  // for ... of 
+  *[Symbol.iterator]() {
+    let i = 0;
+    // last element is at this.length - 1 position 
+    while (i < this.length) {
+      yield this.data[i];
+      i++;
+    }
+  }
 }
 
 module.exports = {
