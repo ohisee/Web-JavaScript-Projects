@@ -84,3 +84,27 @@ console.log(hasPair([1, 2, 3, 4, 2, 6], 17));
 function moreReadable(arr1, arr2) {
   return arr1.some(item => arr2.includes(item));
 }
+
+/**
+ * @param {string} str 
+ */
+function reverseString(str) {
+  const result = [];
+  const mid = Math.floor(str.length / 2);
+  const maxIndex = str.length - 1;
+  for (let i = 0; i <= mid; i++) {
+    result[i] = str[maxIndex - i];
+    result[maxIndex - i] = str[i];
+  }
+  return result.join("");
+}
+
+console.log(reverseString("abcd"));
+console.log(reverseString("hower"));
+
+
+const FORMAT = (content) => `\x1b[${92}m${content}\x1b[${39}m\x1b[0m`;
+
+console.log(FORMAT(typeof Infinity));
+console.log(FORMAT(Infinity === Infinity));
+console.log(FORMAT(Infinity > Infinity));
