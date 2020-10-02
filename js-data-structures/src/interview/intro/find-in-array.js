@@ -95,6 +95,9 @@ function reverseString(str) {
   for (let i = 0; i <= mid; i++) {
     result[i] = str[maxIndex - i];
     result[maxIndex - i] = str[i];
+    if (i === mid) { // for string with odd number length, break at middle 
+      break;
+    }
   }
   return result.join("");
 }
