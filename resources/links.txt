@@ -14,3 +14,8 @@
 
 ------------------------- https://medium.com/javascript-in-plain-english
 ------------------------- https://medium.com/javascript-in-plain-english/algorithms-101-find-pairs-in-javascript-72a1f5e9e68f
+
+----------------------------- search query
+------------------------------------ type safe javascript with jsdoc
+------------------------------------ html carousel
+
