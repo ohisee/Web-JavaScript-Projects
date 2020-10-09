@@ -1,0 +1,114 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.slider-container {
+  width: 600px;
+  height: 300px;
+  margin: 32px 32px;
+  border: 1px solid #cebebe;
+  overflow: hidden;
+  position: relative;
+}
+
+.buttons {
+  margin: 32px 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons .previous,
+.buttons .next {
+  cursor: pointer;
+  color: #535658;
+  padding: 16px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.buttons .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.buttons .previous:hover,
+.buttons .next:hover {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.slider-container .picture {
+  position: absolute;
+  width: 100%;
+  height: 99%;
+  padding: 64px;
+  left: 598px;
+  transition: transform 300ms linear;
+}
+
+.slider-container .picture:nth-child(1) {
+  background-color: #153ae0;
+  left: 0;
+}
+
+.slider-container .picture.slide-away-to-left {
+  transform: translate(-600px, 0);
+}
+
+.slider-container .picture.slide-to-center-from-right {
+  transform: translate(-600px, 0);
+}
+
+.slider-container .picture.slide-to-center-not-first-slide {
+  transform: translate(-600px, 0);
+}
+
+.slider-container .picture.slide-to-init-position-not-first-slide {
+  transform: translate(0, 0);
+}
+
+.slider-container .picture .text {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  color: #f0f8ff;
+}
+
+.slider-container .picture:nth-child(1) .text{
+  left: 10px;
+}
+
+.slider-container .previous,
+.slider-container .next {
+  cursor: pointer;
+  color: #d3dbe0;
+  font-size: 32px;
+  padding: 16px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  position: absolute;
+  top: 40%;
+  z-index: 5;
+}
+
+.slider-container .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.slider-container .previous:hover,
+.slider-container .next:hover {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.25);
+}
