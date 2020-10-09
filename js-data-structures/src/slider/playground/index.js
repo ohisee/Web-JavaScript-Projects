@@ -83,10 +83,10 @@
           activeEl.picture.classList.add("slide-away-to-left");
           targetEl.picture.classList.add("slide-to-center-from-right");
         } else {
-          if (activeEl.picture.dataset.indexNumber > 1) {
+          if (activeEl.index > 1) {
             activeEl.picture.classList.add("slide-to-init-position-not-first-slide")
           }
-          if (targetEl.picture.dataset.indexNumber > 1) {
+          if (targetEl.index > 1) {
             targetEl.picture.classList.add("slide-to-center-not-first-slide");
           }
         }
