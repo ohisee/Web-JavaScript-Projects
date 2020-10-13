@@ -5,7 +5,6 @@
 const init = (function () {
   /**
    * @typedef {Object} State
-   * @property {number} counter
    * @property {number} translatedPx
    * @property {number} activeIndex 
    * @property {number} lastActiveIndex
@@ -15,16 +14,12 @@ const init = (function () {
    * @type {State}
    */
   const state = {
-    counter: 1,
     translatedPx: 0,
     activeIndex: 1,
     lastActiveIndex: 0,
   };
 
   return {
-    getCounter() {
-      return state.counter;
-    },
     getTranslatedPx() {
       return state.translatedPx;
     },
@@ -33,9 +28,6 @@ const init = (function () {
     },
     getLastActiveIndex() {
       return state.lastActiveIndex;
-    },
-    updateCounter(num) {
-      state.counter += num;
     },
     updateTranslatedPx(num) {
       state.translatedPx = num;
@@ -51,8 +43,10 @@ const init = (function () {
 
 (function (init) {
 
-  const prev = document.querySelector("#button-previous");
-  const next = document.querySelector("#button-next");
+  /**@type {HTMLSpanElement} move to slide to left */
+  const lb = document.querySelector("#button-previous");
+  /**@type {HTMLSpanElement} move to slide to right */
+  const rb = document.querySelector("#button-next");
   const pics = document.querySelectorAll(".picture");
   const circles = document.querySelectorAll(".circle__button");
   /** @type {HTMLDivElement} */
@@ -130,35 +124,38 @@ const init = (function () {
 
   /**
    * @param {number} translatedPx 
+   * @param {number} lastActiveIndex 
+   * @param {number} activeIndex 
    */
-  function slideTo(translatedPx) {
+  function slideTo(translatedPx, lastActiveIndex, activeIndex) {
     slideEl.style.transform = `translate(${translatedPx}px, 0)`;
     slideEl.style.transition = "transform 300ms linear";
     init.updateTranslatedPx(translatedPx);
+    init.updateLastActiveIndex(lastActiveIndex)
+    init.updateActiveIndex(activeIndex);
+    setTimeout(function (slideEl) {
+      slideEl.style.removeProperty("transition");
+    }, 600, slideEl);
   }
 
-  prev.addEventListener("click", function () {
-    let counter = init.getCounter();
-    if (counter < maxCount && counter >= 1) {
-      let moveTo = moveToLeftPx * init.getCounter();
-      slideEl.style.transform = `translate(${moveTo}px, 0)`;
-      slideEl.style.transition = "transform 300ms linear";
-      init.updateTranslatedPx(moveTo);
-      init.updateCounter(1);
-      init.updateActiveIndex(init.getCounter());
+  // slide to left 
+  lb.addEventListener("click", function () {
+    let currentIndex = init.getActiveIndex();
+    if (currentIndex < maxCount && currentIndex >= 1) {
+      let moveTo = moveToLeftPx * currentIndex;
+      // set current index as last index 
+      slideTo(moveTo, currentIndex, currentIndex + 1);
       this.dispatchEvent(new Event(prevButtonClicked, { bubbles: true }));
     }
   });
 
-  next.addEventListener("click", function () {
-    let counter = init.getCounter();
-    if (counter > 1 && counter <= maxCount) {
+  // slide to right  
+  rb.addEventListener("click", function () {
+    let currentIndex = init.getActiveIndex();
+    if (currentIndex > 1 && currentIndex <= maxCount) {
       let moveTo = init.getTranslatedPx() + moveToRightPx;
-      slideEl.style.transform = `translate(${moveTo}px, 0)`;
-      slideEl.style.transition = "transform 300ms linear";
-      init.updateTranslatedPx(moveTo);
-      init.updateCounter(-1);
-      init.updateActiveIndex(init.getCounter());
+      // set current index as last index  
+      slideTo(moveTo, currentIndex, currentIndex - 1);
       this.dispatchEvent(new Event(nextButtonClicked, { bubbles: true }));
     }
   });
@@ -169,18 +166,22 @@ const init = (function () {
     if (activeIndex !== lastActiveIndex) {
       updateActiveButton(circleButtons, activeIndex, lastActiveIndex);
       if (activeIndex > lastActiveIndex) {
-        slideTo(moveToLeftPx * (activeIndex - 1));
+        slideTo(moveToLeftPx * (activeIndex - 1),
+          lastActiveIndex,
+          activeIndex);
       } else {
         slideTo(
-          init.getTranslatedPx() + (moveToRightPx * (lastActiveIndex - activeIndex)));
+          init.getTranslatedPx() + (moveToRightPx * (lastActiveIndex - activeIndex)),
+          lastActiveIndex,
+          activeIndex);
       }
     }
   });
 
   sliderContainer.addEventListener(prevButtonClicked, function () {
     let activeIndex = init.getActiveIndex();
-    let lastIndex = activeIndex - 1;
-    updateActiveButton(circleButtons, activeIndex, lastIndex);
+    let lastActiveIndex = activeIndex - 1;
+    updateActiveButton(circleButtons, activeIndex, lastActiveIndex);
   });
 
   sliderContainer.addEventListener(nextButtonClicked, function () {
