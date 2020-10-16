@@ -30,7 +30,7 @@ class HashTable {
    */
   _hash(key) {
     let hash = this._hashCode(key);
-    return hash % this.data.length;
+    return Math.abs(hash) % this.data.length;
   }
 
   /**
@@ -59,6 +59,26 @@ class HashTable {
       }
     }
     return undefined;
+  }
+
+  keys() {
+    let result = [];
+    for (let loc of this.data) {
+      if (loc) {
+        result.push(...loc.map(item => item[0]));
+      }
+    }
+    return result;
+  }
+
+  values() {
+    let result = [];
+    for (let loc of this.data) {
+      if (loc) {
+        result.push(...loc.map(item => item[1]));
+      }
+    }
+    return result;
   }
 }
 

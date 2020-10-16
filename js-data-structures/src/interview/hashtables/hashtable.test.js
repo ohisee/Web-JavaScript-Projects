@@ -33,14 +33,36 @@ describe("Hash table", () => {
   test("Should be able to set and get", () => {
     let hashTable = new HashTable(50);
     hashTable.set("grapes", 10000);
-    hashTable.set("orange", 20000);
+    hashTable.set("oranges", 20000);
     expect(hashTable.get("grapes")).toEqual(10000);
     expect(hashTable.get("grapes")).toEqual(10000);
-    expect(hashTable.get("orange")).toEqual(20000);
+    expect(hashTable.get("oranges")).toEqual(20000);
   });
 
   test("Should be able to set and get", () => {
     let hashTable = new HashTable(50);
     expect(hashTable.get("grapes")).toEqual(undefined);
+  });
+
+  test("Should be able to get keys", () => {
+    let hashTable = new HashTable(5);
+    hashTable.set("grapes", 10000);
+    hashTable.set("oranges", 20000);
+    hashTable.set("pears", 20010);
+    hashTable.set("strawberry", 1);
+    hashTable.set("melons", 2);
+    expect(hashTable.keys()).toEqual(expect.arrayContaining(["grapes",
+      "oranges", "pears", "strawberry", "melons"]));
+  });
+
+  test("Should be able to get values", () => {
+    let hashTable = new HashTable(5);
+    hashTable.set("grapes", 10000);
+    hashTable.set("oranges", 20000);
+    hashTable.set("pears", 20010);
+    hashTable.set("strawberry", 1);
+    hashTable.set("melons", 2);
+    expect(hashTable.values()).toEqual(expect.arrayContaining(
+      [10000, 20000, 20010, 1, 2]));
   });
 });
