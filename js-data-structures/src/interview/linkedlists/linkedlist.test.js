@@ -52,4 +52,45 @@ describe("Linked list", () => {
     expect(linkedList.tail.next).toEqual(null);
     expect(linkedList.values()).toEqual([16, 18, 10, 20, 12, 21]);
   });
+
+  test("should do remove", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16)
+      .append(18).append(20).append(21);
+    expect(linkedList.remove(-2).values()).toEqual([10, 12, 16, 18, 20, 21]);
+    expect(linkedList.remove(100).values()).toEqual([10, 12, 16, 18, 20, 21]);
+  });
+
+  test("should do remove", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16)
+      .append(18).append(20).append(21);
+    expect(linkedList.length).toEqual(6);
+    expect(linkedList.head.value).toEqual(10);
+    expect(linkedList.tail.value).toEqual(21);
+    linkedList.remove(5);
+    expect(linkedList.head.value).toEqual(10);
+    expect(linkedList.tail.value).toEqual(20);
+    expect(linkedList.tail.next).toEqual(null);
+    expect(linkedList.values()).toEqual([10, 12, 16, 18, 20]);
+  });
+
+  test("should do remove", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16)
+      .append(18).append(20).append(21);
+    expect(linkedList.length).toEqual(6);
+    expect(linkedList.head.value).toEqual(10);
+    expect(linkedList.tail.value).toEqual(21);
+    linkedList.remove(2);
+    linkedList.remove(2);
+    linkedList.remove(2);
+    expect(linkedList.head.value).toEqual(10);
+    expect(linkedList.tail.value).toEqual(21);
+    expect(linkedList.tail.next).toEqual(null);
+    expect(linkedList.values()).toEqual([10, 12, 21]);
+  });
 });
