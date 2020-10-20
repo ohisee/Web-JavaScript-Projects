@@ -35,6 +35,22 @@ class LinkedList {
   }
 
   /**
+   * @param {number} index 
+   */
+  _getAtIndex(index) {
+    if (index < 0 || index >= this.length) {
+      return null;
+    }
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      counter += 1;
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  /**
    * append to the end of this list 
    * @param {T} data 
    */
@@ -90,6 +106,25 @@ class LinkedList {
     let newNode = { value: data, next: currentNode.next };
     currentNode.next = newNode;
     this.length += 1;
+    return this;
+  }
+
+  /**
+   * @param {number} index 
+   */
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return this;
+    }
+    let prevNode = this._getAtIndex(index - 1);
+    let removeNode = prevNode.next;
+    if (removeNode === this.tail) {
+      prevNode.next = null;
+      this.tail = prevNode;
+    } else {
+      prevNode.next = removeNode.next;
+    }
+    this.length -= 1;
     return this;
   }
 
