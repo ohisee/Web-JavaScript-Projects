@@ -50,6 +50,16 @@ class LinkedList {
     return currentNode;
   }
 
+  _removeFirst() {
+    if (this.head) {
+      let removeNode = this.head;
+      this.head = this.head.next;
+      removeNode.next = null;
+      this.length -= 1;
+    }
+    return this;
+  }
+
   /**
    * append to the end of this list 
    * @param {T} data 
@@ -116,6 +126,9 @@ class LinkedList {
     if (index < 0 || index >= this.length) {
       return this;
     }
+    if (index === 0) {
+      return this._removeFirst();
+    }
     let prevNode = this._getAtIndex(index - 1);
     let removeNode = prevNode.next;
     if (removeNode === this.tail) {
@@ -123,6 +136,7 @@ class LinkedList {
       this.tail = prevNode;
     } else {
       prevNode.next = removeNode.next;
+      removeNode.next = null;
     }
     this.length -= 1;
     return this;

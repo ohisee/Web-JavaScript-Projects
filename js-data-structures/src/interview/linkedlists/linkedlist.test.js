@@ -93,4 +93,33 @@ describe("Linked list", () => {
     expect(linkedList.tail.next).toEqual(null);
     expect(linkedList.values()).toEqual([10, 12, 21]);
   });
+
+  test("should do remove with no exception", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.remove(0);
+    expect(linkedList.length).toEqual(0);
+    linkedList.prepend(10);
+    expect(linkedList.length).toEqual(1);
+    expect(linkedList.values()).toEqual([10]);
+    linkedList.remove(0);
+    expect(linkedList.length).toEqual(0);
+  });
+
+  test("should do remove first element", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16)
+      .append(18).append(20).append(21);
+    expect(linkedList.length).toEqual(6);
+    expect(linkedList.head.value).toEqual(10);
+    expect(linkedList.tail.value).toEqual(21);
+    linkedList.remove(0);
+    linkedList.remove(1);
+    linkedList.remove(2);
+    expect(linkedList.head.value).toEqual(12);
+    expect(linkedList.tail.value).toEqual(21);
+    expect(linkedList.tail.next).toEqual(null);
+    expect(linkedList.values()).toEqual([12, 18, 21]);
+  });
 });
