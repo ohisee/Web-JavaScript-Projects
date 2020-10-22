@@ -142,6 +142,23 @@ class LinkedList {
     return this;
   }
 
+  reverse() {
+    if (this.head && this.head.next) {
+      let previousHead = this.head;
+      let follower = previousHead.next;
+      while (follower !== null) {
+        let temp = follower.next;
+        follower.next = previousHead;
+        previousHead = follower;
+        follower = temp;
+      }
+      this.head.next = null;
+      this.tail = this.head;
+      this.head = previousHead;
+    }
+    return this;
+  }
+
   values() {
     const val = [];
     let currentNode = this.head;
