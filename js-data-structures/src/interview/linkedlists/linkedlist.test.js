@@ -122,4 +122,32 @@ describe("Linked list", () => {
     expect(linkedList.tail.next).toEqual(null);
     expect(linkedList.values()).toEqual([12, 18, 21]);
   });
+
+  test("should do reverse", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10);
+    linkedList.reverse();
+    expect(linkedList.length).toEqual(1);
+    expect(linkedList.values()).toEqual([10]);
+  });
+
+  test("should do reverse", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).prepend(18);
+    linkedList.reverse();
+    expect(linkedList.length).toEqual(2);
+    expect(linkedList.values()).toEqual([10, 18]);
+  });
+
+  test("should do reverse", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16)
+      .append(18).append(20).append(21);
+    linkedList.reverse();
+    expect(linkedList.length).toEqual(6);
+    expect(linkedList.values()).toEqual([21, 20, 18, 16, 12, 10]);
+  });
 });
