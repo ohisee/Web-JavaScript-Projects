@@ -150,4 +150,26 @@ describe("Linked list", () => {
     expect(linkedList.length).toEqual(6);
     expect(linkedList.values()).toEqual([21, 20, 18, 16, 12, 10]);
   });
+
+  test("should do remove", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10);
+    linkedList.remove(0);
+    expect(linkedList.head).toEqual(null);
+    expect(linkedList.tail).toEqual(null);
+  });
+
+  test("should do remove", () => {
+    /** @type {LinkedList<number>} */
+    let linkedList = new LinkedList();
+    linkedList.prepend(10).append(12).append(16).append(16).append(16);
+    linkedList.remove(0);
+    linkedList.remove(0);
+    linkedList.remove(0);
+    linkedList.remove(0);
+    linkedList.remove(0);
+    expect(linkedList.head).toEqual(null);
+    expect(linkedList.tail).toEqual(null);
+  });
 });

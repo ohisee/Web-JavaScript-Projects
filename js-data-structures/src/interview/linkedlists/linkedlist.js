@@ -52,6 +52,9 @@ class LinkedList {
 
   _removeFirst() {
     if (this.head) {
+      if (this.head === this.tail) {
+        this.tail = null;
+      }
       let removeNode = this.head;
       this.head = this.head.next;
       removeNode.next = null;
