@@ -263,7 +263,7 @@ class BinarySearchTree {
   /**
    * collect values of this binary search tree for testing 
    */
-  inOrderValue() {
+  inOrderValues() {
     const val = [];
     this._depthFirstInOrderTraverse(function (treenode) {
       val.push(treenode.data);
