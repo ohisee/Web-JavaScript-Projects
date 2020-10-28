@@ -46,6 +46,18 @@ class TreeNode {
     }
     return false;
   }
+
+  minValueNode() {
+    if (!this.left) {
+      return this;
+    } else {
+      let minNode = this.left;
+      while (minNode && minNode.left) {
+        minNode = minNode.left;
+      }
+      return minNode;
+    }
+  }
 }
 
 /** @template T */
@@ -143,39 +155,24 @@ class BinarySearchTree {
   }
 
   /**
-   * @param {TreeNode<T>} treenode 
-   * @returns {TreeNode<T>} tree node with min value 
-   */
-  _minValueNode(treenode) {
-    let currentNode = treenode;
-    while (currentNode && currentNode.left) {
-      currentNode = currentNode.left;
-    }
-    return currentNode;
-  }
-
-  /**
    * @param {T} value 
-   * @param {TreeNode<T>} [treenode = this.root]  
    */
-  remove(value, treenode = this.root) {
+  remove(value) {
     let parentNode = null;
-    let currentNode = treenode;
-
+    let currentNode = this.root;
     while (currentNode && currentNode.data !== value) {
       parentNode = currentNode;
-      if (currentNode.left && value < currentNode.data) {
+      if (value < currentNode.data) {
         currentNode = currentNode.left;
-      } else if (currentNode.right && value > currentNode.data) {
+      } else if (value > currentNode.data) {
         currentNode = currentNode.right;
       }
     }
-
     if (currentNode) {
       // leaf
       if (currentNode.left === null && currentNode.right === null) {
         if (parentNode === null) {
-          currentNode = null;
+          this.root = null;
         } else if (parentNode.right === currentNode) {
           parentNode.right = null;
         } else if (parentNode.left === currentNode) {
@@ -183,25 +180,27 @@ class BinarySearchTree {
         }
       }
       // one child, either left or right 
-      else if (currentNode.left && !currentNode.right) {
+      else if ((currentNode.left && !currentNode.right) || (!currentNode.left && currentNode.right)) {
+        const childNode = currentNode.left ? currentNode.left : currentNode.right;
         if (parentNode === null) {
-          currentNode = currentNode.left;
+          this.root = childNode;
         } else {
-          parentNode.left = currentNode.left;
+          if (parentNode.left === currentNode) {
+            parentNode.left = childNode;
+          } else if (parentNode.right === currentNode) {
+            parentNode.right = childNode;
+          }
         }
       }
-      else if (currentNode.right && !currentNode.left) {
-        if (parentNode === null) {
-          currentNode = currentNode.right;
-        } else {
-          parentNode.right = currentNode.right;
-        }
-      }
-      // with two child nodes
+      // with two child nodes, 
+      // find right subtree's minimum value and store its value 
+      // call this remove to remove current node's right subtree's minimum node 
+      // replace current node's value with current node's right subtree's
+      // minimum value that is stored in minValNode  
       else {
-        let minValNode = this._minValueNode(currentNode.right);
+        let minValNode = currentNode.right.minValueNode();
+        this.remove(minValNode.data);
         currentNode.data = minValNode.data;
-        this.remove(minValNode.data, currentNode.right);
       }
     }
   }
