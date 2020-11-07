@@ -269,8 +269,87 @@ class BinarySearchTree {
     });
     return val;
   }
+
+  // validate binary search tree 
+
+  /**
+   * validate if this binary tree is valid 
+   */
+  isValidByInorderTraversal() {
+    /** @type {T[]} */
+    const visitedNodedata = [];
+    this._depthFirstInOrderTraverse(function (treenode) {
+      visitedNodedata.push(treenode.data);
+    });
+    for (let i = 1; i < visitedNodedata.length; i++) {
+      if (visitedNodedata[i - 1] >= visitedNodedata[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * validate the entire binary search tree by traversing through this binary 
+   * search tree nodes using depth first traversal 
+   * @param {TreeNode<T>} treenode tree node i.e. root of this tree  
+   * @param {T} lower lower bound 
+   * @param {T} upper upper bound 
+   */
+  validate(treenode, lower = null, upper = null) {
+    if (!treenode) { // tree is empty or at the leaf level 
+      return true;
+    }
+    if (lower && treenode.data <= lower) {
+      return false;
+    }
+    if (upper && treenode.data >= upper) {
+      return false;
+    }
+    // upper bound for left sub tree 
+    if (!this.validate(treenode.left, lower, treenode.data)) {
+      return false;
+    }
+    // lower bound for right sub tree 
+    if (!this.validate(treenode.right, treenode.data, upper)) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * in order traverse this binary search tree and return when this binary 
+   * search tree is invalid 
+   * @param {TreeNode<T>} treenode 
+   * @param {(isValid: boolean) => void} validator 
+   * @param {TreeNode<T>[]} prevTreenode  
+   */
+  _traverseInorderValiadator(treenode, validator, prevTreenode = []) {
+    if (treenode) {
+      this._traverseInorderValiadator(treenode.left, validator, prevTreenode);
+      let prevNode = prevTreenode.pop();
+      if (prevNode && prevNode.data >= treenode.data) {
+        validator(false);
+        return;
+      }
+      prevTreenode.push(treenode);
+      this._traverseInorderValiadator(treenode.right, validator, prevTreenode);
+    }
+  }
+
+  /**
+   * validate if this binary tree is valid 
+   */
+  validateBinarySearchTreeByInorderTraverse() {
+    let validTree = true;
+    this._traverseInorderValiadator(this.root, function (isValid) {
+      validTree = isValid;
+    });
+    return validTree;
+  }
 }
 
 module.exports = {
+  TreeNode,
   BinarySearchTree,
 };
