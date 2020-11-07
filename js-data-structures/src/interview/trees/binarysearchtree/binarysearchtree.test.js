@@ -1,7 +1,7 @@
 /**
  * @fileoverview JS bianry search tree unit test 
  */
-const { BinarySearchTree } = require("./binarysearchtree");
+const { BinarySearchTree, TreeNode } = require("./binarysearchtree");
 
 describe("Binary search tree", () => {
   test("Binary search tree class should be defined", () => {
@@ -275,5 +275,196 @@ describe("Binary search tree", () => {
     binarySearchTree.remove(12);
     expect(binarySearchTree.inOrderValues()).toEqual(
       [3, 7, 8, 9, 10, 11, 15, 16, 18, 19]);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    expect(binarySearchTree.isValidByInorderTraversal()).toEqual(true);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    binarySearchTree.root.left.left.left = new TreeNode(8);
+    binarySearchTree.root.left.left.right = new TreeNode(12);
+    //     9
+    //  6     20 
+    // 1  7  15  120
+    //      8  12    
+    expect(binarySearchTree.root.left.left.left.data).toEqual(8);
+    expect(binarySearchTree.root.left.left.right.data).toEqual(12);
+    expect(binarySearchTree.isValidByInorderTraversal()).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    binarySearchTree.root.left.data = 10;
+    binarySearchTree.root.right.data = 8;
+    //     9
+    //  10     8 
+    // 1  7  15 120
+    expect(binarySearchTree.root.left.data).toEqual(10);
+    expect(binarySearchTree.root.right.data).toEqual(8);
+    expect(binarySearchTree.isValidByInorderTraversal()).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    expect(binarySearchTree.validate(binarySearchTree.root)).toEqual(true);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    binarySearchTree.root.left.left.left = new TreeNode(8);
+    binarySearchTree.root.left.left.right = new TreeNode(12);
+    //     9
+    //  6     20 
+    // 1  7  15  120
+    //      8  12    
+    expect(binarySearchTree.root.left.left.left.data).toEqual(8);
+    expect(binarySearchTree.root.left.left.right.data).toEqual(12);
+    expect(binarySearchTree.validate(binarySearchTree.root)).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    expect(binarySearchTree.validateBinarySearchTreeByInorderTraverse()).toEqual(true);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(120);
+    //     9
+    //  6     20 
+    // 1  7  15 120
+    binarySearchTree.root.left.left.left = new TreeNode(8);
+    binarySearchTree.root.left.left.right = new TreeNode(12);
+    //     9
+    //  6     20 
+    // 1  7  15  120
+    //      8  12    
+    expect(binarySearchTree.root.left.left.left.data).toEqual(8);
+    expect(binarySearchTree.root.left.left.right.data).toEqual(12);
+    expect(binarySearchTree.validateBinarySearchTreeByInorderTraverse()).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.root = new TreeNode(1);
+    binarySearchTree.root.left = new TreeNode(1);
+    binarySearchTree.root.right = new TreeNode(1);
+    binarySearchTree.root.left.left = new TreeNode(1);
+    binarySearchTree.root.left.right = new TreeNode(1);
+    binarySearchTree.root.right.left = new TreeNode(1);
+    binarySearchTree.root.right.right = new TreeNode(1);
+    //     1
+    //  1     1 
+    // 1  1  1  1
+    expect(binarySearchTree.validate(binarySearchTree.root)).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.root = new TreeNode(1);
+    binarySearchTree.root.left = new TreeNode(1);
+    binarySearchTree.root.right = new TreeNode(1);
+    binarySearchTree.root.left.left = new TreeNode(1);
+    binarySearchTree.root.left.right = new TreeNode(1);
+    binarySearchTree.root.right.left = new TreeNode(1);
+    binarySearchTree.root.right.right = new TreeNode(1);
+    //     1
+    //  1     1 
+    // 1  1  1  1
+    expect(binarySearchTree.isValidByInorderTraversal()).toEqual(false);
+  });
+
+  test("should do validate binary search tree", () => {
+    /** @type {BinarySearchTree<number>} */
+    const binarySearchTree = new BinarySearchTree();
+    binarySearchTree.root = new TreeNode(1);
+    binarySearchTree.root.left = new TreeNode(1);
+    binarySearchTree.root.right = new TreeNode(1);
+    binarySearchTree.root.left.left = new TreeNode(1);
+    binarySearchTree.root.left.right = new TreeNode(1);
+    binarySearchTree.root.right.left = new TreeNode(1);
+    binarySearchTree.root.right.right = new TreeNode(1);
+    //     1
+    //  1     1 
+    // 1  1  1  1
+    expect(binarySearchTree.validateBinarySearchTreeByInorderTraverse()).toEqual(false);
   });
 });
