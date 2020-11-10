@@ -94,4 +94,85 @@ describe("Undirected unweighted graph", () => {
     expect(graph.getConnectedVertices("1")).toEqual([]);
     expect(graph.getConnectedVertices("2")).toEqual([]);
   });
+
+  describe("Graph traversal", () => {
+    /** @type {Graph} */
+    let graph;
+
+    beforeEach(() => {
+      graph = new Graph();
+      graph.addVertex("San Francisco");
+      graph.addVertex("Mission Bay");
+      graph.addVertex("San Jose");
+      graph.addVertex("San Mateo");
+      graph.addVertex("San Bruno");
+      graph.addVertex("Daly City");
+      graph.addEdge("San Francisco", "Mission Bay");
+      graph.addEdge("San Francisco", "San Jose");
+      graph.addEdge("San Jose", "San Mateo");
+      graph.addEdge("Mission Bay", "San Bruno");
+      graph.addEdge("San Bruno", "Daly City");
+      graph.addEdge("San Mateo", "San Bruno");
+      graph.addEdge("San Mateo", "Daly City");
+      //       San Francisco
+      //          /     \
+      // Mission Bay   San Jose
+      //          |      |
+      //   San Bruno - San Mateo
+      //          \      /
+      //          Daly City
+    });
+
+    test("should do breadth first traversal iterative", () => {
+      expect(graph.breadthFirstSearchIterative("San Francisco"))
+        .toEqual([
+          "San Francisco", "Mission Bay", "San Jose",
+          "San Bruno", "San Mateo", "Daly City",
+        ]);
+    });
+
+    test("should do breadth first traversal iterative non existing vertex",
+      () => {
+        expect(graph.breadthFirstSearchIterative("abc")).toEqual([]);
+      });
+
+    test("should do breadth first traversal recursive", () => {
+      expect(graph.breadthFirstSearchRecursive("San Francisco"))
+        .toEqual([
+          "San Francisco", "Mission Bay", "San Jose",
+          "San Bruno", "San Mateo", "Daly City",
+        ]);
+    });
+
+    test("should do breadth first traversal recursive non existing vertex",
+      () => {
+        expect(graph.breadthFirstSearchRecursive("abc")).toEqual([]);
+      });
+
+    test("should do depth first traversal iterative", () => {
+      expect(graph.depthFirstSearchIterative("San Francisco"))
+        .toEqual([ // order is based on pop from stack 
+          "San Francisco", "San Jose", "San Mateo",
+          "Daly City", "San Bruno", "Mission Bay",
+        ]);
+    });
+
+    test("should do depth first traversal iterative non existing vertex",
+      () => {
+        expect(graph.depthFirstSearchIterative("something")).toEqual([]);
+      });
+
+    test("should do depth first traversal resursive", () => {
+      expect(graph.depthFirstSearchRecursive("San Francisco"))
+        .toEqual([ // recursive start 
+          "San Francisco", "Mission Bay", "San Bruno",
+          "Daly City", "San Mateo", "San Jose",
+        ]);
+    });
+
+    test("should do depth first traversal resursive non existing vertex",
+      () => {
+        expect(graph.depthFirstSearchRecursive("something")).toEqual([]);
+      });
+  });
 });
