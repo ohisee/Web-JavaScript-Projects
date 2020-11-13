@@ -48,24 +48,24 @@ console.log("2", memoized(16));
 /**
  * given an array of integers that are all greater or equal to zero, find max 
  * sum of numbers that are not adjacent to each other 
- * @param {number[]} num 
+ * @param {number[]} arr non-negative array of integers 
  * @returns {number} max gain  
  */
-function rob(num) {
-  if (num.length === 0) {
+function rob(arr) {
+  if (arr.length === 0) {
     return 0;
   }
-  if (num.length === 1) {
-    return num[0];
+  if (arr.length === 1) {
+    return arr[0];
   }
-  if (num.length === 2) {
-    return Math.max(num[0], num[1]);
+  // if (arr.length === 2) {
+  //   return Math.max(arr[0], arr[1]);
+  // }
+  let cache = [arr[0], Math.max(arr[0], arr[1])];
+  for (let i = 2; i < arr.length; i++) {
+    cache[i] = Math.max(cache[i - 2] + arr[i], cache[i - 1]);
   }
-  let cache = [num[0], Math.max(num[0], num[1])];
-  for (let i = 2; i < num.length; i++) {
-    cache[i] = Math.max(cache[i - 2] + num[i], cache[i - 1]);
-  }
-  return cache[num.length - 1];
+  return cache[arr.length - 1];
 }
 
 let gains = [2, 7, 9, 3, 1];
@@ -73,3 +73,35 @@ console.log("Max gain is", rob(gains), "--- should print 12");
 
 gains = [6, 100, 1, 7, 8];
 console.log("Max gain is", rob(gains), "--- should print 108");
+
+/**
+ * a different approach 
+ * @param {number[]} arr non-negative array of integers 
+ * @returns {number} max gain 
+ */
+function rob2(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  if (arr.length === 1) {
+    return arr[0];
+  }
+  let prevSum1 = arr[0];
+  let prevSum2 = Math.max(arr[0], arr[1]);
+  let maxGain = prevSum2;
+  for (let i = 2; i < arr.length; i++) {
+    maxGain = Math.max(arr[i] + prevSum1, prevSum2);
+    prevSum1 = prevSum2;
+    prevSum2 = maxGain;
+  }
+  return maxGain;
+}
+
+gains = [2, 7];
+console.log("Max gain [2, 7] is", rob2(gains), "--- should print 7");
+
+gains = [2, 7, 9, 3, 1];
+console.log("Max gain [2, 7, 9, 3, 1] is", rob2(gains), "--- should print 12");
+
+gains = [6, 100, 1, 7, 8];
+console.log("Max gain [6, 100, 1, 7, 8] is", rob2(gains), "--- should print 108");
