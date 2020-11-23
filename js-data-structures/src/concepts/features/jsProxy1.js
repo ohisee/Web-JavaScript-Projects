@@ -6,12 +6,14 @@
  * @typedef {Object} MessageObjectTargetType
  * @property {number} length  
  * @property {string} title 
+ * @property {string[]} types 
  */
 
 /** @type {MessageObjectTargetType} */
 let MessageObject = {
   length: 100,
   title: "Collector",
+  types: ["alarm", "inquiry", "greeting"],
 };
 
 /** @type {ProxyHandler<MessageObjectTargetType>} */
@@ -58,3 +60,8 @@ console.log(proxy1.title, "--- should print Collector");
 proxy1.title = "Hello World";
 console.log(proxy1.title, "--- should print Hello World");
 console.log(MessageObject, "--- should print { length: 200, title: 'Hello World' }");
+
+// Must export something in order for VS code to pick up import type in another file 
+module.exports = {
+  MessageObject,
+};
