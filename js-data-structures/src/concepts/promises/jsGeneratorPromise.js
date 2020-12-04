@@ -70,10 +70,10 @@ onePromise().then(res => console.log(res), err => console.error(err));
 const anotherPromise = asyncGeneratorHandler(function* () {
   const num1 = yield Promise.resolve(2);
   const num2 = num1 * (yield Promise.resolve(10));
-  const difference = num2 - (yield Promise.resolve(8));
+  const difference = num2 - num1 - (yield Promise.resolve(8));
   yield difference;
 });
 
 anotherPromise().then(
-  res => console.log(res, "--- should print 12"),
+  res => console.log(res, "--- should print 10"),
   err => console.error(err));
