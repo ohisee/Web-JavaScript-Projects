@@ -53,6 +53,7 @@ const promise1 = new Promise((resolve) => {
   }, 100);
 });
 
+/** @type {Promise<string>} */
 const promise2 = new Promise((resolve) => {
   setTimeout(function () {
     resolve(" fine, thank you");
