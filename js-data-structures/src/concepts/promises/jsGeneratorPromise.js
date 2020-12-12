@@ -21,7 +21,7 @@ prom.then(re => console.log(re, "--- should print hello, resolved"));
 function asyncGeneratorHandler(generator) {
   return function () {
     /** @type {Generator} */
-    const g = generator.call(this, arguments);
+    const g = generator.call(this, ...arguments);
     /**
      * @param {IteratorResult<any, any>} result
      */
