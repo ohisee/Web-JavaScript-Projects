@@ -1,0 +1,31 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.main-div {
+  margin: 16px;
+  border-bottom: 1px dashed #ddc09c;
+}
+
+.main-div h2 {
+  font-size: 16px;
+}
+
+.main-div p {
+  font-size: 10px;
+}
+
+.button {
+  font-family: inherit;
+  padding: 16px 32px;
+  background-color: #fffff0;
+}
