@@ -60,6 +60,7 @@ const promise2 = new Promise((resolve) => {
   }, 100);
 });
 
+/** @type {(...arg: any) => Promise} a function that returns a promise */
 const onePromise = asyncGeneratorHandler(function* () {
   const greeting = yield promise1;
   const res = greeting + (yield promise2);
@@ -68,6 +69,7 @@ const onePromise = asyncGeneratorHandler(function* () {
 
 onePromise().then(res => console.log(res), err => console.error(err));
 
+/** @type {(...arg: any) => Promise} a function that returns a promise */
 const anotherPromise = asyncGeneratorHandler(function* () {
   const num1 = yield Promise.resolve(2);
   const num2 = num1 * (yield Promise.resolve(10));
@@ -78,3 +80,7 @@ const anotherPromise = asyncGeneratorHandler(function* () {
 anotherPromise().then(
   res => console.log(res, "--- should print 10"),
   err => console.error(err));
+
+module.exports = {
+  asyncGeneratorHandler
+};
