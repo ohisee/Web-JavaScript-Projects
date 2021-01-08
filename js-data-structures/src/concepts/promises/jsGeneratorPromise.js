@@ -82,5 +82,6 @@ anotherPromise().then(
   err => console.error(err));
 
 module.exports = {
+  promiseInGenerator,
   asyncGeneratorHandler
 };
