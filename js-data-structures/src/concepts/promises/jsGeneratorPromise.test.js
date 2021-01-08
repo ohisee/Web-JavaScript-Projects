@@ -1,7 +1,7 @@
 /**
  * @fileoverview generator unit test 
  */
-const { asyncGeneratorHandler } = require("./jsGeneratorPromise");
+const { asyncGeneratorHandler, promiseInGenerator } = require("./jsGeneratorPromise");
 
 describe("Generator unit test", () => {
 
@@ -60,7 +60,7 @@ describe("Generator unit test", () => {
     });
   });
 
-  test("should return a result", (done) => {
+  test("should return a result", () => {
     const gen = function* (n3) {
       let n1 = yield Promise.resolve(2);
       let n2 = yield Promise.resolve(10);
@@ -69,7 +69,6 @@ describe("Generator unit test", () => {
     expect.assertions(1);
     return asyncGeneratorHandler(gen).call(this, 20).then(result => {
       expect(result).toEqual(32);
-      done();
     });
   });
 
@@ -83,6 +82,14 @@ describe("Generator unit test", () => {
     const generatorHandler = asyncGeneratorHandler(gen);
     return generatorHandler.call(generatorHandler, " are you?").then(result => {
       expect(result).toEqual("hello there, how are you?");
+    });
+  });
+
+  test("should return a result", () => {
+    const gen = promiseInGenerator();
+    expect.assertions(1);
+    return gen.next().value.then(result => {
+      expect(result).toEqual("hello, resolved");
     });
   });
 });
