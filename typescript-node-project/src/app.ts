@@ -7,6 +7,8 @@ import todoRoutes from "./routes/todos";
 import mainRoute from "./routes/main";
 import ignore from "./routes/icoroute";
 import path from "path";
+import https from "https";
+import { httpsServerOptions } from "./config/https-server-options";
 
 const app = express();
 
@@ -17,9 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/todos', todoRoutes);
 app.use('/', mainRoute);
-app.use("/favicon.ico", (req, res) => {
-  res.writeHead(200, { "Conten-Type": "image/x-icon" }).end();
-});
+app.use("/favicon.ico", ignore);
 
 app.use(express.static(path.resolve(__dirname, "public")));
 
@@ -31,6 +31,6 @@ app.use((
   res.status(500).json({ message: err.message });
 });
 
-app.listen(3000, () => {
-  console.log("running at 3000")
+https.createServer(httpsServerOptions, app).listen(3000, () => {
+  console.log("running at 3000");
 });
