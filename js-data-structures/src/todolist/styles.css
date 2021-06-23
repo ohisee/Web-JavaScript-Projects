@@ -23,4 +23,9 @@ main.todo_main {
   background-color: #e7e730;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #3e3b3b;
+  transition: background-color 300ms ease-in-out;
+}
+
+.todoitem.dragOverBackground {
+  background-color: #203de2;
 }
