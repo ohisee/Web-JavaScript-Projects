@@ -19,13 +19,27 @@ main.todo_main {
   width: 300px;
   cursor: pointer;
   padding: 16px 3px;
-  margin: 3px 0;
+  margin: 0;
   background-color: #e7e730;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #3e3b3b;
   transition: background-color 300ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 
 .todoitem.dragOverBackground {
   background-color: #203de2;
+  color: #f3f1f1;
+}
+
+.todoitem.moveUp {
+  transform: translateY(-10px);
+}
+
+.todoitem.moveDown {
+  transform: translateY(10px);
+}
+
+.spaceBetween {
+  padding: 8px 0;
 }
