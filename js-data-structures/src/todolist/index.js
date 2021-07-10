@@ -20,6 +20,7 @@
     el.addEventListener('dragstart', function (event) {
       event.dataTransfer.setData("text/plain", JSON.stringify({ id: el.id, index: i }));
       event.dataTransfer.effectAllowed = "move";
+      event.dataTransfer.setDragImage(withImage(10, 280, 30), 20, 20);
     });
 
     el.addEventListener('dragover', function (event) {
@@ -66,6 +67,18 @@
       x.classList.remove(moveUpClass);
       y.classList.remove(moveDownClass);
     });
+
+    spaceEl.addEventListener('dragover', function (event) {
+      event.preventDefault();
+    });
+
+    spaceEl.addEventListener('drop', function (event) {
+      event.preventDefault();
+      let x = document.getElementById(spaceEl.dataset.x);
+      let y = document.getElementById(spaceEl.dataset.y);
+      x.classList.remove(moveUpClass);
+      y.classList.remove(moveDownClass);
+    });
   }
 
   /**
@@ -95,6 +108,79 @@
     first.forEach((text, index) => {
       els[index].textContent = text;
     });
+  }
+
+  /**
+   * @param {number} curve 
+   * @param {number} length 
+   * @param {number} height 
+   * @returns {HTMLCanvasElement}
+   */
+  function withImage(curve = 20, length = 200, height = 10) {
+    /** @type {HTMLCanvasElement} */
+    const canvas = document.createElement('canvas');
+    /** @type {CanvasRenderingContext2D} */
+    const canvasContext = canvas.getContext('2d');
+    // Start at x at curve and y at 0
+    const startPoint = { x: curve, y: 0 };
+    const topLine = { x: length, y: 0 };
+    const firstArcTo = {
+      x1: topLine.x + curve,
+      y1: 0,
+      x2: topLine.x + curve,
+      y2: curve,
+      r: curve
+    };
+    const rightLine = {
+      x: firstArcTo.x2,
+      y: curve + height
+    };
+    const secondArcTo = {
+      x1: rightLine.x,
+      y1: rightLine.y + curve,
+      x2: rightLine.x - curve,
+      y2: rightLine.y + curve,
+      r: curve
+    };
+    const bottomLine = {
+      x: startPoint.x,
+      y: secondArcTo.y2
+    };
+    const thirdArcTo = {
+      x1: 0,
+      y1: bottomLine.y,
+      x2: 0,
+      y2: bottomLine.y - curve,
+      r: curve
+    };
+    const leftLine = {
+      x: 0,
+      y: thirdArcTo.y2
+    };
+    const fourthArcTo = {
+      x1: 0,
+      y1: 0,
+      x2: startPoint.x,
+      y2: 0,
+      r: curve
+    };
+
+    canvasContext.fillStyle = "#0b3d3f";
+    canvasContext.strokeStyle = "#0b3d3f";
+    canvasContext.beginPath();
+    canvasContext.moveTo(startPoint.x, startPoint.y);
+    canvasContext.lineTo(topLine.x, topLine.y);
+    canvasContext.arcTo(firstArcTo.x1, firstArcTo.y1, firstArcTo.x2, firstArcTo.y2, firstArcTo.r);
+    canvasContext.lineTo(rightLine.x, rightLine.y);
+    canvasContext.arcTo(secondArcTo.x1, secondArcTo.y1, secondArcTo.x2, secondArcTo.y2, secondArcTo.r);
+    canvasContext.lineTo(bottomLine.x, bottomLine.y);
+    canvasContext.arcTo(thirdArcTo.x1, thirdArcTo.y1, thirdArcTo.x2, thirdArcTo.y2, thirdArcTo.r);
+    canvasContext.lineTo(leftLine.x, leftLine.y);
+    canvasContext.arcTo(fourthArcTo.x1, fourthArcTo.y1, fourthArcTo.x2, fourthArcTo.y2, fourthArcTo.r);
+    canvasContext.closePath();
+    canvasContext.fill();
+    canvasContext.stroke();
+    return canvas;
   }
 
 })();
