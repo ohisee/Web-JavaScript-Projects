@@ -1,37 +1,42 @@
 ## Start 
 
-<b>build an image</b>
+### build an image 
 
 docker build .
 
-<b>build an image using name and tag (name must be in lower case)</b>
+### build an image using name and tag (name must be in lower case) 
 
 docker build -t nodeserver:1.0 .
 
-<b>list image(s)</b>
+### list image(s) 
 
 docker images 
 
-<b>create and run a container in detached mode</b> 
+### create and run a container in detached mode  
 
 docker run -p 3000:3000 -d <i>image_id</i> 
 
-<b>create and run a container in detached mode and remove after stop</b>  
+### create and run a container in detached mode and remove after stop   
 
 docker run -p 3000:3000 -d --rm <i>image_id</i> 
 
-<b>create and run a container in detached mode, give some name, and remove after stop</b> 
+### create and run a container in detached mode, give some name, and remove after stop  
 
 docker run -p 3000:3000 -d --rm --name <i>some_name</i> <i>image_id</i>
 
-<b>remove container by container Id</b>  
+### create and run a container in detached mode, give some name, and remove after stop with image_name:tag 
+### for example, nodeserver:1.0 as image_name:tag 
+
+docker run -p 3000:3000 -d --rm --name <i>some_name</i> <i>image_name:tag</i>
+
+### remove container by container Id   
 
 docker rm <i>container_id</i> 
 
-<b>remove container by container name</b> 
+### remove container by container name  
 
 docker rm <i>container_name</i> 
 
-<b>remove image by image id</b> 
+### remove image by image id  
 
 docker rmi <i>image_id</i>
