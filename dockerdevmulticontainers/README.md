@@ -41,3 +41,23 @@ docker ps -a
 ### list existing network
 
 docker network ls 
+
+### start docker yml
+
+docker-compose up 
+
+### start docker yml in detached mode 
+
+docker-compose up -d
+
+### shutdown container 
+
+docker-compose down
+
+### shutdown container, delete date volume 
+
+docker-compose down -v
+
+### just build images  
+
+docker-compose build
