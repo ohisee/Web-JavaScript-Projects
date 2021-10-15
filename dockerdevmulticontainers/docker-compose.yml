@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    environment: 
+      # OR - MONGO_INITDB_ROOT_USERNAME=runner
+      MONGO_INITDB_ROOT_USERNAME: runner
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    container_name: mongodb
+    # OR use env file
+    #env_file:
+    #  - ./env/mongodb.env
+    # use default network created by docker compose 
+    #networks: 
+    #  - goals-net
+  backend:
+    build: ./backend
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockfile
+    #   args: 
+    #     some-arg: 1
+    ports:
+      - '80:80'
+    volumes: 
+      # named volume
+      - logs:/server/logs
+      # bind mount 
+      - ./backend:/server
+      # anonymous volume 
+      - /server/node_modules
+    environment: 
+      MONGODB_USERNAME: runner
+      MONGODB_PASSWORD: secret
+    # env_file: 
+    #   - ./env/backend.env
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    ports: 
+      - '3000:3000'
+    volumes:
+      # bind mount for source code changes 
+      - ./frontend/src:/app/src
+    environment:
+      CHOKIDAR_USEPOLLING: true
+    # interactive mode 
+    stdin_open: true
+    tty: true
+    depends_on: 
+      - backend
+
+# named volume 
+volumes: 
+  data:
+  logs:
