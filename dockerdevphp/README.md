@@ -53,3 +53,32 @@ DB_PASSWORD=secret
 ### run artisan
 
 docker-compose run --rm artisan migrate 
+
+### docker-compose run --rm artisan serve 
+### docker-compose run --rm -p 8000:8000 artisan serve
+
+### using docker to access sh
+### must use interactive mode, -it 
+
+docker exec -it <i>container_id</i> /bin/sh 
+
+###
+### instructions to run 
+###
+### create an existing image from latest php version 
+### step 1 
+### create a laravel project 
+### delete existing src folder and create a new src folder 
+
+mkdir src
+docker-compose run --rm composer create-project laravel/laravel .
+
+### step 2 
+### create containers 
+### ### note: need to include latest php version in php dockerfile 
+
+docker-compose up -d --build server 
+
+### shutdown containers 
+
+docker-compose down 
