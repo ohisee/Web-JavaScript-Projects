@@ -41,6 +41,7 @@ services:
       dockerfile: dockerfiles/php.dockerfile
     volumes:
       - ./src:/var/www/html
+    #command: ["php", "/var/www/html/artisan", "serve"]
     entrypoint: ["php", "/var/www/html/artisan"]
   npm:
     image: node:14
