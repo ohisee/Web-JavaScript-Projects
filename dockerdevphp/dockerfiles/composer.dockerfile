@@ -1,4 +1,4 @@
-# this is to build a composer utiltiy image 
+# this is to build a composer utiltiy image and run as utility command
 # build from a composer image
 FROM composer:latest
 
@@ -8,4 +8,5 @@ USER laravel
 
 WORKDIR /var/www/html
 
+# note: docker composer github indicates that using this flag is discouraged 
 ENTRYPOINT [ "composer", "--ignore-platform-reqs" ]
