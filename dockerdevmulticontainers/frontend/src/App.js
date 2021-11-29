@@ -4,6 +4,8 @@ import GoalInput from './components/goals/GoalInput';
 import CourseGoals from './components/goals/CourseGoals';
 import ErrorAlert from './components/UI/ErrorAlert';
 
+const backendUrl = process.env.NODE_ENV === 'development' ? 'http://localhost' : 'http://prod-url';
+
 function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +13,7 @@ function App() {
 
   // cannot use container name in the URL because front-end codes 
   // are running in browser 
-  const url = 'http://localhost/goals';
+  const url = backendUrl + '/goals';
 
   useEffect(function () {
     async function fetchData() {
@@ -31,7 +33,7 @@ function App() {
       } catch (err) {
         setError(
           err.message ||
-            'Fetching goals failed - the server responsed with an error.'
+          'Fetching goals failed - the server responsed with an error.'
         );
       }
       setIsLoading(false);
@@ -73,7 +75,7 @@ function App() {
     } catch (err) {
       setError(
         err.message ||
-          'Adding a goal failed - the server responsed with an error.'
+        'Adding a goal failed - the server responsed with an error.'
       );
     }
     setIsLoading(false);
@@ -100,7 +102,7 @@ function App() {
     } catch (err) {
       setError(
         err.message ||
-          'Deleting the goal failed - the server responsed with an error.'
+        'Deleting the goal failed - the server responsed with an error.'
       );
     }
     setIsLoading(false);
