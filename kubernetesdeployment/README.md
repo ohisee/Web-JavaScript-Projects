@@ -126,11 +126,12 @@ kubectl apply -f=service.yml
 ### build a local image using docker build
 
 docker build -t kub-fist-app .
-
+### note that kubectl does not pull latest image from docker hub if image name is same as before
+### so need to enable always pull image from docker hub in yml file 
+### it is a good idea to include a tag name to avoid any confusion with 'latest' tag name
 docker build -t docker_id/repository_name:1 .
 
 ### tag to docker repository
-
 docker tag kub-fist-app docker_id/repository_name
 docker tag kub-fist-app docker_id/repository_name:2
 
@@ -143,16 +144,34 @@ docker push docker_id/repository_name:2
 
 minikube start --driver=docker
 
-### deploy using kubectl 
+### deploy using kubectl by name
 
 kubectl create deployment first-app --image=docker_id/repository_name
 kubectl create deployment first-app --image=docker_id/repository_name:2
+
+### if using deployment.yml, service.yml file to deloy
+### need to apply yml file(s)
+
+kubectl apply -f=deployment.yml
+kubectl apply -f=service.yml
+### backend is the name used in service.yml as service metadata name
+minikube service backend
+
+### delete deployment by using yml file
+
+kubectl delete -f=deployment.yml,service.yml
+kubectl delete -f=deployment.yml -f=service.yml
+
+### select by label which is defined in metadata in deployment and service yml
+kubectl delete deployments,services -l group=second-app-label
 
 ### check deployment status
 
 kubectl get pods
 
 kubectl get deployments
+
+kubectl get services
 
 ### stop minikube
 
