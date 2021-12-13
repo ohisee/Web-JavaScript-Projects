@@ -1,0 +1,43 @@
+# declarative approach using yml file
+apiVersion: apps/v1
+# indicate this yml file is for deployment
+kind: Deployment
+metadata:
+  name: second-app-deployment
+  labels:
+    group: second-app-label
+# specification for deployment
+spec:
+  # number of pods, 1, 2, or 3
+  replicas: 1
+  selector:
+    # match labels defined in template metadata
+    matchLabels:
+      app: second-app
+      tier: backend
+    # matchLabels or matchExpressions
+    # matchExpressions:
+    #   - {key: app, operator: In, values: [second-app]}
+  # pod to be created
+  template:
+    metadata:
+      labels:
+        app: second-app
+        tier: backend
+    # specification for pod
+    spec:
+      containers: 
+        - name: second-app-node-js
+          image: breakosin/kubernetes-first-deployment-node-app:2
+          # always pull latest version from docker hub even image name is same as before
+          imagePullPolicy: Always
+          # image: breakosin/kubernetes-first-deployment-node-app:3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
+        # can list more containers here 
+        # - name:
+        #   image:
