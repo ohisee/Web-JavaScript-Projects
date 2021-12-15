@@ -1,0 +1,21 @@
+apiVersion: v1
+# indicate this yml file is for exposing service
+kind: Service
+metadata:
+  name: backend
+  labels:
+    group: second-app-label
+spec:
+  selector:
+    # select all pods with 'app' label and a value of second-app
+    app: second-app
+  ports:
+    # can list multiple ports here
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+    # - protocol: 'TCP'
+    #   port: 443
+    #   targetPort: 443
+  # other type includes ClusterIP, NodePort
+  type: LoadBalancer
