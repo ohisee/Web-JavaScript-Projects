@@ -1,0 +1,51 @@
+apiVersion: v1
+# indicate this yml file is for exposing service
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    # select all pods with 'app' label and a value of second-app
+    app: second-app
+  ports:
+    # can list multiple ports here
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+    # - protocol: 'TCP'
+    #   port: 443
+    #   targetPort: 443
+  # other type includes ClusterIP, NodePort
+  type: LoadBalancer
+  # it is a good practice to put service above deployment
+---
+# declarative approach using yml file
+apiVersion: apps/v1
+# indicate this yml file is for deployment
+kind: Deployment
+metadata:
+  name: second-app-deployment
+# specification for deployment
+spec:
+  # number of pods, 1, 2, or 3
+  replicas: 1
+  selector:
+    # match labels defined in template metadata
+    matchLabels:
+      app: second-app
+      tier: backend
+  # pod to be created
+  template:
+    metadata:
+      labels:
+        app: second-app
+        tier: backend
+    # specification for pod
+    spec:
+      containers: 
+        - name: second-app-node-js
+          image: breakosin/kubernetes-first-deployment-node-app:2
+          # image: breakosin/kubernetes-first-deployment-node-app:3
+        # can list more containers here 
+        # - name:
+        #   image:
